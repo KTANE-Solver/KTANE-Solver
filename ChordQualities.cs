@@ -10,10 +10,6 @@ namespace New_KTANE_Solver
     public class ChordQualities : Module
     {
         private List<Note> notes;
-        private Note note1;
-        private Note note2;
-        private Note note3;
-        private Note note4;
 
         private Note currentRoot;
         private string currentQuality;
@@ -73,10 +69,7 @@ namespace New_KTANE_Solver
 
         public string Solve(bool debug)
         {
-            PrintDebugLine("Note 1: " + this.note1);
-            PrintDebugLine("Note 2: " + this.note2);
-            PrintDebugLine("Note 3: " + this.note3);
-            PrintDebugLine("Note 4: " + this.note4 + "\n");
+            PrintDebugLine ($"Notes: {string.Join(",", notes)}");
 
             FindQualityAndRoot();
 
@@ -103,11 +96,10 @@ namespace New_KTANE_Solver
 
         private void RefactorNotes()
         {
-            Note[] notes = new Note[] { note1, note2, note3, note4 };
 
-            if (note1 != notes.Min())
+            if (notes[0] != notes.Min())
             {
-                int minIndex = Array.IndexOf(notes, notes.Min());
+                int minIndex = notes.IndexOf(notes.Min());
 
                 Note minNote = notes[minIndex];
                 Note firstNote = notes[0];
@@ -116,9 +108,9 @@ namespace New_KTANE_Solver
                 notes[minIndex] = firstNote;
             }
 
-            if (note4 != notes.Max())
+            if (notes[3] != notes.Max())
             {
-                int maxIndex = Array.IndexOf(notes, notes.Max());
+                int maxIndex = notes.IndexOf(notes.Max());
 
                 Note minNote = notes[maxIndex];
                 Note lastNote = notes[3];
@@ -135,11 +127,6 @@ namespace New_KTANE_Solver
                 notes[1] = secondNote;
                 notes[2] = thirdNote;
             }
-
-            note1 = notes[0];
-            note2 = notes[1];
-            note3 = notes[2];
-            note4 = notes[3];
         }
 
         private void FindQualityAndRoot()
@@ -169,24 +156,7 @@ namespace New_KTANE_Solver
                 }
             }
 
-            switch (startingNote)
-            {
-                case 1:
-                    currentRoot = note1;
-                    break;
-
-                case 2:
-                    currentRoot = note2;
-                    break;
-
-                case 3:
-                    currentRoot = note3;
-                    break;
-
-                default:
-                    currentRoot = note4;
-                    break;
-            }
+            currentRoot = notes[startingNote - 1];
 
             this.currentQuality = quality;
         }
@@ -198,19 +168,19 @@ namespace New_KTANE_Solver
             switch (startingNote)
             {
                 case 1:
-                    gaps = new int[] { note2 - note1, note3 - note2, note4 - note3, note4 - note1 };
+                    gaps = new int[] { notes[1] - notes[0], notes[2] - notes[1], notes[3] - notes[2], notes[3] - notes[0] };
                     break;
 
                 case 2:
-                    gaps = new int[] { note3 - note2, note4 - note3, note4 - note1, note2 - note1 };
+                    gaps = new int[] { notes[2] - notes[1], notes[3] - notes[2], notes[3] - notes[0], notes[1] - notes[0] };
                     break;
 
                 case 3:
-                    gaps = new int[] { note4 - note3, note4 - note1, note2 - note1, note3 - note2 };
+                    gaps = new int[] { notes[3] - notes[2], notes[3] - notes[0], notes[1] - notes[0], notes[2] - notes[1] };
                     break;
 
                 default:
-                    gaps = new int[] { note4 - note1, note2 - note1, note3 - note2, note4 - note3 };
+                    gaps = new int[] { notes[3] - notes[0], notes[1] - notes[0], notes[2] - notes[1], notes[3] - notes[2] };
                     break;
             }
 
@@ -390,7 +360,7 @@ namespace New_KTANE_Solver
             }
         }
 
-        private List<Note> FindAnswer()
+        private List<string> FindAnswer()
         {
             List<Note> answer = new List<Note>();
 
@@ -424,7 +394,14 @@ namespace New_KTANE_Solver
                 currentNote = newNote;
             }
 
-            return answer;
+            List<string> strAnswer = new List<string>();
+
+            foreach (Note n in answer)
+            { 
+                strAnswer.Add(ConvertNote(n));
+            }
+
+            return strAnswer;
         }
 
         private Note ConvertNote(string s)
@@ -436,6 +413,16 @@ namespace New_KTANE_Solver
             }
 
             return (Note)Enum.Parse(typeof(Note), s);
+        }
+
+        private string ConvertNote(Note note)
+        { 
+            if(note.ToString().Length > 1)
+            {
+                return note.ToString()[0] + "#";
+            }
+
+            return note.ToString();
         }
     }
 }
