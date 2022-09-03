@@ -35,17 +35,17 @@ namespace New_KTANE_Solver
             string[] notes = new string[]
             {
                 "A",
-                "ASharp",
+                "A#",
                 "B",
                 "C",
-                "CSharp",
+                "C#",
                 "D",
-                "DSharp",
+                "D#",
                 "E",
                 "F",
-                "FSharp",
+                "F#",
                 "G",
-                "GSharp"
+                "G#"
             };
 
             comboBox.Items.Clear();
@@ -66,10 +66,10 @@ namespace New_KTANE_Solver
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            ChordQualities.Note note1 = ConvertStringToNote(note1ComboBox.Text);
-            ChordQualities.Note note2 = ConvertStringToNote(note2ComboBox.Text);
-            ChordQualities.Note note3 = ConvertStringToNote(note3ComboBox.Text);
-            ChordQualities.Note note4 = ConvertStringToNote(note4ComboBox.Text);
+            string note1 = note1ComboBox.Text;
+            string note2 = note2ComboBox.Text;
+            string note3 = note3ComboBox.Text;
+            string note4 = note4ComboBox.Text;
 
             if (
                 note1 == note2
@@ -87,55 +87,11 @@ namespace New_KTANE_Solver
             ChordQualities module = new ChordQualities(
                 Bomb,
                 LogFileWriter,
-                note1,
-                note2,
-                note3,
-                note4
+                new List<string>() { note1, note2, note3, note4}
             );
-            module.Solve();
+
+            module.Solve(false);
             UpdateForm();
-        }
-
-        private ChordQualities.Note ConvertStringToNote(string note)
-        {
-            switch (note)
-            {
-                case "A":
-                    return ChordQualities.Note.A;
-
-                case "ASharp":
-                    return ChordQualities.Note.ASharp;
-
-                case "B":
-                    return ChordQualities.Note.B;
-
-                case "C":
-                    return ChordQualities.Note.C;
-
-                case "CSharp":
-                    return ChordQualities.Note.CSharp;
-
-                case "D":
-                    return ChordQualities.Note.D;
-
-                case "DSharp":
-                    return ChordQualities.Note.DSharp;
-
-                case "E":
-                    return ChordQualities.Note.E;
-
-                case "F":
-                    return ChordQualities.Note.F;
-
-                case "FSharp":
-                    return ChordQualities.Note.FSharp;
-
-                case "G":
-                    return ChordQualities.Note.G;
-
-                default:
-                    return ChordQualities.Note.GSharp;
-            }
         }
     }
 }

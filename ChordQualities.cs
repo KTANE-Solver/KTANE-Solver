@@ -9,6 +9,7 @@ namespace New_KTANE_Solver
 {
     public class ChordQualities : Module
     {
+        private List<Note> notes;
         private Note note1;
         private Note note2;
         private Note note3;
@@ -25,16 +26,15 @@ namespace New_KTANE_Solver
         public ChordQualities(
             Bomb bomb,
             StreamWriter logFileWriter,
-            Note note1,
-            Note note2,
-            Note note3,
-            Note note4
+            List<string> notes
         ) : base(bomb, logFileWriter, "Chord Qualities")
         {
-            this.note1 = note1;
-            this.note2 = note2;
-            this.note3 = note3;
-            this.note4 = note4;
+            this.notes = new List<Note>();
+
+            for (int i = 0; i < notes.Count; i++)
+            {
+                this.notes.Add(ConvertNote(notes[i]));
+            }
 
             RefactorNotes();
 
@@ -419,12 +419,23 @@ namespace New_KTANE_Solver
 
             foreach (int gap in gaps)
             {
-                Note newNote = (Note)(((int)(currentNote + gap) % 12));
+                Note newNote = (Note)((int)(currentNote + gap) % 12);
                 answer.Add(newNote);
                 currentNote = newNote;
             }
 
             return answer;
+        }
+
+        private Note ConvertNote(string s)
+        {
+
+            if (s.Length != 1)
+            {
+                s = s[0] + "Sharp";   
+            }
+
+            return (Note)Enum.Parse(typeof(Note), s);
         }
     }
 }
