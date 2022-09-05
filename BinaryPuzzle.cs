@@ -12,7 +12,7 @@ namespace New_KTANE_Solver
     /// Date: 3/15/21
     /// Purpose: Solves Binary Puzzle Module
     /// </summary>
-    class BinaryPuzzle : Module
+    public class BinaryPuzzle : Module
     {
         //============================PROPERTIES============================
 
