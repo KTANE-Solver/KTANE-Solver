@@ -157,7 +157,7 @@ namespace New_KTANE_Solver
                 image2Name,
                 image3Name
             );
-            module.Solve();
+            module.Solve(false);
 
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
         }

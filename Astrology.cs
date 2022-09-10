@@ -39,12 +39,11 @@ namespace New_KTANE_Solver
         Null
     }
 
-    class Astrology : Module
+    public class Astrology : Module
     {
         //the 3 symbols on the bomb
-        private Symbol symbol1;
-        private Symbol symbol2;
-        private Symbol symbol3;
+
+        private Symbol[] symbols; 
 
         private int omen;
 
@@ -56,93 +55,62 @@ namespace New_KTANE_Solver
             string symbol3Name
         ) : base(bomb, logFileWriter, "Astrology")
         {
-            symbol1 = SetUpSymbol(symbol1Name);
-            symbol2 = SetUpSymbol(symbol2Name);
-            symbol3 = SetUpSymbol(symbol3Name);
+
+            symbols = new Symbol[3];
+
+            symbols[0] = SetUpSymbol(symbol1Name);
+            symbols[1] = SetUpSymbol(symbol2Name);
+            symbols[2] = SetUpSymbol(symbol3Name);
 
             omen = 0;
 
-            PrintDebugLine("Symbols:");
-            PrintDebugLine(symbol1.ToString());
-            PrintDebugLine(symbol2.ToString());
-            PrintDebugLine(symbol3.ToString());
-
-            PrintDebugLine("");
+            PrintDebugLine("Symbols: " + string.Join(", ", symbols) + "\n");
         }
 
-        public void Solve()
+        public int Solve(bool debug)
         {
             int num1 = GetGrid1Num();
             int num2 = GetGrid2Num();
             int num3 = GetGrid3Num();
 
-            PrintSymbolIntersection(symbol1, symbol2, num1);
-            PrintSymbolIntersection(symbol1, symbol3, num2);
-            PrintSymbolIntersection(symbol2, symbol3, num1);
+            PrintSymbolIntersection(symbols[0], symbols[1], num1);
+            PrintSymbolIntersection(symbols[0], symbols[2], num2);
+            PrintSymbolIntersection(symbols[1], symbols[2], num3);
 
             omen = num1 + num2 + num3;
 
             PrintDebugLine($"Starting omen is {omen}\n");
 
-            if (HasLetters(symbol1))
-            {
-                omen++;
-                PrintDebugLine(
-                    $"{symbol1} shares a letter with the serial number. Omen is now " + omen
-                );
-            }
-            else
-            {
-                omen--;
-                PrintDebugLine(
-                    $"{symbol1} does not a letter with the serial number. Omen is now " + omen
-                );
-            }
+            foreach (Symbol symbol in symbols)
+            { 
+                omen += HasLetters(symbol) ? 1 : -1;
+                PrintDebugLine($" Omen is now {omen}");
 
-            if (HasLetters(symbol2))
-            {
-                omen++;
-                PrintDebugLine(
-                    $"{symbol2} shares a letter with the serial number. Omen is now " + omen
-                );
-            }
-            else
-            {
-                omen--;
-                PrintDebugLine(
-                    $"{symbol2} does not a letter with the serial number. Omen is now " + omen
-                );
-            }
-
-            if (HasLetters(symbol3))
-            {
-                omen++;
-                PrintDebugLine(
-                    $"{symbol3} shares a letter with the serial number. Omen is now {omen}\n"
-                );
-            }
-            else
-            {
-                omen--;
-                PrintDebugLine(
-                    $"{symbol3} does not a letter with the serial number. Omen is now {omen}\n"
-                );
             }
 
             if (omen == 0)
             {
-                ShowAnswer("Press NO OMEN", true);
+                if (!debug)
+                { 
+                    ShowAnswer("Press NO OMEN", true);
+                }
             }
             else if (omen < 0)
             {
-                omen = Math.Abs(omen);
-
-                ShowAnswer($"Press POOR OMEN when there is a {omen} anywhere in the timer", true);
+                if (!debug)
+                {
+                    ShowAnswer($"Press POOR OMEN when there is a {Math.Abs(omen)} anywhere in the timer", true);
+                }
             }
             else
             {
-                ShowAnswer($"Press GOOD OMEN when there is a {omen} anywhere in the timer", true);
+                if (!debug)
+                {
+                    ShowAnswer($"Press GOOD OMEN when there is a {omen} anywhere in the timer", true);
+                }
             }
+
+            return omen;
         }
 
         /// <summary>
@@ -160,11 +128,15 @@ namespace New_KTANE_Solver
                 {
                     if (name.Contains(c))
                     {
+                        PrintDebug(
+                    $"{symbol} shares letter.");
                         return true;
                     }
                 }
             }
 
+            PrintDebug(
+                   $"{symbol} does not share letter.");
             return false;
         }
 
@@ -271,19 +243,19 @@ namespace New_KTANE_Solver
         /// <returns></returns>
         private int GetGrid1Num()
         {
-            switch (symbol2)
+            switch (symbols[1])
             {
                 case Symbol.Jupiter:
                     {
-                        if (symbol1 == Symbol.Fire)
+                        if (symbols[0] == Symbol.Fire)
                         {
                             return 1;
                         }
-                        else if (symbol1 == Symbol.Water)
+                        else if (symbols[0] == Symbol.Water)
                         {
                             return 0;
                         }
-                        else if (symbol1 == Symbol.Earth)
+                        else if (symbols[0] == Symbol.Earth)
                         {
                             return 2;
                         }
@@ -295,15 +267,15 @@ namespace New_KTANE_Solver
                     }
                 case Symbol.Mars:
                     {
-                        if (symbol1 == Symbol.Fire)
+                        if (symbols[0] == Symbol.Fire)
                         {
                             return 0;
                         }
-                        else if (symbol1 == Symbol.Water)
+                        else if (symbols[0] == Symbol.Water)
                         {
                             return 2;
                         }
-                        else if (symbol1 == Symbol.Earth)
+                        else if (symbols[0] == Symbol.Earth)
                         {
                             return 1;
                         }
@@ -316,15 +288,15 @@ namespace New_KTANE_Solver
 
                 case Symbol.Mercury:
                     {
-                        if (symbol1 == Symbol.Fire)
+                        if (symbols[0] == Symbol.Fire)
                         {
                             return 1;
                         }
-                        else if (symbol1 == Symbol.Water)
+                        else if (symbols[0] == Symbol.Water)
                         {
                             return -1;
                         }
-                        else if (symbol1 == Symbol.Earth)
+                        else if (symbols[0] == Symbol.Earth)
                         {
                             return 0;
                         }
@@ -336,15 +308,15 @@ namespace New_KTANE_Solver
                     }
                 case Symbol.Moon:
                     {
-                        if (symbol1 == Symbol.Fire)
+                        if (symbols[0] == Symbol.Fire)
                         {
                             return 0;
                         }
-                        else if (symbol1 == Symbol.Water)
+                        else if (symbols[0] == Symbol.Water)
                         {
                             return 0;
                         }
-                        else if (symbol1 == Symbol.Earth)
+                        else if (symbols[0] == Symbol.Earth)
                         {
                             return -1;
                         }
@@ -356,15 +328,15 @@ namespace New_KTANE_Solver
                     }
                 case Symbol.Neptune:
                     {
-                        if (symbol1 == Symbol.Fire)
+                        if (symbols[0] == Symbol.Fire)
                         {
                             return 0;
                         }
-                        else if (symbol1 == Symbol.Water)
+                        else if (symbols[0] == Symbol.Water)
                         {
                             return 0;
                         }
-                        else if (symbol1 == Symbol.Earth)
+                        else if (symbols[0] == Symbol.Earth)
                         {
                             return 1;
                         }
@@ -376,15 +348,15 @@ namespace New_KTANE_Solver
                     }
                 case Symbol.Pluto:
                     {
-                        if (symbol1 == Symbol.Fire)
+                        if (symbols[0] == Symbol.Fire)
                         {
                             return -1;
                         }
-                        else if (symbol1 == Symbol.Water)
+                        else if (symbols[0] == Symbol.Water)
                         {
                             return 1;
                         }
-                        else if (symbol1 == Symbol.Earth)
+                        else if (symbols[0] == Symbol.Earth)
                         {
                             return -2;
                         }
@@ -396,15 +368,15 @@ namespace New_KTANE_Solver
                     }
                 case Symbol.Saturn:
                     {
-                        if (symbol1 == Symbol.Fire)
+                        if (symbols[0] == Symbol.Fire)
                         {
                             return -2;
                         }
-                        else if (symbol1 == Symbol.Water)
+                        else if (symbols[0] == Symbol.Water)
                         {
                             return -2;
                         }
-                        else if (symbol1 == Symbol.Earth)
+                        else if (symbols[0] == Symbol.Earth)
                         {
                             return 0;
                         }
@@ -416,15 +388,15 @@ namespace New_KTANE_Solver
                     }
                 case Symbol.Sun:
                     {
-                        if (symbol1 == Symbol.Fire)
+                        if (symbols[0] == Symbol.Fire)
                         {
                             return 0;
                         }
-                        else if (symbol1 == Symbol.Water)
+                        else if (symbols[0] == Symbol.Water)
                         {
                             return -2;
                         }
-                        else if (symbol1 == Symbol.Earth)
+                        else if (symbols[0] == Symbol.Earth)
                         {
                             return -1;
                         }
@@ -436,15 +408,15 @@ namespace New_KTANE_Solver
                     }
                 case Symbol.Uranus:
                     {
-                        if (symbol1 == Symbol.Fire)
+                        if (symbols[0] == Symbol.Fire)
                         {
                             return 2;
                         }
-                        else if (symbol1 == Symbol.Water)
+                        else if (symbols[0] == Symbol.Water)
                         {
                             return 2;
                         }
-                        else if (symbol1 == Symbol.Earth)
+                        else if (symbols[0] == Symbol.Earth)
                         {
                             return 2;
                         }
@@ -458,15 +430,15 @@ namespace New_KTANE_Solver
                 //venus
                 default:
                     {
-                        if (symbol1 == Symbol.Fire)
+                        if (symbols[0] == Symbol.Fire)
                         {
                             return -1;
                         }
-                        else if (symbol1 == Symbol.Water)
+                        else if (symbols[0] == Symbol.Water)
                         {
                             return 0;
                         }
-                        else if (symbol1 == Symbol.Earth)
+                        else if (symbols[0] == Symbol.Earth)
                         {
                             return -1;
                         }
@@ -485,19 +457,19 @@ namespace New_KTANE_Solver
         /// <returns></returns>
         private int GetGrid2Num()
         {
-            switch (symbol3)
+            switch (symbols[2])
             {
                 case Symbol.Aquarius:
                     {
-                        if (symbol1 == Symbol.Fire)
+                        if (symbols[0] == Symbol.Fire)
                         {
                             return 1;
                         }
-                        else if (symbol1 == Symbol.Water)
+                        else if (symbols[0] == Symbol.Water)
                         {
                             return 0;
                         }
-                        else if (symbol1 == Symbol.Earth)
+                        else if (symbols[0] == Symbol.Earth)
                         {
                             return 1;
                         }
@@ -509,15 +481,15 @@ namespace New_KTANE_Solver
                     }
                 case Symbol.Aries:
                     {
-                        if (symbol1 == Symbol.Fire)
+                        if (symbols[0] == Symbol.Fire)
                         {
                             return 1;
                         }
-                        else if (symbol1 == Symbol.Water)
+                        else if (symbols[0] == Symbol.Water)
                         {
                             return 2;
                         }
-                        else if (symbol1 == Symbol.Earth)
+                        else if (symbols[0] == Symbol.Earth)
                         {
                             return -2;
                         }
@@ -529,15 +501,15 @@ namespace New_KTANE_Solver
                     }
                 case Symbol.Cancer:
                     {
-                        if (symbol1 == Symbol.Fire)
+                        if (symbols[0] == Symbol.Fire)
                         {
                             return 0;
                         }
-                        else if (symbol1 == Symbol.Water)
+                        else if (symbols[0] == Symbol.Water)
                         {
                             return 2;
                         }
-                        else if (symbol1 == Symbol.Earth)
+                        else if (symbols[0] == Symbol.Earth)
                         {
                             return 0;
                         }
@@ -549,15 +521,15 @@ namespace New_KTANE_Solver
                     }
                 case Symbol.Capricon:
                     {
-                        if (symbol1 == Symbol.Fire)
+                        if (symbols[0] == Symbol.Fire)
                         {
                             return 0;
                         }
-                        else if (symbol1 == Symbol.Water)
+                        else if (symbols[0] == Symbol.Water)
                         {
                             return 0;
                         }
-                        else if (symbol1 == Symbol.Earth)
+                        else if (symbols[0] == Symbol.Earth)
                         {
                             return -2;
                         }
@@ -569,15 +541,15 @@ namespace New_KTANE_Solver
                     }
                 case Symbol.Gemini:
                     {
-                        if (symbol1 == Symbol.Fire)
+                        if (symbols[0] == Symbol.Fire)
                         {
                             return -1;
                         }
-                        else if (symbol1 == Symbol.Water)
+                        else if (symbols[0] == Symbol.Water)
                         {
                             return -1;
                         }
-                        else if (symbol1 == Symbol.Earth)
+                        else if (symbols[0] == Symbol.Earth)
                         {
                             return 0;
                         }
@@ -589,15 +561,15 @@ namespace New_KTANE_Solver
                     }
                 case Symbol.Leo:
                     {
-                        if (symbol1 == Symbol.Fire)
+                        if (symbols[0] == Symbol.Fire)
                         {
                             return 0;
                         }
-                        else if (symbol1 == Symbol.Water)
+                        else if (symbols[0] == Symbol.Water)
                         {
                             return -1;
                         }
-                        else if (symbol1 == Symbol.Earth)
+                        else if (symbols[0] == Symbol.Earth)
                         {
                             return 1;
                         }
@@ -609,15 +581,15 @@ namespace New_KTANE_Solver
                     }
                 case Symbol.Libra:
                     {
-                        if (symbol1 == Symbol.Fire)
+                        if (symbols[0] == Symbol.Fire)
                         {
                             return 2;
                         }
-                        else if (symbol1 == Symbol.Water)
+                        else if (symbols[0] == Symbol.Water)
                         {
                             return -2;
                         }
-                        else if (symbol1 == Symbol.Earth)
+                        else if (symbols[0] == Symbol.Earth)
                         {
                             return 1;
                         }
@@ -629,15 +601,15 @@ namespace New_KTANE_Solver
                     }
                 case Symbol.Pices:
                     {
-                        if (symbol1 == Symbol.Fire)
+                        if (symbols[0] == Symbol.Fire)
                         {
                             return 0;
                         }
-                        else if (symbol1 == Symbol.Water)
+                        else if (symbols[0] == Symbol.Water)
                         {
                             return 2;
                         }
-                        else if (symbol1 == Symbol.Earth)
+                        else if (symbols[0] == Symbol.Earth)
                         {
                             return 1;
                         }
@@ -649,15 +621,15 @@ namespace New_KTANE_Solver
                     }
                 case Symbol.Sagittarius:
                     {
-                        if (symbol1 == Symbol.Fire)
+                        if (symbols[0] == Symbol.Fire)
                         {
                             return 1;
                         }
-                        else if (symbol1 == Symbol.Water)
+                        else if (symbols[0] == Symbol.Water)
                         {
                             return 2;
                         }
-                        else if (symbol1 == Symbol.Earth)
+                        else if (symbols[0] == Symbol.Earth)
                         {
                             return -1;
                         }
@@ -669,15 +641,15 @@ namespace New_KTANE_Solver
                     }
                 case Symbol.Scorpio:
                     {
-                        if (symbol1 == Symbol.Fire)
+                        if (symbols[0] == Symbol.Fire)
                         {
                             return 0;
                         }
-                        else if (symbol1 == Symbol.Water)
+                        else if (symbols[0] == Symbol.Water)
                         {
                             return 1;
                         }
-                        else if (symbol1 == Symbol.Earth)
+                        else if (symbols[0] == Symbol.Earth)
                         {
                             return 2;
                         }
@@ -689,15 +661,15 @@ namespace New_KTANE_Solver
                     }
                 case Symbol.Taurus:
                     {
-                        if (symbol1 == Symbol.Fire)
+                        if (symbols[0] == Symbol.Fire)
                         {
                             return 0;
                         }
-                        else if (symbol1 == Symbol.Water)
+                        else if (symbols[0] == Symbol.Water)
                         {
                             return 2;
                         }
-                        else if (symbol1 == Symbol.Earth)
+                        else if (symbols[0] == Symbol.Earth)
                         {
                             return -1;
                         }
@@ -710,15 +682,15 @@ namespace New_KTANE_Solver
                 //virgo
                 default:
                     {
-                        if (symbol1 == Symbol.Fire)
+                        if (symbols[0] == Symbol.Fire)
                         {
                             return 2;
                         }
-                        else if (symbol1 == Symbol.Water)
+                        else if (symbols[0] == Symbol.Water)
                         {
                             return -1;
                         }
-                        else if (symbol1 == Symbol.Earth)
+                        else if (symbols[0] == Symbol.Earth)
                         {
                             return 0;
                         }
@@ -737,43 +709,43 @@ namespace New_KTANE_Solver
         /// <returns></returns>
         private int GetGrid3Num()
         {
-            switch (symbol3)
+            switch (symbols[2])
             {
                 case Symbol.Aquarius:
                     {
-                        if (symbol2 == Symbol.Sun)
+                        if (symbols[1] == Symbol.Sun)
                         {
                             return -2;
                         }
-                        else if (symbol2 == Symbol.Moon)
+                        else if (symbols[1] == Symbol.Moon)
                         {
                             return 1;
                         }
-                        else if (symbol2 == Symbol.Venus)
+                        else if (symbols[1] == Symbol.Venus)
                         {
                             return -1;
                         }
-                        else if (symbol2 == Symbol.Mars)
-                        {
-                            return -1;
-                        }
-                        else if (symbol2 == Symbol.Mercury)
-                        {
-                            return -1;
-                        }
-                        else if (symbol2 == Symbol.Jupiter)
+                        else if (symbols[1] == Symbol.Mars)
                         {
                             return 0;
                         }
-                        else if (symbol2 == Symbol.Saturn)
+                        else if (symbols[1] == Symbol.Mercury)
                         {
                             return -1;
                         }
-                        else if (symbol2 == Symbol.Uranus)
+                        else if (symbols[1] == Symbol.Jupiter)
+                        {
+                            return 0;
+                        }
+                        else if (symbols[1] == Symbol.Saturn)
                         {
                             return -1;
                         }
-                        else if (symbol2 == Symbol.Neptune)
+                        else if (symbols[1] == Symbol.Uranus)
+                        {
+                            return 1;
+                        }
+                        else if (symbols[1] == Symbol.Neptune)
                         {
                             return 2;
                         }
@@ -786,39 +758,39 @@ namespace New_KTANE_Solver
 
                 case Symbol.Aries:
                     {
-                        if (symbol2 == Symbol.Sun)
+                        if (symbols[1] == Symbol.Sun)
                         {
                             return -1;
                         }
-                        else if (symbol2 == Symbol.Moon)
+                        else if (symbols[1] == Symbol.Moon)
                         {
                             return -2;
                         }
-                        else if (symbol2 == Symbol.Venus)
+                        else if (symbols[1] == Symbol.Venus)
                         {
                             return -2;
                         }
-                        else if (symbol2 == Symbol.Mars)
+                        else if (symbols[1] == Symbol.Mars)
                         {
                             return -2;
                         }
-                        else if (symbol2 == Symbol.Mercury)
+                        else if (symbols[1] == Symbol.Mercury)
                         {
                             return -2;
                         }
-                        else if (symbol2 == Symbol.Jupiter)
+                        else if (symbols[1] == Symbol.Jupiter)
                         {
                             return -1;
                         }
-                        else if (symbol2 == Symbol.Saturn)
+                        else if (symbols[1] == Symbol.Saturn)
                         {
                             return -1;
                         }
-                        else if (symbol2 == Symbol.Uranus)
+                        else if (symbols[1] == Symbol.Uranus)
                         {
                             return -1;
                         }
-                        else if (symbol2 == Symbol.Neptune)
+                        else if (symbols[1] == Symbol.Neptune)
                         {
                             return 1;
                         }
@@ -830,39 +802,39 @@ namespace New_KTANE_Solver
                     }
                 case Symbol.Cancer:
                     {
-                        if (symbol2 == Symbol.Sun)
+                        if (symbols[1] == Symbol.Sun)
                         {
                             return 0;
                         }
-                        else if (symbol2 == Symbol.Moon)
+                        else if (symbols[1] == Symbol.Moon)
                         {
                             return 0;
                         }
-                        else if (symbol2 == Symbol.Mercury)
+                        else if (symbols[1] == Symbol.Mercury)
                         {
                             return -1;
                         }
-                        else if (symbol2 == Symbol.Venus)
+                        else if (symbols[1] == Symbol.Venus)
                         {
                             return 0;
                         }
-                        else if (symbol2 == Symbol.Mars)
+                        else if (symbols[1] == Symbol.Mars)
                         {
                             return -2;
                         }
-                        else if (symbol2 == Symbol.Jupiter)
+                        else if (symbols[1] == Symbol.Jupiter)
                         {
                             return -1;
                         }
-                        else if (symbol2 == Symbol.Saturn)
+                        else if (symbols[1] == Symbol.Saturn)
                         {
                             return 0;
                         }
-                        else if (symbol2 == Symbol.Uranus)
+                        else if (symbols[1] == Symbol.Uranus)
                         {
                             return 0;
                         }
-                        else if (symbol2 == Symbol.Neptune)
+                        else if (symbols[1] == Symbol.Neptune)
                         {
                             return 1;
                         }
@@ -874,39 +846,39 @@ namespace New_KTANE_Solver
                     }
                 case Symbol.Capricon:
                     {
-                        if (symbol2 == Symbol.Sun)
+                        if (symbols[1] == Symbol.Sun)
                         {
                             return 0;
                         }
-                        else if (symbol2 == Symbol.Moon)
+                        else if (symbols[1] == Symbol.Moon)
                         {
                             return 0;
                         }
-                        else if (symbol2 == Symbol.Mercury)
+                        else if (symbols[1] == Symbol.Mercury)
                         {
                             return 0;
                         }
-                        else if (symbol2 == Symbol.Venus)
+                        else if (symbols[1] == Symbol.Venus)
                         {
                             return -2;
                         }
-                        else if (symbol2 == Symbol.Mars)
+                        else if (symbols[1] == Symbol.Mars)
                         {
                             return 1;
                         }
-                        else if (symbol2 == Symbol.Jupiter)
+                        else if (symbols[1] == Symbol.Jupiter)
                         {
                             return -1;
                         }
-                        else if (symbol2 == Symbol.Saturn)
+                        else if (symbols[1] == Symbol.Saturn)
                         {
                             return 0;
                         }
-                        else if (symbol2 == Symbol.Uranus)
+                        else if (symbols[1] == Symbol.Uranus)
                         {
                             return -1;
                         }
-                        else if (symbol2 == Symbol.Neptune)
+                        else if (symbols[1] == Symbol.Neptune)
                         {
                             return -2;
                         }
@@ -918,39 +890,39 @@ namespace New_KTANE_Solver
                     }
                 case Symbol.Gemini:
                     {
-                        if (symbol2 == Symbol.Sun)
+                        if (symbols[1] == Symbol.Sun)
                         {
                             return 2;
                         }
-                        else if (symbol2 == Symbol.Moon)
+                        else if (symbols[1] == Symbol.Moon)
                         {
                             return 1;
                         }
-                        else if (symbol2 == Symbol.Mercury)
+                        else if (symbols[1] == Symbol.Mercury)
                         {
                             return -1;
                         }
-                        else if (symbol2 == Symbol.Venus)
+                        else if (symbols[1] == Symbol.Venus)
                         {
                             return -2;
                         }
-                        else if (symbol2 == Symbol.Mars)
+                        else if (symbols[1] == Symbol.Mars)
                         {
                             return -1;
                         }
-                        else if (symbol2 == Symbol.Jupiter)
+                        else if (symbols[1] == Symbol.Jupiter)
                         {
                             return 1;
                         }
-                        else if (symbol2 == Symbol.Saturn)
+                        else if (symbols[1] == Symbol.Saturn)
                         {
                             return 0;
                         }
-                        else if (symbol2 == Symbol.Uranus)
+                        else if (symbols[1] == Symbol.Uranus)
                         {
                             return 0;
                         }
-                        else if (symbol2 == Symbol.Neptune)
+                        else if (symbols[1] == Symbol.Neptune)
                         {
                             return 2;
                         }
@@ -962,39 +934,39 @@ namespace New_KTANE_Solver
                     }
                 case Symbol.Leo:
                     {
-                        if (symbol2 == Symbol.Sun)
+                        if (symbols[1] == Symbol.Sun)
                         {
                             return -1;
                         }
-                        else if (symbol2 == Symbol.Moon)
+                        else if (symbols[1] == Symbol.Moon)
                         {
                             return 2;
                         }
-                        else if (symbol2 == Symbol.Mercury)
+                        else if (symbols[1] == Symbol.Mercury)
                         {
                             return 1;
                         }
-                        else if (symbol2 == Symbol.Venus)
+                        else if (symbols[1] == Symbol.Venus)
                         {
                             return 0;
                         }
-                        else if (symbol2 == Symbol.Mars)
+                        else if (symbols[1] == Symbol.Mars)
                         {
                             return -2;
                         }
-                        else if (symbol2 == Symbol.Jupiter)
+                        else if (symbols[1] == Symbol.Jupiter)
                         {
                             return 0;
                         }
-                        else if (symbol2 == Symbol.Saturn)
+                        else if (symbols[1] == Symbol.Saturn)
                         {
                             return 1;
                         }
-                        else if (symbol2 == Symbol.Uranus)
+                        else if (symbols[1] == Symbol.Uranus)
                         {
                             return 1;
                         }
-                        else if (symbol2 == Symbol.Neptune)
+                        else if (symbols[1] == Symbol.Neptune)
                         {
                             return -1;
                         }
@@ -1006,39 +978,39 @@ namespace New_KTANE_Solver
                     }
                 case Symbol.Libra:
                     {
-                        if (symbol2 == Symbol.Sun)
+                        if (symbols[1] == Symbol.Sun)
                         {
                             return -1;
                         }
-                        else if (symbol2 == Symbol.Moon)
+                        else if (symbols[1] == Symbol.Moon)
                         {
                             return -1;
                         }
-                        else if (symbol2 == Symbol.Mercury)
+                        else if (symbols[1] == Symbol.Mercury)
                         {
                             return 0;
                         }
-                        else if (symbol2 == Symbol.Venus)
+                        else if (symbols[1] == Symbol.Venus)
                         {
                             return -1;
                         }
-                        else if (symbol2 == Symbol.Mars)
+                        else if (symbols[1] == Symbol.Mars)
                         {
                             return -1;
                         }
-                        else if (symbol2 == Symbol.Jupiter)
+                        else if (symbols[1] == Symbol.Jupiter)
                         {
                             return 0;
                         }
-                        else if (symbol2 == Symbol.Saturn)
+                        else if (symbols[1] == Symbol.Saturn)
                         {
                             return 0;
                         }
-                        else if (symbol2 == Symbol.Uranus)
+                        else if (symbols[1] == Symbol.Uranus)
                         {
                             return 1;
                         }
-                        else if (symbol2 == Symbol.Neptune)
+                        else if (symbols[1] == Symbol.Neptune)
                         {
                             return 1;
                         }
@@ -1050,39 +1022,39 @@ namespace New_KTANE_Solver
                     }
                 case Symbol.Pices:
                     {
-                        if (symbol2 == Symbol.Sun)
+                        if (symbols[1] == Symbol.Sun)
                         {
                             return -2;
                         }
-                        else if (symbol2 == Symbol.Moon)
+                        else if (symbols[1] == Symbol.Moon)
                         {
                             return 0;
                         }
-                        else if (symbol2 == Symbol.Mercury)
+                        else if (symbols[1] == Symbol.Mercury)
                         {
                             return 1;
                         }
-                        else if (symbol2 == Symbol.Venus)
+                        else if (symbols[1] == Symbol.Venus)
                         {
                             return 1;
                         }
-                        else if (symbol2 == Symbol.Mars)
+                        else if (symbols[1] == Symbol.Mars)
                         {
                             return -1;
                         }
-                        else if (symbol2 == Symbol.Jupiter)
+                        else if (symbols[1] == Symbol.Jupiter)
                         {
                             return 0;
                         }
-                        else if (symbol2 == Symbol.Saturn)
+                        else if (symbols[1] == Symbol.Saturn)
                         {
                             return -1;
                         }
-                        else if (symbol2 == Symbol.Uranus)
+                        else if (symbols[1] == Symbol.Uranus)
                         {
                             return 0;
                         }
-                        else if (symbol2 == Symbol.Neptune)
+                        else if (symbols[1] == Symbol.Neptune)
                         {
                             return 0;
                         }
@@ -1094,39 +1066,39 @@ namespace New_KTANE_Solver
                     }
                 case Symbol.Sagittarius:
                     {
-                        if (symbol2 == Symbol.Sun)
+                        if (symbols[1] == Symbol.Sun)
                         {
                             return 0;
                         }
-                        else if (symbol2 == Symbol.Moon)
+                        else if (symbols[1] == Symbol.Moon)
                         {
                             return 2;
                         }
-                        else if (symbol2 == Symbol.Mercury)
+                        else if (symbols[1] == Symbol.Mercury)
                         {
                             return 0;
                         }
-                        else if (symbol2 == Symbol.Venus)
+                        else if (symbols[1] == Symbol.Venus)
                         {
                             return 2;
                         }
-                        else if (symbol2 == Symbol.Mars)
+                        else if (symbols[1] == Symbol.Mars)
                         {
                             return 1;
                         }
-                        else if (symbol2 == Symbol.Jupiter)
+                        else if (symbols[1] == Symbol.Jupiter)
                         {
                             return 0;
                         }
-                        else if (symbol2 == Symbol.Saturn)
+                        else if (symbols[1] == Symbol.Saturn)
                         {
                             return 0;
                         }
-                        else if (symbol2 == Symbol.Uranus)
+                        else if (symbols[1] == Symbol.Uranus)
                         {
                             return 2;
                         }
-                        else if (symbol2 == Symbol.Neptune)
+                        else if (symbols[1] == Symbol.Neptune)
                         {
                             return 0;
                         }
@@ -1138,39 +1110,39 @@ namespace New_KTANE_Solver
                     }
                 case Symbol.Scorpio:
                     {
-                        if (symbol2 == Symbol.Sun)
+                        if (symbols[1] == Symbol.Sun)
                         {
                             return 1;
                         }
-                        else if (symbol2 == Symbol.Moon)
+                        else if (symbols[1] == Symbol.Moon)
                         {
                             return 1;
                         }
-                        else if (symbol2 == Symbol.Mercury)
+                        else if (symbols[1] == Symbol.Mercury)
                         {
                             return -2;
                         }
-                        else if (symbol2 == Symbol.Venus)
+                        else if (symbols[1] == Symbol.Venus)
                         {
                             return 0;
                         }
-                        else if (symbol2 == Symbol.Mars)
+                        else if (symbols[1] == Symbol.Mars)
                         {
                             return 1;
                         }
-                        else if (symbol2 == Symbol.Jupiter)
+                        else if (symbols[1] == Symbol.Jupiter)
                         {
                             return 1;
                         }
-                        else if (symbol2 == Symbol.Saturn)
+                        else if (symbols[1] == Symbol.Saturn)
                         {
                             return 0;
                         }
-                        else if (symbol2 == Symbol.Uranus)
+                        else if (symbols[1] == Symbol.Uranus)
                         {
                             return 0;
                         }
-                        else if (symbol2 == Symbol.Neptune)
+                        else if (symbols[1] == Symbol.Neptune)
                         {
                             return 1;
                         }
@@ -1182,39 +1154,39 @@ namespace New_KTANE_Solver
                     }
                 case Symbol.Taurus:
                     {
-                        if (symbol2 == Symbol.Sun)
+                        if (symbols[1] == Symbol.Sun)
                         {
                             return -1;
                         }
-                        else if (symbol2 == Symbol.Moon)
+                        else if (symbols[1] == Symbol.Moon)
                         {
                             return 0;
                         }
-                        else if (symbol2 == Symbol.Mercury)
+                        else if (symbols[1] == Symbol.Mercury)
                         {
                             return -2;
                         }
-                        else if (symbol2 == Symbol.Venus)
+                        else if (symbols[1] == Symbol.Venus)
                         {
                             return 2;
                         }
-                        else if (symbol2 == Symbol.Mars)
+                        else if (symbols[1] == Symbol.Mars)
                         {
                             return 0;
                         }
-                        else if (symbol2 == Symbol.Jupiter)
+                        else if (symbols[1] == Symbol.Jupiter)
                         {
                             return -2;
                         }
-                        else if (symbol2 == Symbol.Saturn)
+                        else if (symbols[1] == Symbol.Saturn)
                         {
                             return -1;
                         }
-                        else if (symbol2 == Symbol.Uranus)
+                        else if (symbols[1] == Symbol.Uranus)
                         {
                             return 2;
                         }
-                        else if (symbol2 == Symbol.Neptune)
+                        else if (symbols[1] == Symbol.Neptune)
                         {
                             return 0;
                         }
@@ -1228,39 +1200,39 @@ namespace New_KTANE_Solver
                 //virgo
                 default:
                     {
-                        if (symbol2 == Symbol.Sun)
+                        if (symbols[1] == Symbol.Sun)
                         {
                             return 0;
                         }
-                        else if (symbol2 == Symbol.Moon)
+                        else if (symbols[1] == Symbol.Moon)
                         {
                             return 0;
                         }
-                        else if (symbol2 == Symbol.Mercury)
+                        else if (symbols[1] == Symbol.Mercury)
                         {
                             return -1;
                         }
-                        else if (symbol2 == Symbol.Venus)
+                        else if (symbols[1] == Symbol.Venus)
                         {
                             return 1;
                         }
-                        else if (symbol2 == Symbol.Mars)
+                        else if (symbols[1] == Symbol.Mars)
                         {
                             return -2;
                         }
-                        else if (symbol2 == Symbol.Jupiter)
+                        else if (symbols[1] == Symbol.Jupiter)
                         {
                             return 0;
                         }
-                        else if (symbol2 == Symbol.Saturn)
+                        else if (symbols[1] == Symbol.Saturn)
                         {
                             return 1;
                         }
-                        else if (symbol2 == Symbol.Uranus)
+                        else if (symbols[1] == Symbol.Uranus)
                         {
                             return -2;
                         }
-                        else if (symbol2 == Symbol.Neptune)
+                        else if (symbols[1] == Symbol.Neptune)
                         {
                             return 1;
                         }
