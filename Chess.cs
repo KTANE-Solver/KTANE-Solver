@@ -13,7 +13,7 @@ namespace New_KTANE_Solver
     /// Date: 4/30/21
     /// Purpose: Solves the chess module
     /// </summary>
-    class Chess : Module
+    public class Chess : Module
     {
         //FIELDS
 
@@ -26,12 +26,12 @@ namespace New_KTANE_Solver
 
         //will take 6 positions for the pieces, the bomb, and the streamwriter
         public Chess(
-            String position1,
-            String position2,
-            String position3,
-            String position4,
-            String position5,
-            String position6,
+            string position1,
+            string position2,
+            string position3,
+            string position4,
+            string position5,
+            string position6,
             Bomb bomb,
             StreamWriter logWriterFile
         ) : base(bomb, logWriterFile, "Chess")
@@ -50,12 +50,12 @@ namespace New_KTANE_Solver
 
             List<string> positionList = new List<string>()
             {
-                position1,
-                position2,
-                position3,
-                position4,
-                position5,
-                position6
+                position1.ToLower(),
+                position2.ToLower(),
+                position3.ToLower(),
+                position4.ToLower(),
+                position5.ToLower(),
+                position6.ToLower()
             };
 
             pieceList = new List<Piece>();
@@ -95,19 +95,21 @@ namespace New_KTANE_Solver
         /// <summary>
         /// Solves the module
         /// </summary>
-        public void Solve()
+        public string Solve(bool debug)
         {
             //sees which tiles are covered by the pieces
 
-            foreach (Piece piece in pieceList)
+            PrintBoard();
+            for (int i = 0; i < pieceList.Count; i++)
             {
+                Piece piece = pieceList[i];
+
+                PrintDebugLine("Piece " + (i + 1));
                 CoverArea(piece);
+                PrintBoard();
             }
 
-            //print the board
-            PrintBoard();
-
-            List<String> answerList = new List<string>();
+            List<string> answerList = new List<string>();
 
             for (int i = 0; i < 6; i++)
             {
@@ -122,14 +124,14 @@ namespace New_KTANE_Solver
 
             //convert the location back to the module
 
-            String answer = "";
+            string answer = "";
 
             if (answerList.Count > 1)
             {
                 answer = "Unable to find answer. Mutiple possible answers found:\n\n";
-                List<String> newAnwerList = new List<string>();
+                List<string> newAnwerList = new List<string>();
 
-                foreach (String a in answerList)
+                foreach (string a in answerList)
                 {
                     newAnwerList.Add(
                         $"{(char)(int.Parse("" + a[1]) + 97)}{Math.Abs(6 - int.Parse("" + a[0]))}"
@@ -148,7 +150,12 @@ namespace New_KTANE_Solver
                     $"{(char)(int.Parse("" + answerList[0][1]) + 97)}{Math.Abs(6 - int.Parse("" + answerList[0][0]))}";
             }
 
-            ShowAnswer(answer, true);
+            if (!debug)
+            { 
+                ShowAnswer(answer, true);
+            }
+
+            return answer.ToUpper();
         }
 
         /// <summary>
@@ -226,7 +233,7 @@ namespace New_KTANE_Solver
         /// </summary>
         /// <param name="location"></param>
         /// <returns></returns>
-        private int[] ConvertLocation(String location)
+        private int[] ConvertLocation(string location)
         {
             return new int[] { Math.Abs((int)location[1] - 54), (int)location[0] - 97 };
         }
@@ -380,7 +387,7 @@ namespace New_KTANE_Solver
             int newColumn = 1;
 
             //top left
-            while (ValidCoordinate(position[0] - newRow, position[1] - newColumn))
+            while (ValidCoordinate(position[0] - newRow, position[1] - newColumn) && !IsPiece(position[0] - newRow, position[1] - newColumn))
             {
                 CoverTile(position[0] - newRow, position[1] - newColumn);
                 newColumn++;
@@ -392,7 +399,7 @@ namespace New_KTANE_Solver
             newRow = 1;
             newColumn = 1;
 
-            while (ValidCoordinate(position[0] - newRow, position[1] + newColumn))
+            while (ValidCoordinate(position[0] - newRow, position[1] + newColumn) && !IsPiece(position[0] - newRow, position[1] + newColumn))
             {
                 CoverTile(position[0] - newRow, position[1] + newColumn);
                 newColumn++;
@@ -404,7 +411,7 @@ namespace New_KTANE_Solver
             newRow = 1;
             newColumn = 1;
 
-            while (ValidCoordinate(position[0] + newRow, position[1] - newColumn))
+            while (ValidCoordinate(position[0] + newRow, position[1] - newColumn) && !IsPiece(position[0] + newRow, position[1] - newColumn))
             {
                 CoverTile(position[0] + newRow, position[1] - newColumn);
                 newColumn++;
@@ -416,7 +423,7 @@ namespace New_KTANE_Solver
             newRow = 1;
             newColumn = 1;
 
-            while (ValidCoordinate(position[0] + newRow, position[1] + newColumn))
+            while (ValidCoordinate(position[0] + newRow, position[1] + newColumn) && !IsPiece(position[0] + newRow, position[1] + newColumn))
             {
                 CoverTile(position[0] + newRow, position[1] + newColumn);
                 newColumn++;
@@ -494,7 +501,7 @@ namespace New_KTANE_Solver
         /// </summary>
         /// <param name="num"></param>
         /// <param name="piece"></param>
-        private void PrintPiece(int num, char piece, String locattion)
+        private void PrintPiece(int num, char piece, string locattion)
         {
             PrintDebugLine($"{num}. Location {locattion}: {piece}");
         }
