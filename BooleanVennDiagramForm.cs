@@ -55,10 +55,9 @@ namespace New_KTANE_Solver
                 operationChoiceBox1.Text,
                 operationChoiceBox2.Text,
                 checkBox.Checked,
-                Bomb,
                 LogFileWriter
             );
-            module.Solve();
+            module.Solve(false);
             UpdateForm();
         }
     }

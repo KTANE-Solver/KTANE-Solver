@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace New_KTANE_Solver
 {
-    class BooleanVennDiagram : Module
+    public class BooleanVennDiagram : Module
     {
         private string operation1;
         private string operation2;
@@ -17,16 +17,15 @@ namespace New_KTANE_Solver
             string operation1,
             string operation2,
             bool parenthesisFirst,
-            Bomb bomb,
             StreamWriter logFileWriter
-        ) : base(bomb, logFileWriter, "Boolean Venn Diagram")
+        ) : base(null, logFileWriter, "Boolean Venn Diagram")
         {
             this.operation1 = operation1;
             this.operation2 = operation2;
             this.parenthesisFirst = parenthesisFirst;
         }
 
-        public void Solve()
+        public List<string> Solve(bool debug)
         {
             List<string> answers = new List<string>();
 
@@ -71,7 +70,14 @@ namespace New_KTANE_Solver
                 }
             }
 
-            ShowAnswer(string.Join(", ", answers), true);
+            string answer = string.Join(", ", answers); 
+
+            if (!debug)
+            {
+                ShowAnswer(answer, true);
+            }
+
+            return answers;
         }
 
         private string GetAnswer(bool a, bool b, bool c)
