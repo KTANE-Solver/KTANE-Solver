@@ -42,6 +42,7 @@
             this.manualButton.TabIndex = 5;
             this.manualButton.Text = "Manual";
             this.manualButton.UseVisualStyleBackColor = true;
+            this.manualButton.Click += new System.EventHandler(this.manualButton_Click);
             // 
             // automaticButton
             // 
@@ -52,6 +53,7 @@
             this.automaticButton.TabIndex = 4;
             this.automaticButton.Text = "Automatic";
             this.automaticButton.UseVisualStyleBackColor = true;
+            this.automaticButton.Click += new System.EventHandler(this.automaticButton_Click);
             // 
             // promptLabel
             // 
@@ -73,6 +75,7 @@
             this.Controls.Add(this.promptLabel);
             this.Name = "EdgeworkSelectionForm";
             this.Text = "EdgeworkSelectionForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EdgeworkSelectionForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
