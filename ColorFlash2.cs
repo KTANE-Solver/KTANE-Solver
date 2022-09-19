@@ -210,8 +210,8 @@ namespace New_KTANE_Solver
             answer++;
 
             if (!debug)
-            { 
-                
+            {
+                ShowAnswer($"Press {button} on {FindAnswerIndex(answer)} instance", true);
             }
 
             return new KeyValuePair<string, int>(button, answer);
@@ -274,22 +274,22 @@ namespace New_KTANE_Solver
 
             if (answer == 1)
             {
-                return "1st";
+                return "the 1st";
             }
 
             if (answer == 2)
             {
-                return "2nd";
+                return "the 2nd";
             }
 
             if (answer == 3)
             {
-                return "3rd";
+                return "the 3rd";
             }
 
             else
             {
-                return answer + "th";
+                return "the " + answer + "th";
             }
         }
     }
