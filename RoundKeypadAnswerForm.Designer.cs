@@ -48,6 +48,7 @@
             this.okayButton.TabIndex = 93;
             this.okayButton.Text = "OK";
             this.okayButton.UseVisualStyleBackColor = true;
+            this.okayButton.Click += new System.EventHandler(this.okayButton_Click);
             // 
             // northWestButton
             // 

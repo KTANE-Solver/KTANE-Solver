@@ -107,6 +107,7 @@
             this.strikeButton.TabIndex = 133;
             this.strikeButton.Text = "Strike";
             this.strikeButton.UseVisualStyleBackColor = true;
+            this.strikeButton.Click += new System.EventHandler(this.strikeButton_Click);
             // 
             // backButton
             // 
@@ -117,6 +118,7 @@
             this.backButton.TabIndex = 132;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // submitButton
             // 
@@ -127,6 +129,7 @@
             this.submitButton.TabIndex = 131;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // row8Button8
             // 
@@ -777,7 +780,7 @@
             this.Controls.Add(this.row1Button2);
             this.Controls.Add(this.row1Button1);
             this.Name = "BitmapsForm";
-            this.Text = "BitmapsForm";
+            this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);
 
         }

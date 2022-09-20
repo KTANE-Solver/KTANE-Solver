@@ -41,93 +41,96 @@
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(375, 310);
-            this.submitButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.submitButton.Location = new System.Drawing.Point(429, 413);
+            this.submitButton.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
             this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(109, 58);
+            this.submitButton.Size = new System.Drawing.Size(125, 77);
             this.submitButton.TabIndex = 17;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // strikeButton
             // 
-            this.strikeButton.Location = new System.Drawing.Point(203, 310);
-            this.strikeButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.strikeButton.Location = new System.Drawing.Point(232, 413);
+            this.strikeButton.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
             this.strikeButton.Name = "strikeButton";
-            this.strikeButton.Size = new System.Drawing.Size(109, 58);
+            this.strikeButton.Size = new System.Drawing.Size(125, 77);
             this.strikeButton.TabIndex = 16;
             this.strikeButton.Text = "Strike";
             this.strikeButton.UseVisualStyleBackColor = true;
+            this.strikeButton.Click += new System.EventHandler(this.strikeButton_Click);
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(22, 310);
-            this.backButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.backButton.Location = new System.Drawing.Point(25, 413);
+            this.backButton.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
             this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(109, 58);
+            this.backButton.Size = new System.Drawing.Size(125, 77);
             this.backButton.TabIndex = 15;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // row3TextBox
             // 
-            this.row3TextBox.Location = new System.Drawing.Point(215, 227);
-            this.row3TextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.row3TextBox.Location = new System.Drawing.Point(246, 303);
+            this.row3TextBox.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
             this.row3TextBox.Name = "row3TextBox";
-            this.row3TextBox.Size = new System.Drawing.Size(147, 23);
+            this.row3TextBox.Size = new System.Drawing.Size(167, 27);
             this.row3TextBox.TabIndex = 14;
             // 
             // row2TextBox
             // 
-            this.row2TextBox.Location = new System.Drawing.Point(215, 148);
-            this.row2TextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.row2TextBox.Location = new System.Drawing.Point(246, 197);
+            this.row2TextBox.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
             this.row2TextBox.Name = "row2TextBox";
-            this.row2TextBox.Size = new System.Drawing.Size(147, 23);
+            this.row2TextBox.Size = new System.Drawing.Size(167, 27);
             this.row2TextBox.TabIndex = 13;
             // 
             // row1TextBox
             // 
-            this.row1TextBox.Location = new System.Drawing.Point(215, 67);
-            this.row1TextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.row1TextBox.Location = new System.Drawing.Point(246, 89);
+            this.row1TextBox.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
             this.row1TextBox.Name = "row1TextBox";
-            this.row1TextBox.Size = new System.Drawing.Size(147, 23);
+            this.row1TextBox.Size = new System.Drawing.Size(167, 27);
             this.row1TextBox.TabIndex = 12;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(86, 231);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(98, 308);
+            this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 15);
+            this.label3.Size = new System.Drawing.Size(53, 20);
             this.label3.TabIndex = 11;
             this.label3.Text = "Row 3:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(86, 153);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(98, 204);
+            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 15);
+            this.label2.Size = new System.Drawing.Size(53, 20);
             this.label2.TabIndex = 10;
             this.label2.Text = "Row 2:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(86, 71);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(98, 95);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 15);
+            this.label1.Size = new System.Drawing.Size(53, 20);
             this.label1.TabIndex = 9;
             this.label1.Text = "Row 1:";
             // 
             // AdjacentLettersForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(497, 382);
+            this.ClientSize = new System.Drawing.Size(568, 509);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.strikeButton);
             this.Controls.Add(this.backButton);
@@ -137,8 +140,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "AdjacentLettersForm";
-            this.Text = "AdjacentLettersForm";
+            this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);
             this.PerformLayout();
 

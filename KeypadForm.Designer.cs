@@ -73,6 +73,7 @@
             this.strikeButton.TabIndex = 71;
             this.strikeButton.Text = "Strike";
             this.strikeButton.UseVisualStyleBackColor = true;
+            this.strikeButton.Click += new System.EventHandler(this.strikeButton_Click);
             // 
             // submitButton
             // 
@@ -83,6 +84,7 @@
             this.submitButton.TabIndex = 70;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // backButton
             // 
@@ -93,6 +95,7 @@
             this.backButton.TabIndex = 69;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // swirlButton
             // 
@@ -413,7 +416,7 @@
             this.Controls.Add(this.threeButton);
             this.Controls.Add(this.selectedImageButton4);
             this.Name = "KeypadForm";
-            this.Text = "KeypadForm";
+            this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);
 
         }

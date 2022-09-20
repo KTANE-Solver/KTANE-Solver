@@ -48,6 +48,7 @@
             this.strikeButton.TabIndex = 17;
             this.strikeButton.Text = "Strike";
             this.strikeButton.UseVisualStyleBackColor = true;
+            this.strikeButton.Click += new System.EventHandler(this.strikeButton_Click);
             // 
             // submitButton
             // 
@@ -58,6 +59,7 @@
             this.submitButton.TabIndex = 16;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // backButton
             // 
@@ -68,6 +70,7 @@
             this.backButton.TabIndex = 15;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // bigButtonComboBox
             // 
@@ -141,7 +144,7 @@
             this.Controls.Add(this.firstPhraseComboBox);
             this.Controls.Add(this.label1);
             this.Name = "SeaShellsForm";
-            this.Text = "SeaShellsForm";
+            this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);
             this.PerformLayout();
 

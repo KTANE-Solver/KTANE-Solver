@@ -51,6 +51,7 @@
             this.submitButton.TabIndex = 22;
             this.submitButton.Text = "OK";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // bottomRightButton
             // 
@@ -170,7 +171,7 @@
             this.Controls.Add(this.symbolComboBox);
             this.Controls.Add(this.label1);
             this.Name = "TicTacToeInputForm";
-            this.Text = "TicTacToeInputForm";
+            this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);
             this.PerformLayout();
 

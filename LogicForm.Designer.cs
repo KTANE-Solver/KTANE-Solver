@@ -60,6 +60,7 @@
             this.strikeButton.TabIndex = 40;
             this.strikeButton.Text = "Strike";
             this.strikeButton.UseVisualStyleBackColor = true;
+            this.strikeButton.Click += new System.EventHandler(this.strikeButton_Click);
             // 
             // topSecondOperationComboBox
             // 
@@ -106,6 +107,7 @@
             this.submitButton.TabIndex = 41;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // backButton
             // 
@@ -116,6 +118,7 @@
             this.backButton.TabIndex = 39;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // bottomFirstTwoCheckBox
             // 
@@ -212,6 +215,8 @@
             this.bottomThirdTextBox.Name = "bottomThirdTextBox";
             this.bottomThirdTextBox.Size = new System.Drawing.Size(128, 27);
             this.bottomThirdTextBox.TabIndex = 37;
+            this.bottomThirdTextBox.Enter += new System.EventHandler(this.bottomThirdTextBox_Enter);
+            this.bottomThirdTextBox.Leave += new System.EventHandler(this.bottomThirdTextBox_Leave);
             // 
             // bottomSecondTextBox
             // 
@@ -220,6 +225,8 @@
             this.bottomSecondTextBox.Name = "bottomSecondTextBox";
             this.bottomSecondTextBox.Size = new System.Drawing.Size(132, 27);
             this.bottomSecondTextBox.TabIndex = 34;
+            this.bottomSecondTextBox.Enter += new System.EventHandler(this.bottomSecondTextBox_Enter);
+            this.bottomSecondTextBox.Leave += new System.EventHandler(this.bottomSecondTextBox_Leave);
             // 
             // topSecondTextBox
             // 
@@ -228,6 +235,8 @@
             this.topSecondTextBox.Name = "topSecondTextBox";
             this.topSecondTextBox.Size = new System.Drawing.Size(132, 27);
             this.topSecondTextBox.TabIndex = 25;
+            this.topSecondTextBox.Enter += new System.EventHandler(this.topSecondTextBox_Enter);
+            this.topSecondTextBox.Leave += new System.EventHandler(this.topSecondTextBox_Leave);
             // 
             // topThirdTextBox
             // 
@@ -236,6 +245,8 @@
             this.topThirdTextBox.Name = "topThirdTextBox";
             this.topThirdTextBox.Size = new System.Drawing.Size(128, 27);
             this.topThirdTextBox.TabIndex = 28;
+            this.topThirdTextBox.Enter += new System.EventHandler(this.topThirdTextBox_Enter);
+            this.topThirdTextBox.Leave += new System.EventHandler(this.topThirdTextBox_Leave);
             // 
             // bottomFirstTextBox
             // 
@@ -244,6 +255,8 @@
             this.bottomFirstTextBox.Name = "bottomFirstTextBox";
             this.bottomFirstTextBox.Size = new System.Drawing.Size(122, 27);
             this.bottomFirstTextBox.TabIndex = 31;
+            this.bottomFirstTextBox.Enter += new System.EventHandler(this.bottomFirstTextBox_Enter);
+            this.bottomFirstTextBox.Leave += new System.EventHandler(this.bottomFirstTextBox_Leave);
             // 
             // topFirstTextBox
             // 
@@ -252,6 +265,8 @@
             this.topFirstTextBox.Name = "topFirstTextBox";
             this.topFirstTextBox.Size = new System.Drawing.Size(132, 27);
             this.topFirstTextBox.TabIndex = 22;
+            this.topFirstTextBox.Enter += new System.EventHandler(this.topFirstTextBox_Enter);
+            this.topFirstTextBox.Leave += new System.EventHandler(this.topFirstTextBox_Leave);
             // 
             // LogicForm
             // 
@@ -280,7 +295,8 @@
             this.Controls.Add(this.bottomFirstTextBox);
             this.Controls.Add(this.topFirstTextBox);
             this.Name = "LogicForm";
-            this.Text = "LogicForm";
+            this.Text = "KTANE Bot by Hawker";
+            this.Load += new System.EventHandler(this.LogicForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

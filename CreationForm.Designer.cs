@@ -48,6 +48,7 @@
             this.submitButton.TabIndex = 17;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // strikeButton
             // 
@@ -58,6 +59,7 @@
             this.strikeButton.TabIndex = 16;
             this.strikeButton.Text = "Stike";
             this.strikeButton.UseVisualStyleBackColor = true;
+            this.strikeButton.Click += new System.EventHandler(this.strikeButton_Click);
             // 
             // backButton
             // 
@@ -68,6 +70,7 @@
             this.backButton.TabIndex = 15;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // bottomRightComboBox
             // 
@@ -139,7 +142,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.weatherComboBox);
             this.Name = "CreationForm";
-            this.Text = "CreationForm";
+            this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -308,12 +308,12 @@ namespace New_KTANE_Solver
             //checks to see if character is illegal
             if (
                 !(
-                    IsLetter(topFirstChar)
-                    && IsLetter(topSecondChar)
-                    && IsLetter(topThirdChar)
-                    && IsLetter(bottomFirstChar)
-                    && IsLetter(bottomSecondChar)
-                    && IsLetter(bottomThirdChar)
+                    char.IsLetter(topFirstChar)
+                    && char.IsLetter(topSecondChar)
+                    && char.IsLetter(topThirdChar)
+                    && char.IsLetter(bottomFirstChar)
+                    && char.IsLetter(bottomSecondChar)
+                    && char.IsLetter(bottomThirdChar)
                 )
             )
             {
@@ -363,21 +363,16 @@ namespace New_KTANE_Solver
         }
 
         /// <summary>
-        /// Tells if a character is a letter
-        /// </summary>
-        /// <param name="str"></param>
-        /// <returns>true if the character is a letter</returns>
-        private bool IsLetter(char character)
-        {
-            return character >= 65 && character <= 90;
-        }
-
-        /// <summary>
         /// Adds a stirke to the total
         /// </summary>
         private void strikeButton_Click(object sender, EventArgs e)
         {
             IncrementStrike();
+        }
+
+        private void LogicForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

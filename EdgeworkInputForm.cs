@@ -17,7 +17,9 @@ namespace New_KTANE_Solver
     /// </summary>
     public partial class EdgeworkInputForm : Form
     {
+
         //FIELDS
+
 
         //the form the user will go to when they press submit
         private EdgeworkConfirmationForm confirmationForm;

@@ -26,7 +26,7 @@ namespace New_KTANE_Solver
 
             //Add the last digit of the serial number multiplied by the number of batteries present.
 
-            initalCode = (Bomb.FirstLetter - 64) + (Bomb.LastDigit * Bomb.Battery);
+            initalCode = Bomb.FirstLetter - 64 + (Bomb.LastDigit * Bomb.Battery);
 
             //If there is a Stereo RCA port present, double the current value.*
 
@@ -38,10 +38,8 @@ namespace New_KTANE_Solver
             }
 
             //** Note: Use the last two digits if the value is greater than 99. Prepend with a zero if less than 10.
-            if (initalCode >= 100)
-            {
-                initalCode %= 100;
-            }
+
+            initalCode %= 100;
 
             return initalCode;
         }

@@ -215,7 +215,7 @@ namespace New_KTANE_Solver
                 item6
             );
 
-            module.Solve();
+            module.Solve(false, 0);
 
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
         }

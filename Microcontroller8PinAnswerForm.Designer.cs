@@ -120,6 +120,7 @@
             this.OKButton.TabIndex = 19;
             this.OKButton.Text = "OK";
             this.OKButton.UseVisualStyleBackColor = true;
+            this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
             // 
             // Microcontroller8PinAnswerForm
             // 
@@ -136,7 +137,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.OKButton);
             this.Name = "Microcontroller8PinAnswerForm";
-            this.Text = "Microcontroller8PinAnswerForm";
+            this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);
 
         }

@@ -84,6 +84,7 @@
             this.submitButton.TabIndex = 29;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // strikeButton
             // 
@@ -94,6 +95,7 @@
             this.strikeButton.TabIndex = 28;
             this.strikeButton.Text = "Strike";
             this.strikeButton.UseVisualStyleBackColor = true;
+            this.strikeButton.Click += new System.EventHandler(this.strikeButton_Click);
             // 
             // backButton
             // 
@@ -104,6 +106,7 @@
             this.backButton.TabIndex = 27;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // bottomRightComboBox
             // 
@@ -210,7 +213,7 @@
             this.Controls.Add(this.topLeftComboBox);
             this.Controls.Add(this.label1);
             this.Name = "ScrewForm";
-            this.Text = "ScrewForm";
+            this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -58,6 +58,7 @@
             this.strikeButton.TabIndex = 37;
             this.strikeButton.Text = "Strike";
             this.strikeButton.UseVisualStyleBackColor = true;
+            this.strikeButton.Click += new System.EventHandler(this.strikeButton_Click);
             // 
             // submitButton
             // 
@@ -68,6 +69,7 @@
             this.submitButton.TabIndex = 36;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // backButton
             // 
@@ -78,6 +80,7 @@
             this.backButton.TabIndex = 35;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // item6WeightComboBox
             // 
@@ -254,7 +257,7 @@
             this.Controls.Add(this.amountTextBox);
             this.Controls.Add(this.label1);
             this.Name = "CheapCheckoutForm";
-            this.Text = "CheapCheckoutForm";
+            this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);
             this.PerformLayout();
 

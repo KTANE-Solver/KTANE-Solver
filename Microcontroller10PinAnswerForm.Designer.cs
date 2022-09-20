@@ -158,7 +158,8 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "Microcontroller10PinAnswerForm";
-            this.Text = "Microcontroller10PinAnswerForm";
+            this.Text = "KTANE Bot by Hawker";
+            this.Click += new System.EventHandler(this.button13_Click);
             this.ResumeLayout(false);
 
         }

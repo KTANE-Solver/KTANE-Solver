@@ -44,6 +44,7 @@
             this.submitButton.TabIndex = 9;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // saveEdgeworkButton
             // 
@@ -54,6 +55,7 @@
             this.saveEdgeworkButton.TabIndex = 8;
             this.saveEdgeworkButton.Text = "Save Edgework";
             this.saveEdgeworkButton.UseVisualStyleBackColor = true;
+            this.saveEdgeworkButton.Click += new System.EventHandler(this.saveEdgeworkButton_Click);
             // 
             // checkEdgeworkButton
             // 
@@ -64,6 +66,7 @@
             this.checkEdgeworkButton.TabIndex = 7;
             this.checkEdgeworkButton.Text = "Check Edgework";
             this.checkEdgeworkButton.UseVisualStyleBackColor = true;
+            this.checkEdgeworkButton.Click += new System.EventHandler(this.checkEdgeworkButton_Click);
             // 
             // changeEdgeworkButton
             // 
@@ -74,6 +77,7 @@
             this.changeEdgeworkButton.TabIndex = 6;
             this.changeEdgeworkButton.Text = "Change Edgework";
             this.changeEdgeworkButton.UseVisualStyleBackColor = true;
+            this.changeEdgeworkButton.Click += new System.EventHandler(this.changeEdgeworkButton_Click);
             // 
             // moduleComboBox
             // 

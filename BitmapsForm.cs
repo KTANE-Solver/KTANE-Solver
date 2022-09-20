@@ -292,7 +292,7 @@ namespace New_KTANE_Solver
 
             PrintHeader();
 
-            module.Solve();
+            module.Solve(false);
 
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
         }

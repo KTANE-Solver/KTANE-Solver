@@ -62,6 +62,7 @@
             this.submitButton.TabIndex = 15;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // StrikeButton
             // 
@@ -72,6 +73,7 @@
             this.StrikeButton.TabIndex = 17;
             this.StrikeButton.Text = "Strike";
             this.StrikeButton.UseVisualStyleBackColor = true;
+            this.StrikeButton.Click += new System.EventHandler(this.StrikeButton_Click);
             // 
             // backButton
             // 
@@ -82,6 +84,7 @@
             this.backButton.TabIndex = 16;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // label2
             // 
@@ -116,7 +119,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "FastMathStage1Form";
-            this.Text = "FastMathStage1Form";
+            this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);
             this.PerformLayout();
 

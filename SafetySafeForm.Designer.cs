@@ -47,6 +47,7 @@
             this.strikeButton.TabIndex = 16;
             this.strikeButton.Text = "Strike";
             this.strikeButton.UseVisualStyleBackColor = true;
+            this.strikeButton.Click += new System.EventHandler(this.strikeButton_Click);
             // 
             // backButton
             // 
@@ -57,6 +58,7 @@
             this.backButton.TabIndex = 15;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // bottomRightLabel
             // 
@@ -132,7 +134,7 @@
             this.Controls.Add(this.topMidLabel);
             this.Controls.Add(this.topLeftLabel);
             this.Name = "SafetySafeForm";
-            this.Text = "SafetySafeForm";
+            this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);
             this.PerformLayout();
 

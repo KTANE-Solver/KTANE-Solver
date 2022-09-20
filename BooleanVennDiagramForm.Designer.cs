@@ -47,6 +47,7 @@
             this.strikeButton.TabIndex = 15;
             this.strikeButton.Text = "Strike";
             this.strikeButton.UseVisualStyleBackColor = true;
+            this.strikeButton.Click += new System.EventHandler(this.strikeButton_Click);
             // 
             // submitButton
             // 
@@ -57,6 +58,7 @@
             this.submitButton.TabIndex = 14;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // backButton
             // 
@@ -67,6 +69,7 @@
             this.backButton.TabIndex = 13;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // operationChoiceBox2
             // 
@@ -131,7 +134,7 @@
             this.Controls.Add(this.checkBox);
             this.Controls.Add(this.label1);
             this.Name = "BooleanVennDiagramForm";
-            this.Text = "BooleanVennDiagramForm";
+            this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -347,6 +347,7 @@
             this.submitButton.TabIndex = 75;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // backButton
             // 
@@ -357,6 +358,7 @@
             this.backButton.TabIndex = 74;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // row1button6
             // 
@@ -456,7 +458,7 @@
             this.Controls.Add(this.row1button2);
             this.Controls.Add(this.row1button1);
             this.Name = "BinaryPuzzleForm";
-            this.Text = "BinaryPuzzleForm";
+            this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);
 
         }

@@ -55,6 +55,7 @@
             this.moduleSelectionButton.TabIndex = 21;
             this.moduleSelectionButton.Text = "Module Selection";
             this.moduleSelectionButton.UseVisualStyleBackColor = true;
+            this.moduleSelectionButton.Click += new System.EventHandler(this.moduleSelectionButton_Click);
             // 
             // weatherComboBox
             // 
@@ -74,6 +75,7 @@
             this.submitButton.TabIndex = 19;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // strikeButton
             // 
@@ -84,6 +86,7 @@
             this.strikeButton.TabIndex = 18;
             this.strikeButton.Text = "Stike";
             this.strikeButton.UseVisualStyleBackColor = true;
+            this.strikeButton.Click += new System.EventHandler(this.strikeButton_Click);
             // 
             // backButton
             // 
@@ -94,6 +97,7 @@
             this.backButton.TabIndex = 17;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // label1
             // 
@@ -118,7 +122,7 @@
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.label1);
             this.Name = "CreationOtherStageForm";
-            this.Text = "CreationOtherStageForm";
+            this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);
             this.PerformLayout();
 

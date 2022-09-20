@@ -11,7 +11,7 @@ namespace New_KTANE_Solver
     /// Author: Nya Bentley
     /// Purpose: Solves the bitmaps module
     /// </summary>
-    class Bitmaps : Module
+    public class Bitmaps : Module
     {
         private bool[,] grid;
         private Quadrant topLeftQuadrant;
@@ -47,7 +47,7 @@ namespace New_KTANE_Solver
             bottomRightQuadrant = new Quadrant(bottomRight);
         }
 
-        public void Solve()
+        public int Solve(bool debug)
         {
             PrintGrid();
 
@@ -280,7 +280,12 @@ namespace New_KTANE_Solver
                 answer += 4;
             }
 
-            ShowAnswer("Press " + answer, true);
+            if (!debug)
+            {
+                ShowAnswer("Press " + answer, true);
+            }
+
+            return answer;
         }
 
         #region Rules

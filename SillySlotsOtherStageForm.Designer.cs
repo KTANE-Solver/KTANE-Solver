@@ -56,6 +56,7 @@
             this.resetButton.TabIndex = 54;
             this.resetButton.Text = "Reset";
             this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
             // backButton
             // 
@@ -66,6 +67,7 @@
             this.backButton.TabIndex = 53;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // submitButton
             // 
@@ -76,6 +78,7 @@
             this.submitButton.TabIndex = 52;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // slot3ObjectComboBox
             // 
@@ -194,6 +197,7 @@
             this.strikeButton.TabIndex = 39;
             this.strikeButton.Text = "Strike";
             this.strikeButton.UseVisualStyleBackColor = true;
+            this.strikeButton.Click += new System.EventHandler(this.strikeButton_Click);
             // 
             // moduleSelectionButton
             // 
@@ -204,6 +208,7 @@
             this.moduleSelectionButton.TabIndex = 38;
             this.moduleSelectionButton.Text = "Module Selection";
             this.moduleSelectionButton.UseVisualStyleBackColor = true;
+            this.moduleSelectionButton.MouseCaptureChanged += new System.EventHandler(this.moduleSelectionButton_Click);
             // 
             // SillySlotsOtherStageForm
             // 
@@ -228,7 +233,7 @@
             this.Controls.Add(this.strikeButton);
             this.Controls.Add(this.moduleSelectionButton);
             this.Name = "SillySlotsOtherStageForm";
-            this.Text = "SillySlotsOtherStageForm";
+            this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);
             this.PerformLayout();
 

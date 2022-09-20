@@ -42,6 +42,7 @@
             this.strikeButton.TabIndex = 5;
             this.strikeButton.Text = "Strike";
             this.strikeButton.UseVisualStyleBackColor = true;
+            this.strikeButton.Click += new System.EventHandler(this.strikeButton_Click);
             // 
             // backButton
             // 
@@ -52,6 +53,7 @@
             this.backButton.TabIndex = 4;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // answerLabel
             // 
@@ -72,7 +74,7 @@
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.answerLabel);
             this.Name = "BlindAlleyForm";
-            this.Text = "BlindAlleyForm";
+            this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);
             this.PerformLayout();
 

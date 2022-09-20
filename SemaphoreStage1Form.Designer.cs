@@ -84,6 +84,7 @@
             this.strikeButton.TabIndex = 10;
             this.strikeButton.Text = "Strike";
             this.strikeButton.UseVisualStyleBackColor = true;
+            this.strikeButton.Click += new System.EventHandler(this.strikeButton_Click);
             // 
             // submitButton
             // 
@@ -94,6 +95,7 @@
             this.submitButton.TabIndex = 9;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // backButton
             // 
@@ -104,6 +106,7 @@
             this.backButton.TabIndex = 8;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // SemaphoreStage1Form
             // 
@@ -118,7 +121,7 @@
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.backButton);
             this.Name = "SemaphoreStage1Form";
-            this.Text = "SemaphoreStage1Form";
+            this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);
             this.PerformLayout();
 

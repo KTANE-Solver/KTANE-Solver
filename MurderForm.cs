@@ -60,6 +60,7 @@ namespace New_KTANE_Solver
                 "Ballroom",
                 "Conservatory",
                 "Dining Room",
+                "Hall",
                 "Kitchen",
                 "Library",
                 "Lounge",

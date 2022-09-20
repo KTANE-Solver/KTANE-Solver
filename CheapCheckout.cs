@@ -47,7 +47,7 @@ namespace New_KTANE_Solver
             this.amount = amount;
         }
 
-        public void Solve()
+        public decimal Solve(bool debug, int newAmount)
         {
             //print the day
             PrintDebugLine($"Day: {Bomb.Day}\n");
@@ -87,17 +87,24 @@ namespace New_KTANE_Solver
 
             PrintDebugLine($"Total: ${total}\n");
 
+            decimal answer = 0;
             //see if the customer has enough money
             if (amount > total)
             {
                 //if yes, tell the user the amount to give back
 
-                decimal answer = RoundPrice(amount - total);
+               answer = RoundPrice(amount - total);
 
                 PrintDebugLine($"Answer: ${answer}\n");
 
                 ShowAnswer($"${string.Format("{0:0.00}", answer)}", true);
             }
+
+            else if(debug)
+            {
+                answer = newAmount - total;
+            }
+
             else
             {
                 //if not, then tell ther user to alert the customer and tell the new amount
@@ -105,6 +112,8 @@ namespace New_KTANE_Solver
 
                 alertForm.ShowDialog();
             }
+
+            return answer;
         }
 
         /// <summary>

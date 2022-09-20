@@ -51,6 +51,7 @@
             this.submitButton.TabIndex = 6;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // label2
             // 
@@ -72,7 +73,7 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Alet the Customer";
             // 
-            // CheapChekoutAlertForm
+            // CheapCheckoutAlertForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -81,8 +82,8 @@
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "CheapChekoutAlertForm";
-            this.Text = "CheapChekoutAlertForm";
+            this.Name = "CheapCheckoutAlertForm";
+            this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -48,6 +48,7 @@
             this.okayButton.TabIndex = 17;
             this.okayButton.Text = "Ok";
             this.okayButton.UseVisualStyleBackColor = true;
+            this.okayButton.Click += new System.EventHandler(this.okayButton_Click);
             // 
             // label4
             // 
@@ -144,7 +145,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "KeyPadAnswerForm";
-            this.Text = "KeyPadAnswerForm";
+            this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);
             this.PerformLayout();
 

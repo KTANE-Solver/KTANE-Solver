@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -190,16 +191,7 @@ namespace New_KTANE_Solver
         {
             get
             {
-                for (int i = 0; i > serialNumber.Length; i++)
-                {
-                    if (serialNumber[i] >= 65 && serialNumber[i] <= 90)
-                    {
-                        return serialNumber[i];
-                    }
-                }
-
-                //this should never happen
-                return serialNumber[0];
+                return serialNumber.Where(x => char.IsLetter(x)).First();
             }
         }
 

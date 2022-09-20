@@ -69,21 +69,23 @@
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(70, 904);
+            this.backButton.Location = new System.Drawing.Point(72, 595);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(69, 46);
             this.backButton.TabIndex = 53;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(221, 904);
+            this.submitButton.Location = new System.Drawing.Point(233, 595);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(69, 46);
             this.submitButton.TabIndex = 52;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // indicatorLabel
             // 
@@ -305,7 +307,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(360, 977);
+            this.ClientSize = new System.Drawing.Size(360, 653);
             this.Controls.Add(this.portPlateNumLabel);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.submitButton);
@@ -335,6 +337,7 @@
             this.Controls.Add(this.serialNumberLabel);
             this.Name = "EdgeworkConfirmationForm";
             this.Text = "EdgeworkConfirmationForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EdgeworkConfirmationForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

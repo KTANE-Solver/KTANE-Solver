@@ -145,5 +145,10 @@ namespace New_KTANE_Solver
 
             UpdateForm(stage + 1, Bomb, LogFileWriter, ModuleSelectionForm);
         }
+
+        private void moduleSelection_Click(object sender, EventArgs e)
+        {
+            GoToMoudleSelectionForm();
+        }
     }
 }

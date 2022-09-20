@@ -43,6 +43,7 @@
             this.resetButton.TabIndex = 8;
             this.resetButton.Text = "Reset";
             this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
             // symbolComboBox
             // 
@@ -62,6 +63,7 @@
             this.submitButton.TabIndex = 6;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // label1
             // 
@@ -83,7 +85,7 @@
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.label1);
             this.Name = "TicTacToeSymbolForm";
-            this.Text = "TicTacToeSymbolForm";
+            this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);
             this.PerformLayout();
 

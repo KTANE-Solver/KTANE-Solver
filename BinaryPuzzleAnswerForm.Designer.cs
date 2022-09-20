@@ -76,6 +76,7 @@
             this.okButton.TabIndex = 74;
             this.okButton.Text = "OK";
             this.okButton.UseVisualStyleBackColor = true;
+            this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
             // row6button6
             // 
@@ -479,7 +480,7 @@
             this.Controls.Add(this.row1button2);
             this.Controls.Add(this.row1button1);
             this.Name = "BinaryPuzzleAnswerForm";
-            this.Text = "BinaryPuzzleAnswerForm";
+            this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);
 
         }

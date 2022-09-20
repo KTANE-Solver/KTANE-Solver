@@ -67,6 +67,7 @@
             this.submitButton.TabIndex = 55;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // Strike
             // 
@@ -77,6 +78,7 @@
             this.Strike.TabIndex = 54;
             this.Strike.Text = "Strike";
             this.Strike.UseVisualStyleBackColor = true;
+            this.Strike.Click += new System.EventHandler(this.Strike_Click);
             // 
             // backButton
             // 
@@ -87,6 +89,7 @@
             this.backButton.TabIndex = 53;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // wireStarCheckBox2
             // 
@@ -378,7 +381,7 @@
             this.Controls.Add(this.wireLabel6);
             this.Controls.Add(this.wireLabel1);
             this.Name = "ComplicatedWiresForm";
-            this.Text = "ComplicatedWiresForm";
+            this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);
             this.PerformLayout();
 

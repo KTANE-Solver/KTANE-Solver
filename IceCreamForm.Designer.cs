@@ -53,6 +53,7 @@
             this.strikeButton.TabIndex = 21;
             this.strikeButton.Text = "Strike";
             this.strikeButton.UseVisualStyleBackColor = true;
+            this.strikeButton.Click += new System.EventHandler(this.strikeButton_Click);
             // 
             // backButton
             // 
@@ -63,6 +64,7 @@
             this.backButton.TabIndex = 18;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // submitButton
             // 
@@ -73,6 +75,7 @@
             this.submitButton.TabIndex = 20;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.MouseCaptureChanged += new System.EventHandler(this.submitButton_Click);
             // 
             // flavor4ComboBox
             // 
@@ -193,7 +196,7 @@
             this.Controls.Add(this.customerLabel);
             this.Controls.Add(this.stageLabel);
             this.Name = "IceCreamForm";
-            this.Text = "IceCreamForm";
+            this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);
             this.PerformLayout();
 

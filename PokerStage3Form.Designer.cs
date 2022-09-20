@@ -54,6 +54,7 @@
             this.resetButton.TabIndex = 29;
             this.resetButton.Text = "Reset";
             this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
             // submitButton
             // 
@@ -64,6 +65,7 @@
             this.submitButton.TabIndex = 28;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // strikeButton
             // 
@@ -74,6 +76,7 @@
             this.strikeButton.TabIndex = 27;
             this.strikeButton.Text = "Strike";
             this.strikeButton.UseVisualStyleBackColor = true;
+            this.strikeButton.Click += new System.EventHandler(this.strikeButton_Click);
             // 
             // backButton
             // 
@@ -84,6 +87,7 @@
             this.backButton.TabIndex = 26;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // moduleSelectionButton
             // 
@@ -94,6 +98,7 @@
             this.moduleSelectionButton.TabIndex = 25;
             this.moduleSelectionButton.Text = "Module Selection";
             this.moduleSelectionButton.UseVisualStyleBackColor = true;
+            this.moduleSelectionButton.Click += new System.EventHandler(this.moduleSelectionButton_Click);
             // 
             // betAmountComboBox
             // 
@@ -211,7 +216,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "PokerStage3Form";
-            this.Text = "PokerStage3Form";
+            this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);
             this.PerformLayout();
 

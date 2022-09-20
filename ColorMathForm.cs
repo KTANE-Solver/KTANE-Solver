@@ -124,10 +124,10 @@ namespace New_KTANE_Solver
                 return;
             }
 
-            left1 = (Color)Enum.Parse(typeof(Color), leftComboBox1.Text);
-            left2 = (Color)Enum.Parse(typeof(Color), leftComboBox2.Text);
-            left3 = (Color)Enum.Parse(typeof(Color), leftComboBox3.Text);
-            left4 = (Color)Enum.Parse(typeof(Color), leftComboBox4.Text);
+            left1 = GetColor(leftComboBox1.Text);
+            left2 = GetColor(leftComboBox2.Text);
+            left3 = GetColor(leftComboBox3.Text);
+            left4 = GetColor(leftComboBox4.Text);
 
             //make sure that the letter text box only has a letter
 
@@ -157,10 +157,10 @@ namespace New_KTANE_Solver
 
             if (filled)
             {
-                right1 = (Color)Enum.Parse(typeof(Color), rightComboBox1.Text);
-                right2 = (Color)Enum.Parse(typeof(Color), rightComboBox2.Text);
-                right3 = (Color)Enum.Parse(typeof(Color), rightComboBox3.Text);
-                right4 = (Color)Enum.Parse(typeof(Color), rightComboBox4.Text);
+                right1 = GetColor(rightComboBox1.Text);
+                right2 = GetColor(rightComboBox2.Text);
+                right3 = GetColor(rightComboBox3.Text);
+                right4 = GetColor(rightComboBox4.Text);
             }
 
             ColorMath module = new ColorMath(
@@ -196,6 +196,33 @@ namespace New_KTANE_Solver
                 num++;
 
             return num;
+        }
+
+        private Color GetColor(string s)
+        {
+            switch (s)
+            {
+                case "Black":
+                    return Color.Black;
+                case "Blue":
+                    return Color.Blue;
+                case "Gray":
+                    return Color.Gray;
+                case "Green":
+                    return Color.Green;
+                case "Magenta":
+                    return Color.Magenta;
+                case "Orange":
+                    return Color.Orange;
+                case "Purple":
+                    return Color.Purple;
+                case "Red":
+                    return Color.Red;
+                case "White":
+                    return Color.White;
+                default:
+                    return Color.Yellow;
+            }
         }
     }
 }

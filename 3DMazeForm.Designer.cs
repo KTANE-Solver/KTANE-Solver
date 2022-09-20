@@ -41,85 +41,88 @@
             // facingWallCheckBox
             // 
             this.facingWallCheckBox.AutoSize = true;
-            this.facingWallCheckBox.Location = new System.Drawing.Point(235, 410);
-            this.facingWallCheckBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.facingWallCheckBox.Location = new System.Drawing.Point(269, 547);
+            this.facingWallCheckBox.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.facingWallCheckBox.Name = "facingWallCheckBox";
-            this.facingWallCheckBox.Size = new System.Drawing.Size(87, 19);
+            this.facingWallCheckBox.Size = new System.Drawing.Size(106, 24);
             this.facingWallCheckBox.TabIndex = 19;
             this.facingWallCheckBox.Text = "Facing Wall";
             this.facingWallCheckBox.UseVisualStyleBackColor = true;
             // 
             // pathTextBox
             // 
-            this.pathTextBox.Location = new System.Drawing.Point(183, 356);
-            this.pathTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pathTextBox.Location = new System.Drawing.Point(209, 475);
+            this.pathTextBox.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
             this.pathTextBox.Name = "pathTextBox";
-            this.pathTextBox.Size = new System.Drawing.Size(192, 23);
+            this.pathTextBox.Size = new System.Drawing.Size(219, 27);
             this.pathTextBox.TabIndex = 18;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(123, 299);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(141, 399);
+            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(285, 15);
+            this.label2.Size = new System.Drawing.Size(360, 20);
             this.label2.TabIndex = 17;
             this.label2.Text = "Find a straight path and tell what is there (blanks = ?)";
             // 
             // mazeTextBox
             // 
-            this.mazeTextBox.Location = new System.Drawing.Point(183, 85);
-            this.mazeTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.mazeTextBox.Location = new System.Drawing.Point(209, 113);
+            this.mazeTextBox.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
             this.mazeTextBox.Name = "mazeTextBox";
-            this.mazeTextBox.Size = new System.Drawing.Size(192, 23);
+            this.mazeTextBox.Size = new System.Drawing.Size(219, 27);
             this.mazeTextBox.TabIndex = 16;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(179, 39);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(205, 52);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(178, 15);
+            this.label1.Size = new System.Drawing.Size(227, 20);
             this.label1.TabIndex = 15;
             this.label1.Text = "What are the letters in the maze?";
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(22, 468);
-            this.backButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.backButton.Location = new System.Drawing.Point(25, 624);
+            this.backButton.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
             this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(109, 58);
+            this.backButton.Size = new System.Drawing.Size(125, 77);
             this.backButton.TabIndex = 14;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // strikeButton
             // 
-            this.strikeButton.Location = new System.Drawing.Point(231, 468);
-            this.strikeButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.strikeButton.Location = new System.Drawing.Point(264, 624);
+            this.strikeButton.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
             this.strikeButton.Name = "strikeButton";
-            this.strikeButton.Size = new System.Drawing.Size(109, 58);
+            this.strikeButton.Size = new System.Drawing.Size(125, 77);
             this.strikeButton.TabIndex = 13;
             this.strikeButton.Text = "Strike";
             this.strikeButton.UseVisualStyleBackColor = true;
+            this.strikeButton.Click += new System.EventHandler(this.strikeButton_Click);
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(455, 468);
-            this.submitButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.submitButton.Location = new System.Drawing.Point(520, 624);
+            this.submitButton.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
             this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(109, 58);
+            this.submitButton.Size = new System.Drawing.Size(125, 77);
             this.submitButton.TabIndex = 12;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
-            // Form1
+            // _3DMazeForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(577, 540);
+            this.ClientSize = new System.Drawing.Size(659, 720);
             this.Controls.Add(this.facingWallCheckBox);
             this.Controls.Add(this.pathTextBox);
             this.Controls.Add(this.label2);
@@ -128,8 +131,9 @@
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.strikeButton);
             this.Controls.Add(this.submitButton);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Name = "_3DMazeForm";
+            this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -52,6 +52,7 @@
             this.strikeButton.TabIndex = 26;
             this.strikeButton.Text = "Strike";
             this.strikeButton.UseVisualStyleBackColor = true;
+            this.strikeButton.Click += new System.EventHandler(this.strikeButton_Click);
             // 
             // submitButton
             // 
@@ -62,6 +63,7 @@
             this.submitButton.TabIndex = 25;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // backButton
             // 
@@ -72,6 +74,7 @@
             this.backButton.TabIndex = 24;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // zeroButton
             // 
@@ -182,7 +185,7 @@
             this.Controls.Add(this.nineButton);
             this.Controls.Add(this.sevenButton);
             this.Name = "NumberPadForm";
-            this.Text = "NumberPadForm";
+            this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);
 
         }

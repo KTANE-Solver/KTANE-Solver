@@ -41,9 +41,5 @@ namespace New_KTANE_Solver
         {
             IncrementStrike();
         }
-
-        private void topRightLabel_Click(object sender, EventArgs e) { }
-
-        private void bottomRightLabel_Click(object sender, EventArgs e) { }
     }
 }

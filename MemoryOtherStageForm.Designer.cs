@@ -49,6 +49,7 @@
             this.resetButton.TabIndex = 20;
             this.resetButton.Text = "Reset";
             this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
             // submitButton
             // 
@@ -59,6 +60,7 @@
             this.submitButton.TabIndex = 14;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // strikeButton
             // 
@@ -69,6 +71,7 @@
             this.strikeButton.TabIndex = 19;
             this.strikeButton.Text = "Strike";
             this.strikeButton.UseVisualStyleBackColor = true;
+            this.strikeButton.Click += new System.EventHandler(this.strikeButton_Click);
             // 
             // moduleSelectionButton
             // 
@@ -79,6 +82,7 @@
             this.moduleSelectionButton.TabIndex = 18;
             this.moduleSelectionButton.Text = "Module Selection";
             this.moduleSelectionButton.UseVisualStyleBackColor = true;
+            this.moduleSelectionButton.Click += new System.EventHandler(this.moduleSelectionButton_Click);
             // 
             // backButton
             // 
@@ -89,6 +93,7 @@
             this.backButton.TabIndex = 17;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // numberTextBox
             // 
@@ -152,7 +157,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.stageLabel);
             this.Name = "MemoryOtherStageForm";
-            this.Text = "MemoryOtherStageForm";
+            this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);
             this.PerformLayout();
 

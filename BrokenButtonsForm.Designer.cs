@@ -42,6 +42,7 @@
             this.strikeButton.TabIndex = 5;
             this.strikeButton.Text = "Strike";
             this.strikeButton.UseVisualStyleBackColor = true;
+            this.strikeButton.Click += new System.EventHandler(this.strikeButton_Click);
             // 
             // backButton
             // 
@@ -52,6 +53,7 @@
             this.backButton.TabIndex = 4;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // startButton
             // 
@@ -62,6 +64,7 @@
             this.startButton.TabIndex = 3;
             this.startButton.Text = "Start";
             this.startButton.UseVisualStyleBackColor = true;
+            this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
             // BrokenButtonsForm
             // 
@@ -72,7 +75,7 @@
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.startButton);
             this.Name = "BrokenButtonsForm";
-            this.Text = "BrokenButtonsForm";
+            this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);
 
         }

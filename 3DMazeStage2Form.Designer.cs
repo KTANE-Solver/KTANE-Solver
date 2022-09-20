@@ -45,6 +45,7 @@
             this.submitButton.TabIndex = 12;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // strikeButton
             // 
@@ -55,6 +56,7 @@
             this.strikeButton.TabIndex = 11;
             this.strikeButton.Text = "Strike";
             this.strikeButton.UseVisualStyleBackColor = true;
+            this.strikeButton.Click += new System.EventHandler(this.strikeButton_Click);
             // 
             // backButton
             // 
@@ -65,6 +67,7 @@
             this.backButton.TabIndex = 10;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // moduleSelectionButton
             // 
@@ -75,6 +78,7 @@
             this.moduleSelectionButton.TabIndex = 9;
             this.moduleSelectionButton.Text = "Module Selection";
             this.moduleSelectionButton.UseVisualStyleBackColor = true;
+            this.moduleSelectionButton.Click += new System.EventHandler(this.moduleSelectionButton_Click);
             // 
             // cardinalComboBox
             // 
@@ -107,7 +111,7 @@
             this.Controls.Add(this.cardinalComboBox);
             this.Controls.Add(this.label2);
             this.Name = "_3DMazeStage2Form";
-            this.Text = "_3DMazeStage2Form";
+            this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);
             this.PerformLayout();
 

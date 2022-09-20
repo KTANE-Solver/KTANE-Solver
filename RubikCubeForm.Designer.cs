@@ -52,6 +52,7 @@
             this.submitButton.TabIndex = 25;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // strikeButton
             // 
@@ -62,6 +63,7 @@
             this.strikeButton.TabIndex = 24;
             this.strikeButton.Text = "Strike";
             this.strikeButton.UseVisualStyleBackColor = true;
+            this.strikeButton.Click += new System.EventHandler(this.strikeButton_Click);
             // 
             // backButton
             // 
@@ -72,6 +74,7 @@
             this.backButton.TabIndex = 23;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // bottomComboBox
             // 
@@ -187,7 +190,7 @@
             this.Controls.Add(this.leftFace);
             this.Controls.Add(this.topFace);
             this.Name = "RubikCubeForm";
-            this.Text = "RubikCubeForm";
+            this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);
             this.PerformLayout();
 

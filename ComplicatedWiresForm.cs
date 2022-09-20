@@ -176,17 +176,17 @@ namespace New_KTANE_Solver
 
         private Color GetColor(string str)
         {
-            if (str == "Blue")
+            if (str == "BLUE")
             {
                 return Color.Blue;
             }
 
-            if (str == "Red")
+            if (str == "RED")
             {
                 return Color.Red;
             }
 
-            if (str == "White")
+            if (str == "WHITE")
             {
                 return Color.White;
             }

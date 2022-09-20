@@ -99,6 +99,7 @@
             this.submitButton.TabIndex = 16;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // strikeButton
             // 
@@ -109,6 +110,7 @@
             this.strikeButton.TabIndex = 15;
             this.strikeButton.Text = "Strike";
             this.strikeButton.UseVisualStyleBackColor = true;
+            this.strikeButton.Click += new System.EventHandler(this.strikeButton_Click);
             // 
             // backButton
             // 
@@ -119,6 +121,7 @@
             this.backButton.TabIndex = 14;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // middleRowTextBox
             // 
@@ -161,7 +164,7 @@
             this.Controls.Add(this.bottomRowTextBox);
             this.Controls.Add(this.topRowTextBox);
             this.Name = "TicTacToeForm";
-            this.Text = "TicTacToeForm";
+            this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);
             this.PerformLayout();
 

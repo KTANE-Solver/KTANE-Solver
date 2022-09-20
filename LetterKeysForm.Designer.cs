@@ -44,6 +44,7 @@
             this.submitButton.TabIndex = 9;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // stikeButton
             // 
@@ -54,6 +55,7 @@
             this.stikeButton.TabIndex = 8;
             this.stikeButton.Text = "Strike";
             this.stikeButton.UseVisualStyleBackColor = true;
+            this.stikeButton.Click += new System.EventHandler(this.stikeButton_Click);
             // 
             // backButton
             // 
@@ -64,6 +66,7 @@
             this.backButton.TabIndex = 7;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // textBox1
             // 
@@ -94,7 +97,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Name = "LetterKeysForm";
-            this.Text = "LetterKeysForm";
+            this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);
             this.PerformLayout();
 

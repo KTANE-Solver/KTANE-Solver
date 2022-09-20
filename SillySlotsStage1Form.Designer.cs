@@ -54,6 +54,7 @@
             this.strikeButton.TabIndex = 36;
             this.strikeButton.Text = "Strike";
             this.strikeButton.UseVisualStyleBackColor = true;
+            this.strikeButton.Click += new System.EventHandler(this.strikeButton_Click);
             // 
             // submitButton
             // 
@@ -64,6 +65,7 @@
             this.submitButton.TabIndex = 35;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // slot3ColorComboBox
             // 
@@ -119,6 +121,7 @@
             this.moduleSelectionButton.TabIndex = 29;
             this.moduleSelectionButton.Text = "Module Selection";
             this.moduleSelectionButton.UseVisualStyleBackColor = true;
+            this.moduleSelectionButton.Click += new System.EventHandler(this.moduleSelectionButton_Click);
             // 
             // label5
             // 
@@ -204,7 +207,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.stageLabel);
             this.Name = "SillySlotsStage1Form";
-            this.Text = "SillySlotsStage1Form";
+            this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);
             this.PerformLayout();
 
