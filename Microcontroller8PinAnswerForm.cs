@@ -10,12 +10,9 @@ using System.Windows.Forms;
 
 namespace New_KTANE_Solver
 {
-    public partial class Microcontroller8PinAnswerForm : ModuleForm
+    public partial class Microcontroller8PinAnswerForm : Form
     {
         public Microcontroller8PinAnswerForm(
-            Bomb bomb,
-            StreamWriter logFileWriter,
-            ModuleSelectionForm moduleSelectionForm,
             Color button1Color,
             Color button2Color,
             Color button3Color,
@@ -24,7 +21,7 @@ namespace New_KTANE_Solver
             Color button6Color,
             Color button7Color,
             Color button8Color
-        ) : base(bomb, logFileWriter, moduleSelectionForm, "Microcontroller", true)
+        )
         {
             InitializeComponent();
             button1.BackColor = button1Color;

@@ -132,9 +132,6 @@ namespace New_KTANE_Solver
             if (answer.Count == 6)
             {
                 sixForm = new Microcontroller6PinAnswerForm(
-                    Bomb,
-                    LogFileWriter,
-                    ModuleSelectionForm,
                     answer[0],
                     answer[1],
                     answer[2],
@@ -147,9 +144,6 @@ namespace New_KTANE_Solver
             else if (answer.Count == 8)
             {
                 eigthForm = new Microcontroller8PinAnswerForm(
-                    Bomb,
-                    LogFileWriter,
-                    ModuleSelectionForm,
                     answer[0],
                     answer[1],
                     answer[2],
@@ -164,9 +158,6 @@ namespace New_KTANE_Solver
             else
             {
                 tenForm = new Microcontroller10PinAnswerForm(
-                    Bomb,
-                    LogFileWriter,
-                    ModuleSelectionForm,
                     answer[0],
                     answer[1],
                     answer[2],
