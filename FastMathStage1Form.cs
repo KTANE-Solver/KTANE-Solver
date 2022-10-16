@@ -54,6 +54,8 @@ namespace New_KTANE_Solver
                 return;
             }
 
+            PrintHeader();
+
             FastMath module = new FastMath(Bomb, LogFileWriter);
 
             module.Solve(left[0], right[0]);
