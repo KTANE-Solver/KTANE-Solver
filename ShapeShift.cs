@@ -15,7 +15,7 @@ namespace New_KTANE_Solver
         {
             Flat,
             Round,
-            Diamond,
+            Point,
             Ticket
         }
 
@@ -67,12 +67,12 @@ namespace New_KTANE_Solver
             );
             Ticket roundDiamond = new Ticket(
                 TicketShape.Round,
-                TicketShape.Diamond,
+                TicketShape.Point,
                 Bomb.Sig.Lit,
                 "There a lit SIG indicator"
             );
             Ticket diamondTicket = new Ticket(
-                TicketShape.Diamond,
+                TicketShape.Point,
                 TicketShape.Ticket,
                 Bomb.Rj.Visible,
                 "There an RJ-45 port"
@@ -85,13 +85,13 @@ namespace New_KTANE_Solver
             );
             Ticket ticketDiamond = new Ticket(
                 TicketShape.Ticket,
-                TicketShape.Diamond,
+                TicketShape.Point,
                 Bomb.Ps.Visible,
                 "There's a PS/2 port"
             );
             Ticket diamondDiamond = new Ticket(
-                TicketShape.Diamond,
-                TicketShape.Diamond,
+                TicketShape.Point,
+                TicketShape.Point,
                 Bomb.Ind.Lit,
                 "There's a lit IND indicator"
             );
@@ -102,7 +102,7 @@ namespace New_KTANE_Solver
                 "There's an unlit FRQ indicator"
             );
             Ticket diamondRound = new Ticket(
-                TicketShape.Diamond,
+                TicketShape.Point,
                 TicketShape.Round,
                 Bomb.Parallel.Visible,
                 "There's a parallel port"
@@ -132,7 +132,7 @@ namespace New_KTANE_Solver
                 "There's an unlit BOB indicator"
             );
             Ticket diamondFlat = new Ticket(
-                TicketShape.Diamond,
+                TicketShape.Point,
                 TicketShape.Flat,
                 Bomb.Car.VisibleNotLit,
                 "There's an unlit CAR indicator"
@@ -151,7 +151,7 @@ namespace New_KTANE_Solver
             );
             Ticket flatDiamond = new Ticket(
                 TicketShape.Flat,
-                TicketShape.Diamond,
+                TicketShape.Point,
                 Bomb.Msa.Lit,
                 "There's a lit MSA indicator"
             );

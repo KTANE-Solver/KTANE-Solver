@@ -30,7 +30,7 @@ namespace New_KTANE_Solver
 
         private void UpdateComboBox(ComboBox comboBox)
         {
-            string[] words = new string[] { "Diamond", "Flat", "Round", "Ticket" };
+            string[] words = new string[]  { "Flat", "Point", "Round", "Ticket" };
             comboBox.Items.Clear();
             comboBox.Items.AddRange(words);
             comboBox.Text = words[0];
