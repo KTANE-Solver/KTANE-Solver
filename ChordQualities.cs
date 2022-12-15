@@ -362,9 +362,9 @@ namespace New_KTANE_Solver
 
         private List<string> FindAnswer()
         {
-            List<Note> answer = new List<Note>();
+            List<string> answer = new List<string>();
 
-            answer.Add(newRoot);
+            answer.Add(ConvertNote(newRoot));
 
             List<int> indexList = new List<int>();
 
@@ -390,18 +390,11 @@ namespace New_KTANE_Solver
             foreach (int gap in gaps)
             {
                 Note newNote = (Note)((int)(currentNote + gap) % 12);
-                answer.Add(newNote);
+                answer.Add(ConvertNote(newNote));
+
                 currentNote = newNote;
             }
-
-            List<string> strAnswer = new List<string>();
-
-            foreach (Note n in answer)
-            { 
-                strAnswer.Add(ConvertNote(n));
-            }
-
-            return strAnswer;
+            return answer;
         }
 
         private Note ConvertNote(string s)
