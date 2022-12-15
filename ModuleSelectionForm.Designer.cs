@@ -38,9 +38,10 @@
             // submitButton
             // 
             this.submitButton.AutoSize = true;
-            this.submitButton.Location = new System.Drawing.Point(462, 128);
+            this.submitButton.Location = new System.Drawing.Point(404, 96);
+            this.submitButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(75, 43);
+            this.submitButton.Size = new System.Drawing.Size(66, 32);
             this.submitButton.TabIndex = 9;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
@@ -49,9 +50,10 @@
             // saveEdgeworkButton
             // 
             this.saveEdgeworkButton.AutoSize = true;
-            this.saveEdgeworkButton.Location = new System.Drawing.Point(324, 128);
+            this.saveEdgeworkButton.Location = new System.Drawing.Point(284, 96);
+            this.saveEdgeworkButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.saveEdgeworkButton.Name = "saveEdgeworkButton";
-            this.saveEdgeworkButton.Size = new System.Drawing.Size(124, 43);
+            this.saveEdgeworkButton.Size = new System.Drawing.Size(108, 32);
             this.saveEdgeworkButton.TabIndex = 8;
             this.saveEdgeworkButton.Text = "Save Edgework";
             this.saveEdgeworkButton.UseVisualStyleBackColor = true;
@@ -60,9 +62,10 @@
             // checkEdgeworkButton
             // 
             this.checkEdgeworkButton.AutoSize = true;
-            this.checkEdgeworkButton.Location = new System.Drawing.Point(178, 128);
+            this.checkEdgeworkButton.Location = new System.Drawing.Point(156, 96);
+            this.checkEdgeworkButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkEdgeworkButton.Name = "checkEdgeworkButton";
-            this.checkEdgeworkButton.Size = new System.Drawing.Size(132, 43);
+            this.checkEdgeworkButton.Size = new System.Drawing.Size(116, 32);
             this.checkEdgeworkButton.TabIndex = 7;
             this.checkEdgeworkButton.Text = "Check Edgework";
             this.checkEdgeworkButton.UseVisualStyleBackColor = true;
@@ -71,9 +74,10 @@
             // changeEdgeworkButton
             // 
             this.changeEdgeworkButton.AutoSize = true;
-            this.changeEdgeworkButton.Location = new System.Drawing.Point(23, 128);
+            this.changeEdgeworkButton.Location = new System.Drawing.Point(20, 96);
+            this.changeEdgeworkButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.changeEdgeworkButton.Name = "changeEdgeworkButton";
-            this.changeEdgeworkButton.Size = new System.Drawing.Size(140, 43);
+            this.changeEdgeworkButton.Size = new System.Drawing.Size(122, 32);
             this.changeEdgeworkButton.TabIndex = 6;
             this.changeEdgeworkButton.Text = "Change Edgework";
             this.changeEdgeworkButton.UseVisualStyleBackColor = true;
@@ -82,23 +86,26 @@
             // moduleComboBox
             // 
             this.moduleComboBox.FormattingEnabled = true;
-            this.moduleComboBox.Location = new System.Drawing.Point(162, 60);
+            this.moduleComboBox.Location = new System.Drawing.Point(142, 45);
+            this.moduleComboBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.moduleComboBox.Name = "moduleComboBox";
-            this.moduleComboBox.Size = new System.Drawing.Size(263, 28);
+            this.moduleComboBox.Size = new System.Drawing.Size(231, 23);
             this.moduleComboBox.TabIndex = 5;
             // 
             // ModuleSelectionForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(549, 183);
+            this.ClientSize = new System.Drawing.Size(480, 137);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.saveEdgeworkButton);
             this.Controls.Add(this.checkEdgeworkButton);
             this.Controls.Add(this.changeEdgeworkButton);
             this.Controls.Add(this.moduleComboBox);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ModuleSelectionForm";
             this.Text = "ModuleSelectionForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ModuleSelectionForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
