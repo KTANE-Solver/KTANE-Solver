@@ -34,8 +34,7 @@ namespace New_KTANE_Solver
         {
             this.stage = stage;
 
-            leftLetterTextBox.Text = "";
-            rightLetterTextBox.Text = "";
+            letterTextBox.Text = "";
         }
 
         private void moduleSelectionButton_Click(object sender, EventArgs e)
@@ -67,22 +66,25 @@ namespace New_KTANE_Solver
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            string left = leftLetterTextBox.Text.ToUpper();
-            string right = rightLetterTextBox.Text.ToUpper();
+            string letters = letterTextBox.Text.ToUpper();
 
-            if (left.Length != 1 || right.Length != 1)
+            if (letters.Length != 2)
             {
-                ShowErrorMessage("Text boxes can only have 1 letter");
+                ShowErrorMessage("Text box can only have 2 letters");
                 return;
             }
 
-            if (left[0] < 65 || left[0] > 90 || right[0] < 65 || right[0] > 90)
+            foreach(char c in letters)
             {
-                ShowErrorMessage("Text boxes can only contain letters");
-                return;
+                if (letters[0] < 65 || letters[0] > 90)
+                {
+                    ShowErrorMessage("Text boxes can only contain letters");
+                    return;
+                }
             }
 
-            module.Solve(left[0], right[0]);
+
+            module.Solve(letters[0], letters[1]);
 
             if (stage == 5)
             {

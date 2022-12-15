@@ -23,8 +23,7 @@ namespace New_KTANE_Solver
 
         public void UpdateForm()
         {
-            leftLetterTextBox.Text = "";
-            rightLetterTextBox.Text = "";
+            lettersTextBox.Text = "";
         }
 
         private void backButton_Click(object sender, EventArgs e)
@@ -39,26 +38,28 @@ namespace New_KTANE_Solver
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            string left = leftLetterTextBox.Text.ToUpper();
-            string right = rightLetterTextBox.Text.ToUpper();
+            string letters = lettersTextBox.Text.ToUpper();
 
-            if (left.Length != 1 || right.Length != 1)
+            if (letters.Length != 2)
             {
-                ShowErrorMessage("Text boxes can only have 1 letter");
+                ShowErrorMessage("Text boxes can only have 2 letters");
                 return;
             }
 
-            if (left[0] < 65 || left[0] > 90 || right[0] < 65 || right[0] > 90)
+            foreach (char c in letters)
             {
-                ShowErrorMessage("Text boxes can only contain letters");
-                return;
+                if (!Char.IsLetter(c))
+                {
+                    ShowErrorMessage("Text boxes can only contain letters");
+                    return;
+                }
             }
 
             PrintHeader();
 
             FastMath module = new FastMath(Bomb, LogFileWriter);
 
-            module.Solve(left[0], right[0]);
+            module.Solve(letters[0], letters[1]);
 
             FastMathOtherStageForm stage2 = new FastMathOtherStageForm(
                 Bomb,
@@ -69,26 +70,6 @@ namespace New_KTANE_Solver
             );
             this.Hide();
             stage2.Show();
-        }
-
-        private void rightLetterTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void leftLetterTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -28,37 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.rightLetterTextBox = new System.Windows.Forms.TextBox();
-            this.leftLetterTextBox = new System.Windows.Forms.TextBox();
+            this.lettersTextBox = new System.Windows.Forms.TextBox();
             this.submitButton = new System.Windows.Forms.Button();
             this.StrikeButton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.letterLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // rightLetterTextBox
+            // lettersTextBox
             // 
-            this.rightLetterTextBox.Location = new System.Drawing.Point(258, 180);
-            this.rightLetterTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.rightLetterTextBox.Name = "rightLetterTextBox";
-            this.rightLetterTextBox.Size = new System.Drawing.Size(160, 27);
-            this.rightLetterTextBox.TabIndex = 13;
-            // 
-            // leftLetterTextBox
-            // 
-            this.leftLetterTextBox.Location = new System.Drawing.Point(258, 83);
-            this.leftLetterTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.leftLetterTextBox.Name = "leftLetterTextBox";
-            this.leftLetterTextBox.Size = new System.Drawing.Size(160, 27);
-            this.leftLetterTextBox.TabIndex = 11;
+            this.lettersTextBox.Location = new System.Drawing.Point(226, 105);
+            this.lettersTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lettersTextBox.Name = "lettersTextBox";
+            this.lettersTextBox.Size = new System.Drawing.Size(140, 23);
+            this.lettersTextBox.TabIndex = 11;
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(378, 291);
-            this.submitButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.submitButton.Location = new System.Drawing.Point(331, 218);
+            this.submitButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(124, 66);
+            this.submitButton.Size = new System.Drawing.Size(108, 50);
             this.submitButton.TabIndex = 15;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
@@ -66,10 +56,10 @@
             // 
             // StrikeButton
             // 
-            this.StrikeButton.Location = new System.Drawing.Point(198, 291);
-            this.StrikeButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.StrikeButton.Location = new System.Drawing.Point(173, 218);
+            this.StrikeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.StrikeButton.Name = "StrikeButton";
-            this.StrikeButton.Size = new System.Drawing.Size(124, 66);
+            this.StrikeButton.Size = new System.Drawing.Size(108, 50);
             this.StrikeButton.TabIndex = 17;
             this.StrikeButton.Text = "Strike";
             this.StrikeButton.UseVisualStyleBackColor = true;
@@ -77,47 +67,36 @@
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(20, 291);
-            this.backButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.backButton.Location = new System.Drawing.Point(18, 218);
+            this.backButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(124, 66);
+            this.backButton.Size = new System.Drawing.Size(108, 50);
             this.backButton.TabIndex = 16;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
             this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
-            // label2
+            // letterLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(121, 185);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 20);
-            this.label2.TabIndex = 14;
-            this.label2.Text = "Right Letter:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(121, 86);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 20);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Left Letter:";
+            this.letterLabel.AutoSize = true;
+            this.letterLabel.Location = new System.Drawing.Point(106, 107);
+            this.letterLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.letterLabel.Name = "letterLabel";
+            this.letterLabel.Size = new System.Drawing.Size(45, 15);
+            this.letterLabel.TabIndex = 12;
+            this.letterLabel.Text = "Letters:";
             // 
             // FastMathStage1Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(515, 371);
-            this.Controls.Add(this.rightLetterTextBox);
-            this.Controls.Add(this.leftLetterTextBox);
+            this.ClientSize = new System.Drawing.Size(451, 278);
+            this.Controls.Add(this.lettersTextBox);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.StrikeButton);
             this.Controls.Add(this.backButton);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.letterLabel);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FastMathStage1Form";
             this.Text = "KTANE Bot by Hawker";
             this.ResumeLayout(false);
@@ -126,13 +105,10 @@
         }
 
         #endregion
-
-        private TextBox rightLetterTextBox;
-        private TextBox leftLetterTextBox;
+        private TextBox lettersTextBox;
         private System.Windows.Forms.Button submitButton;
         private System.Windows.Forms.Button StrikeButton;
         private System.Windows.Forms.Button backButton;
-        private Label label2;
-        private Label label1;
+        private Label letterLabel;
     }
 }
