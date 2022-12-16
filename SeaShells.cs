@@ -102,6 +102,8 @@ namespace New_KTANE_Solver
                 }
             }
 
+            answerList = SimplifyDirections(answerList);
+
             string answer = string.Join(", ", answerList);
 
             PrintDebugLine($"Phrase 1: {phrase1}");
@@ -203,6 +205,27 @@ namespace New_KTANE_Solver
             }
 
             return letters;
+        }
+
+        private List<string> SimplifyDirections(List<string> list)
+        {
+            List<string> directions = new List<string>();
+            while(list.Count > 0) 
+            { 
+                string currentWord = list[list.Count - 1];
+                int num = 1;
+                list.RemoveAt(list.Count - 1);
+
+                while (list.Count > 0 && list[list.Count - 1] == currentWord)
+                {
+                    num++;
+                    list.RemoveAt(list.Count - 1);
+                }
+
+                directions.Add($"{currentWord} x{num}");
+            }
+
+            return directions;
         }
     }
 }

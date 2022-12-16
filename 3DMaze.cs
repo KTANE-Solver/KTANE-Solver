@@ -923,12 +923,6 @@ namespace New_KTANE_Solver
             }
         }
 
-        /*
-           Method that will find find where the user needs to go (Dijkstra)
-           -Paramaters (starting position (and where user is facing), ending position)
-           -Returns a list of directions
-         */
-
         /// <summary>
         /// Finds the row the of the goal
         /// </summary>
