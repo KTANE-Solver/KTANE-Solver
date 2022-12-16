@@ -68,37 +68,37 @@ namespace New_KTANE_Solver
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            if (
-                numberTextBox1.Text.Length != 7
-                || numberTextBox2.Text.Length != 7
-                || numberTextBox3.Text.Length != 7
-            )
-            {
-                ShowErrorMessage("Numbers have to be 7 digits long");
-                return;
-            }
+            string[] numbers = new string[] { numberTextBox1.Text , numberTextBox2.Text , numberTextBox3.Text };
 
-            try
+            for (int i = 0; i < 3; i++)
             {
-                int.Parse(numberTextBox1.Text);
-                int.Parse(numberTextBox2.Text);
-                int.Parse(numberTextBox3.Text);
-            }
-            catch
-            {
-                ShowErrorMessage("Numbers text box can only contain numbers");
-                return;
+                if (numbers[i].Length != 7)
+                {
+                    ShowErrorMessage($"Text box {i + 1} needs 7 digits");
+                    return;
+                }
+
+                try
+                {
+                    int.Parse(numbers[i]);
+                }
+
+                catch
+                {
+                    ShowErrorMessage($"Text box {i + 1} can only contain numbers");
+                    return;
+                }
             }
 
             PrintHeader();
 
             FizzBuzz module = new FizzBuzz(
                 colorComboBox1.Text,
-                numberTextBox1.Text,
+                numbers[0],
                 colorComboBox2.Text,
-                numberTextBox2.Text,
+                numbers[1],
                 colorComboBox3.Text,
-                numberTextBox3.Text,
+                numbers[2],
                 Bomb,
                 LogFileWriter
             );
