@@ -91,10 +91,10 @@
             // 
             // portPlateNumTextBox
             // 
-            this.portPlateNumTextBox.Location = new System.Drawing.Point(124, 585);
+            this.portPlateNumTextBox.Location = new System.Drawing.Point(108, 439);
             this.portPlateNumTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.portPlateNumTextBox.Name = "portPlateNumTextBox";
-            this.portPlateNumTextBox.Size = new System.Drawing.Size(157, 27);
+            this.portPlateNumTextBox.Size = new System.Drawing.Size(138, 23);
             this.portPlateNumTextBox.TabIndex = 58;
             this.portPlateNumTextBox.Enter += new System.EventHandler(this.portPlateNumTextBox_Enter);
             this.portPlateNumTextBox.Leave += new System.EventHandler(this.portPlateNumTextBox_Leave);
@@ -102,19 +102,19 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(34, 585);
+            this.label1.Location = new System.Drawing.Point(30, 439);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 20);
+            this.label1.Size = new System.Drawing.Size(61, 15);
             this.label1.TabIndex = 59;
             this.label1.Text = "Port Plate:";
             // 
             // batteryHolderTextBox
             // 
-            this.batteryHolderTextBox.Location = new System.Drawing.Point(167, 109);
+            this.batteryHolderTextBox.Location = new System.Drawing.Point(146, 82);
             this.batteryHolderTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.batteryHolderTextBox.Name = "batteryHolderTextBox";
-            this.batteryHolderTextBox.Size = new System.Drawing.Size(149, 27);
+            this.batteryHolderTextBox.Size = new System.Drawing.Size(131, 23);
             this.batteryHolderTextBox.TabIndex = 3;
             this.batteryHolderTextBox.Enter += new System.EventHandler(this.batteryHolderTextBox_Enter);
             this.batteryHolderTextBox.Leave += new System.EventHandler(this.batteryHolderTextBox_Leave);
@@ -122,20 +122,20 @@
             // batteryHolderLabel
             // 
             this.batteryHolderLabel.AutoSize = true;
-            this.batteryHolderLabel.Location = new System.Drawing.Point(43, 109);
+            this.batteryHolderLabel.Location = new System.Drawing.Point(38, 82);
             this.batteryHolderLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.batteryHolderLabel.Name = "batteryHolderLabel";
-            this.batteryHolderLabel.Size = new System.Drawing.Size(109, 20);
+            this.batteryHolderLabel.Size = new System.Drawing.Size(86, 15);
             this.batteryHolderLabel.TabIndex = 57;
             this.batteryHolderLabel.Text = "Battery Holder:";
             // 
             // emptyPortPlateCheckBox
             // 
             this.emptyPortPlateCheckBox.AutoSize = true;
-            this.emptyPortPlateCheckBox.Location = new System.Drawing.Point(100, 557);
+            this.emptyPortPlateCheckBox.Location = new System.Drawing.Point(88, 418);
             this.emptyPortPlateCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.emptyPortPlateCheckBox.Name = "emptyPortPlateCheckBox";
-            this.emptyPortPlateCheckBox.Size = new System.Drawing.Size(140, 24);
+            this.emptyPortPlateCheckBox.Size = new System.Drawing.Size(114, 19);
             this.emptyPortPlateCheckBox.TabIndex = 26;
             this.emptyPortPlateCheckBox.Text = "Empty Port Plate";
             this.emptyPortPlateCheckBox.UseVisualStyleBackColor = true;
@@ -143,10 +143,10 @@
             // carLitCheckBox
             // 
             this.carLitCheckBox.AutoSize = true;
-            this.carLitCheckBox.Location = new System.Drawing.Point(211, 209);
+            this.carLitCheckBox.Location = new System.Drawing.Point(185, 157);
             this.carLitCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.carLitCheckBox.Name = "carLitCheckBox";
-            this.carLitCheckBox.Size = new System.Drawing.Size(47, 24);
+            this.carLitCheckBox.Size = new System.Drawing.Size(39, 19);
             this.carLitCheckBox.TabIndex = 7;
             this.carLitCheckBox.Text = "Lit";
             this.carLitCheckBox.UseVisualStyleBackColor = true;
@@ -155,10 +155,10 @@
             // carVisibleCheckBox
             // 
             this.carVisibleCheckBox.AutoSize = true;
-            this.carVisibleCheckBox.Location = new System.Drawing.Point(136, 209);
+            this.carVisibleCheckBox.Location = new System.Drawing.Point(119, 157);
             this.carVisibleCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.carVisibleCheckBox.Name = "carVisibleCheckBox";
-            this.carVisibleCheckBox.Size = new System.Drawing.Size(75, 24);
+            this.carVisibleCheckBox.Size = new System.Drawing.Size(60, 19);
             this.carVisibleCheckBox.TabIndex = 6;
             this.carVisibleCheckBox.Text = "Visible";
             this.carVisibleCheckBox.UseVisualStyleBackColor = true;
@@ -167,10 +167,10 @@
             // clrLitCheckBox
             // 
             this.clrLitCheckBox.AutoSize = true;
-            this.clrLitCheckBox.Location = new System.Drawing.Point(211, 241);
+            this.clrLitCheckBox.Location = new System.Drawing.Point(185, 181);
             this.clrLitCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.clrLitCheckBox.Name = "clrLitCheckBox";
-            this.clrLitCheckBox.Size = new System.Drawing.Size(47, 24);
+            this.clrLitCheckBox.Size = new System.Drawing.Size(39, 19);
             this.clrLitCheckBox.TabIndex = 9;
             this.clrLitCheckBox.Text = "Lit";
             this.clrLitCheckBox.UseVisualStyleBackColor = true;
@@ -179,10 +179,10 @@
             // clrVisibleCheckBox
             // 
             this.clrVisibleCheckBox.AutoSize = true;
-            this.clrVisibleCheckBox.Location = new System.Drawing.Point(136, 241);
+            this.clrVisibleCheckBox.Location = new System.Drawing.Point(119, 181);
             this.clrVisibleCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.clrVisibleCheckBox.Name = "clrVisibleCheckBox";
-            this.clrVisibleCheckBox.Size = new System.Drawing.Size(75, 24);
+            this.clrVisibleCheckBox.Size = new System.Drawing.Size(60, 19);
             this.clrVisibleCheckBox.TabIndex = 8;
             this.clrVisibleCheckBox.Text = "Visible";
             this.clrVisibleCheckBox.UseVisualStyleBackColor = true;
@@ -191,10 +191,10 @@
             // frkLitCheckBox
             // 
             this.frkLitCheckBox.AutoSize = true;
-            this.frkLitCheckBox.Location = new System.Drawing.Point(211, 273);
+            this.frkLitCheckBox.Location = new System.Drawing.Point(185, 205);
             this.frkLitCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.frkLitCheckBox.Name = "frkLitCheckBox";
-            this.frkLitCheckBox.Size = new System.Drawing.Size(47, 24);
+            this.frkLitCheckBox.Size = new System.Drawing.Size(39, 19);
             this.frkLitCheckBox.TabIndex = 11;
             this.frkLitCheckBox.Text = "Lit";
             this.frkLitCheckBox.UseVisualStyleBackColor = true;
@@ -203,10 +203,10 @@
             // frkVisibleCheckBox
             // 
             this.frkVisibleCheckBox.AutoSize = true;
-            this.frkVisibleCheckBox.Location = new System.Drawing.Point(136, 273);
+            this.frkVisibleCheckBox.Location = new System.Drawing.Point(119, 205);
             this.frkVisibleCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.frkVisibleCheckBox.Name = "frkVisibleCheckBox";
-            this.frkVisibleCheckBox.Size = new System.Drawing.Size(75, 24);
+            this.frkVisibleCheckBox.Size = new System.Drawing.Size(60, 19);
             this.frkVisibleCheckBox.TabIndex = 10;
             this.frkVisibleCheckBox.Text = "Visible";
             this.frkVisibleCheckBox.UseVisualStyleBackColor = true;
@@ -215,10 +215,10 @@
             // frqLitCheckBox
             // 
             this.frqLitCheckBox.AutoSize = true;
-            this.frqLitCheckBox.Location = new System.Drawing.Point(211, 306);
+            this.frqLitCheckBox.Location = new System.Drawing.Point(185, 230);
             this.frqLitCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.frqLitCheckBox.Name = "frqLitCheckBox";
-            this.frqLitCheckBox.Size = new System.Drawing.Size(47, 24);
+            this.frqLitCheckBox.Size = new System.Drawing.Size(39, 19);
             this.frqLitCheckBox.TabIndex = 13;
             this.frqLitCheckBox.Text = "Lit";
             this.frqLitCheckBox.UseVisualStyleBackColor = true;
@@ -227,10 +227,10 @@
             // frqVisibleCheckBox
             // 
             this.frqVisibleCheckBox.AutoSize = true;
-            this.frqVisibleCheckBox.Location = new System.Drawing.Point(136, 306);
+            this.frqVisibleCheckBox.Location = new System.Drawing.Point(119, 230);
             this.frqVisibleCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.frqVisibleCheckBox.Name = "frqVisibleCheckBox";
-            this.frqVisibleCheckBox.Size = new System.Drawing.Size(75, 24);
+            this.frqVisibleCheckBox.Size = new System.Drawing.Size(60, 19);
             this.frqVisibleCheckBox.TabIndex = 12;
             this.frqVisibleCheckBox.Text = "Visible";
             this.frqVisibleCheckBox.UseVisualStyleBackColor = true;
@@ -239,10 +239,10 @@
             // indLitCheckBox
             // 
             this.indLitCheckBox.AutoSize = true;
-            this.indLitCheckBox.Location = new System.Drawing.Point(211, 339);
+            this.indLitCheckBox.Location = new System.Drawing.Point(185, 254);
             this.indLitCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.indLitCheckBox.Name = "indLitCheckBox";
-            this.indLitCheckBox.Size = new System.Drawing.Size(47, 24);
+            this.indLitCheckBox.Size = new System.Drawing.Size(39, 19);
             this.indLitCheckBox.TabIndex = 15;
             this.indLitCheckBox.Text = "Lit";
             this.indLitCheckBox.UseVisualStyleBackColor = true;
@@ -251,10 +251,10 @@
             // msaVisibleCheckBox
             // 
             this.msaVisibleCheckBox.AutoSize = true;
-            this.msaVisibleCheckBox.Location = new System.Drawing.Point(136, 371);
+            this.msaVisibleCheckBox.Location = new System.Drawing.Point(119, 278);
             this.msaVisibleCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.msaVisibleCheckBox.Name = "msaVisibleCheckBox";
-            this.msaVisibleCheckBox.Size = new System.Drawing.Size(75, 24);
+            this.msaVisibleCheckBox.Size = new System.Drawing.Size(60, 19);
             this.msaVisibleCheckBox.TabIndex = 16;
             this.msaVisibleCheckBox.Text = "Visible";
             this.msaVisibleCheckBox.UseVisualStyleBackColor = true;
@@ -263,10 +263,10 @@
             // msaLitCheckBox
             // 
             this.msaLitCheckBox.AutoSize = true;
-            this.msaLitCheckBox.Location = new System.Drawing.Point(211, 371);
+            this.msaLitCheckBox.Location = new System.Drawing.Point(185, 278);
             this.msaLitCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.msaLitCheckBox.Name = "msaLitCheckBox";
-            this.msaLitCheckBox.Size = new System.Drawing.Size(47, 24);
+            this.msaLitCheckBox.Size = new System.Drawing.Size(39, 19);
             this.msaLitCheckBox.TabIndex = 17;
             this.msaLitCheckBox.Text = "Lit";
             this.msaLitCheckBox.UseVisualStyleBackColor = true;
@@ -275,10 +275,10 @@
             // indVisibleCheckBox
             // 
             this.indVisibleCheckBox.AutoSize = true;
-            this.indVisibleCheckBox.Location = new System.Drawing.Point(136, 339);
+            this.indVisibleCheckBox.Location = new System.Drawing.Point(119, 254);
             this.indVisibleCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.indVisibleCheckBox.Name = "indVisibleCheckBox";
-            this.indVisibleCheckBox.Size = new System.Drawing.Size(75, 24);
+            this.indVisibleCheckBox.Size = new System.Drawing.Size(60, 19);
             this.indVisibleCheckBox.TabIndex = 14;
             this.indVisibleCheckBox.Text = "Visible";
             this.indVisibleCheckBox.UseVisualStyleBackColor = true;
@@ -287,10 +287,10 @@
             // nsaLitCheckBox
             // 
             this.nsaLitCheckBox.AutoSize = true;
-            this.nsaLitCheckBox.Location = new System.Drawing.Point(211, 403);
+            this.nsaLitCheckBox.Location = new System.Drawing.Point(185, 302);
             this.nsaLitCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.nsaLitCheckBox.Name = "nsaLitCheckBox";
-            this.nsaLitCheckBox.Size = new System.Drawing.Size(47, 24);
+            this.nsaLitCheckBox.Size = new System.Drawing.Size(39, 19);
             this.nsaLitCheckBox.TabIndex = 19;
             this.nsaLitCheckBox.Text = "Lit";
             this.nsaLitCheckBox.UseVisualStyleBackColor = true;
@@ -299,10 +299,10 @@
             // trnVisibleCheckBox
             // 
             this.trnVisibleCheckBox.AutoSize = true;
-            this.trnVisibleCheckBox.Location = new System.Drawing.Point(136, 501);
+            this.trnVisibleCheckBox.Location = new System.Drawing.Point(119, 376);
             this.trnVisibleCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.trnVisibleCheckBox.Name = "trnVisibleCheckBox";
-            this.trnVisibleCheckBox.Size = new System.Drawing.Size(75, 24);
+            this.trnVisibleCheckBox.Size = new System.Drawing.Size(60, 19);
             this.trnVisibleCheckBox.TabIndex = 24;
             this.trnVisibleCheckBox.Text = "Visible";
             this.trnVisibleCheckBox.UseVisualStyleBackColor = true;
@@ -311,10 +311,10 @@
             // sndLitCheckBox
             // 
             this.sndLitCheckBox.AutoSize = true;
-            this.sndLitCheckBox.Location = new System.Drawing.Point(211, 469);
+            this.sndLitCheckBox.Location = new System.Drawing.Point(185, 352);
             this.sndLitCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.sndLitCheckBox.Name = "sndLitCheckBox";
-            this.sndLitCheckBox.Size = new System.Drawing.Size(47, 24);
+            this.sndLitCheckBox.Size = new System.Drawing.Size(39, 19);
             this.sndLitCheckBox.TabIndex = 23;
             this.sndLitCheckBox.Text = "Lit";
             this.sndLitCheckBox.UseVisualStyleBackColor = true;
@@ -323,10 +323,10 @@
             // nsaVisibleCheckBox
             // 
             this.nsaVisibleCheckBox.AutoSize = true;
-            this.nsaVisibleCheckBox.Location = new System.Drawing.Point(136, 403);
+            this.nsaVisibleCheckBox.Location = new System.Drawing.Point(119, 302);
             this.nsaVisibleCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.nsaVisibleCheckBox.Name = "nsaVisibleCheckBox";
-            this.nsaVisibleCheckBox.Size = new System.Drawing.Size(75, 24);
+            this.nsaVisibleCheckBox.Size = new System.Drawing.Size(60, 19);
             this.nsaVisibleCheckBox.TabIndex = 18;
             this.nsaVisibleCheckBox.Text = "Visible";
             this.nsaVisibleCheckBox.UseVisualStyleBackColor = true;
@@ -335,10 +335,10 @@
             // trnLitCheckBox
             // 
             this.trnLitCheckBox.AutoSize = true;
-            this.trnLitCheckBox.Location = new System.Drawing.Point(211, 501);
+            this.trnLitCheckBox.Location = new System.Drawing.Point(185, 376);
             this.trnLitCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.trnLitCheckBox.Name = "trnLitCheckBox";
-            this.trnLitCheckBox.Size = new System.Drawing.Size(47, 24);
+            this.trnLitCheckBox.Size = new System.Drawing.Size(39, 19);
             this.trnLitCheckBox.TabIndex = 25;
             this.trnLitCheckBox.Text = "Lit";
             this.trnLitCheckBox.UseVisualStyleBackColor = true;
@@ -347,10 +347,10 @@
             // sndVisibleCheckBox
             // 
             this.sndVisibleCheckBox.AutoSize = true;
-            this.sndVisibleCheckBox.Location = new System.Drawing.Point(136, 469);
+            this.sndVisibleCheckBox.Location = new System.Drawing.Point(119, 352);
             this.sndVisibleCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.sndVisibleCheckBox.Name = "sndVisibleCheckBox";
-            this.sndVisibleCheckBox.Size = new System.Drawing.Size(75, 24);
+            this.sndVisibleCheckBox.Size = new System.Drawing.Size(60, 19);
             this.sndVisibleCheckBox.TabIndex = 22;
             this.sndVisibleCheckBox.Text = "Visible";
             this.sndVisibleCheckBox.UseVisualStyleBackColor = true;
@@ -359,10 +359,10 @@
             // sigLitCheckBox
             // 
             this.sigLitCheckBox.AutoSize = true;
-            this.sigLitCheckBox.Location = new System.Drawing.Point(211, 436);
+            this.sigLitCheckBox.Location = new System.Drawing.Point(185, 327);
             this.sigLitCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.sigLitCheckBox.Name = "sigLitCheckBox";
-            this.sigLitCheckBox.Size = new System.Drawing.Size(47, 24);
+            this.sigLitCheckBox.Size = new System.Drawing.Size(39, 19);
             this.sigLitCheckBox.TabIndex = 21;
             this.sigLitCheckBox.Text = "Lit";
             this.sigLitCheckBox.UseVisualStyleBackColor = true;
@@ -371,10 +371,10 @@
             // sigVisibleCheckBox
             // 
             this.sigVisibleCheckBox.AutoSize = true;
-            this.sigVisibleCheckBox.Location = new System.Drawing.Point(136, 436);
+            this.sigVisibleCheckBox.Location = new System.Drawing.Point(119, 327);
             this.sigVisibleCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.sigVisibleCheckBox.Name = "sigVisibleCheckBox";
-            this.sigVisibleCheckBox.Size = new System.Drawing.Size(75, 24);
+            this.sigVisibleCheckBox.Size = new System.Drawing.Size(60, 19);
             this.sigVisibleCheckBox.TabIndex = 20;
             this.sigVisibleCheckBox.Text = "Visible";
             this.sigVisibleCheckBox.UseVisualStyleBackColor = true;
@@ -383,10 +383,10 @@
             // bobLitCheckBox
             // 
             this.bobLitCheckBox.AutoSize = true;
-            this.bobLitCheckBox.Location = new System.Drawing.Point(211, 176);
+            this.bobLitCheckBox.Location = new System.Drawing.Point(185, 132);
             this.bobLitCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.bobLitCheckBox.Name = "bobLitCheckBox";
-            this.bobLitCheckBox.Size = new System.Drawing.Size(47, 24);
+            this.bobLitCheckBox.Size = new System.Drawing.Size(39, 19);
             this.bobLitCheckBox.TabIndex = 5;
             this.bobLitCheckBox.Text = "Lit";
             this.bobLitCheckBox.UseVisualStyleBackColor = true;
@@ -395,10 +395,10 @@
             // bobVisibleCheckBox
             // 
             this.bobVisibleCheckBox.AutoSize = true;
-            this.bobVisibleCheckBox.Location = new System.Drawing.Point(136, 176);
+            this.bobVisibleCheckBox.Location = new System.Drawing.Point(119, 132);
             this.bobVisibleCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.bobVisibleCheckBox.Name = "bobVisibleCheckBox";
-            this.bobVisibleCheckBox.Size = new System.Drawing.Size(75, 24);
+            this.bobVisibleCheckBox.Size = new System.Drawing.Size(60, 19);
             this.bobVisibleCheckBox.TabIndex = 4;
             this.bobVisibleCheckBox.Text = "Visible";
             this.bobVisibleCheckBox.UseVisualStyleBackColor = true;
@@ -406,70 +406,70 @@
             // 
             // parallelTextBox
             // 
-            this.parallelTextBox.Location = new System.Drawing.Point(124, 651);
+            this.parallelTextBox.Location = new System.Drawing.Point(108, 488);
             this.parallelTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.parallelTextBox.Name = "parallelTextBox";
-            this.parallelTextBox.Size = new System.Drawing.Size(157, 27);
+            this.parallelTextBox.Size = new System.Drawing.Size(138, 23);
             this.parallelTextBox.TabIndex = 5;
             this.parallelTextBox.Enter += new System.EventHandler(this.parallelTextBox_Enter);
             this.parallelTextBox.Leave += new System.EventHandler(this.parallelTextBox_Leave);
             // 
             // psTextBox
             // 
-            this.psTextBox.Location = new System.Drawing.Point(124, 683);
+            this.psTextBox.Location = new System.Drawing.Point(108, 512);
             this.psTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.psTextBox.Name = "psTextBox";
-            this.psTextBox.Size = new System.Drawing.Size(157, 27);
+            this.psTextBox.Size = new System.Drawing.Size(138, 23);
             this.psTextBox.TabIndex = 6;
             this.psTextBox.Enter += new System.EventHandler(this.psTextBox_Enter);
             this.psTextBox.Leave += new System.EventHandler(this.psTextBox_Leave);
             // 
             // rjTextBox
             // 
-            this.rjTextBox.Location = new System.Drawing.Point(124, 716);
+            this.rjTextBox.Location = new System.Drawing.Point(108, 537);
             this.rjTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.rjTextBox.Name = "rjTextBox";
-            this.rjTextBox.Size = new System.Drawing.Size(157, 27);
+            this.rjTextBox.Size = new System.Drawing.Size(138, 23);
             this.rjTextBox.TabIndex = 7;
             this.rjTextBox.Enter += new System.EventHandler(this.rjTextBox_Enter);
             this.rjTextBox.Leave += new System.EventHandler(this.rjTextBox_Leave);
             // 
             // serialTextBox
             // 
-            this.serialTextBox.Location = new System.Drawing.Point(124, 749);
+            this.serialTextBox.Location = new System.Drawing.Point(108, 562);
             this.serialTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.serialTextBox.Name = "serialTextBox";
-            this.serialTextBox.Size = new System.Drawing.Size(157, 27);
+            this.serialTextBox.Size = new System.Drawing.Size(138, 23);
             this.serialTextBox.TabIndex = 8;
             this.serialTextBox.Enter += new System.EventHandler(this.serialTextBox_Enter);
             this.serialTextBox.Leave += new System.EventHandler(this.serialTextBox_Leave);
             // 
             // stereoTextBox
             // 
-            this.stereoTextBox.Location = new System.Drawing.Point(124, 781);
+            this.stereoTextBox.Location = new System.Drawing.Point(108, 586);
             this.stereoTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.stereoTextBox.Name = "stereoTextBox";
-            this.stereoTextBox.Size = new System.Drawing.Size(157, 27);
+            this.stereoTextBox.Size = new System.Drawing.Size(138, 23);
             this.stereoTextBox.TabIndex = 9;
             this.stereoTextBox.Enter += new System.EventHandler(this.stereoTextBox_Enter);
             this.stereoTextBox.Leave += new System.EventHandler(this.stereoTextBox_Leave);
             // 
             // dvidTextBox
             // 
-            this.dvidTextBox.Location = new System.Drawing.Point(124, 619);
+            this.dvidTextBox.Location = new System.Drawing.Point(108, 464);
             this.dvidTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.dvidTextBox.Name = "dvidTextBox";
-            this.dvidTextBox.Size = new System.Drawing.Size(157, 27);
+            this.dvidTextBox.Size = new System.Drawing.Size(138, 23);
             this.dvidTextBox.TabIndex = 4;
             this.dvidTextBox.Enter += new System.EventHandler(this.dvidTextBox_Enter);
             this.dvidTextBox.Leave += new System.EventHandler(this.dvidTextBox_Leave);
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(136, 812);
+            this.submitButton.Location = new System.Drawing.Point(119, 613);
             this.submitButton.Margin = new System.Windows.Forms.Padding(2);
             this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(86, 24);
+            this.submitButton.Size = new System.Drawing.Size(75, 28);
             this.submitButton.TabIndex = 10;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
@@ -478,199 +478,199 @@
             // stereoLabel
             // 
             this.stereoLabel.AutoSize = true;
-            this.stereoLabel.Location = new System.Drawing.Point(34, 781);
+            this.stereoLabel.Location = new System.Drawing.Point(30, 586);
             this.stereoLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.stereoLabel.Name = "stereoLabel";
-            this.stereoLabel.Size = new System.Drawing.Size(55, 20);
+            this.stereoLabel.Size = new System.Drawing.Size(43, 15);
             this.stereoLabel.TabIndex = 25;
             this.stereoLabel.Text = "Stereo:";
             // 
             // serialLabel
             // 
             this.serialLabel.AutoSize = true;
-            this.serialLabel.Location = new System.Drawing.Point(34, 749);
+            this.serialLabel.Location = new System.Drawing.Point(30, 562);
             this.serialLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.serialLabel.Name = "serialLabel";
-            this.serialLabel.Size = new System.Drawing.Size(49, 20);
+            this.serialLabel.Size = new System.Drawing.Size(38, 15);
             this.serialLabel.TabIndex = 24;
             this.serialLabel.Text = "Serial:";
             // 
             // rjLabel
             // 
             this.rjLabel.AutoSize = true;
-            this.rjLabel.Location = new System.Drawing.Point(34, 716);
+            this.rjLabel.Location = new System.Drawing.Point(30, 537);
             this.rjLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.rjLabel.Name = "rjLabel";
-            this.rjLabel.Size = new System.Drawing.Size(48, 20);
+            this.rjLabel.Size = new System.Drawing.Size(38, 15);
             this.rjLabel.TabIndex = 22;
             this.rjLabel.Text = "RJ-45:";
             // 
             // psLabel
             // 
             this.psLabel.AutoSize = true;
-            this.psLabel.Location = new System.Drawing.Point(34, 683);
+            this.psLabel.Location = new System.Drawing.Point(30, 512);
             this.psLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.psLabel.Name = "psLabel";
-            this.psLabel.Size = new System.Drawing.Size(42, 20);
+            this.psLabel.Size = new System.Drawing.Size(34, 15);
             this.psLabel.TabIndex = 21;
             this.psLabel.Text = "PS/2:";
             // 
             // parallelLabel
             // 
             this.parallelLabel.AutoSize = true;
-            this.parallelLabel.Location = new System.Drawing.Point(34, 651);
+            this.parallelLabel.Location = new System.Drawing.Point(30, 488);
             this.parallelLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.parallelLabel.Name = "parallelLabel";
-            this.parallelLabel.Size = new System.Drawing.Size(60, 20);
+            this.parallelLabel.Size = new System.Drawing.Size(48, 15);
             this.parallelLabel.TabIndex = 20;
             this.parallelLabel.Text = "Parallel:";
             // 
             // dvidLabel
             // 
             this.dvidLabel.AutoSize = true;
-            this.dvidLabel.Location = new System.Drawing.Point(34, 619);
+            this.dvidLabel.Location = new System.Drawing.Point(30, 464);
             this.dvidLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.dvidLabel.Name = "dvidLabel";
-            this.dvidLabel.Size = new System.Drawing.Size(53, 20);
+            this.dvidLabel.Size = new System.Drawing.Size(41, 15);
             this.dvidLabel.TabIndex = 19;
             this.dvidLabel.Text = "DVI-D:";
             // 
             // portLabel
             // 
             this.portLabel.AutoSize = true;
-            this.portLabel.Location = new System.Drawing.Point(158, 531);
+            this.portLabel.Location = new System.Drawing.Point(138, 398);
             this.portLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.portLabel.Name = "portLabel";
-            this.portLabel.Size = new System.Drawing.Size(35, 20);
+            this.portLabel.Size = new System.Drawing.Size(29, 15);
             this.portLabel.TabIndex = 18;
             this.portLabel.Text = "Port";
             // 
             // trnLabel
             // 
             this.trnLabel.AutoSize = true;
-            this.trnLabel.Location = new System.Drawing.Point(78, 501);
+            this.trnLabel.Location = new System.Drawing.Point(68, 376);
             this.trnLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.trnLabel.Name = "trnLabel";
-            this.trnLabel.Size = new System.Drawing.Size(40, 20);
+            this.trnLabel.Size = new System.Drawing.Size(32, 15);
             this.trnLabel.TabIndex = 17;
             this.trnLabel.Text = "TRN:";
             // 
             // sndLabel
             // 
             this.sndLabel.AutoSize = true;
-            this.sndLabel.Location = new System.Drawing.Point(78, 469);
+            this.sndLabel.Location = new System.Drawing.Point(68, 352);
             this.sndLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.sndLabel.Name = "sndLabel";
-            this.sndLabel.Size = new System.Drawing.Size(42, 20);
+            this.sndLabel.Size = new System.Drawing.Size(33, 15);
             this.sndLabel.TabIndex = 16;
             this.sndLabel.Text = "SND:";
             // 
             // sigLabel
             // 
             this.sigLabel.AutoSize = true;
-            this.sigLabel.Location = new System.Drawing.Point(78, 436);
+            this.sigLabel.Location = new System.Drawing.Point(68, 327);
             this.sigLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.sigLabel.Name = "sigLabel";
-            this.sigLabel.Size = new System.Drawing.Size(34, 20);
+            this.sigLabel.Size = new System.Drawing.Size(27, 15);
             this.sigLabel.TabIndex = 15;
             this.sigLabel.Text = "SIG:";
             // 
             // nsaLabel
             // 
             this.nsaLabel.AutoSize = true;
-            this.nsaLabel.Location = new System.Drawing.Point(78, 403);
+            this.nsaLabel.Location = new System.Drawing.Point(68, 302);
             this.nsaLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.nsaLabel.Name = "nsaLabel";
-            this.nsaLabel.Size = new System.Drawing.Size(41, 20);
+            this.nsaLabel.Size = new System.Drawing.Size(33, 15);
             this.nsaLabel.TabIndex = 14;
             this.nsaLabel.Text = "NSA:";
             // 
             // msaLabel
             // 
             this.msaLabel.AutoSize = true;
-            this.msaLabel.Location = new System.Drawing.Point(78, 371);
+            this.msaLabel.Location = new System.Drawing.Point(68, 278);
             this.msaLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.msaLabel.Name = "msaLabel";
-            this.msaLabel.Size = new System.Drawing.Size(43, 20);
+            this.msaLabel.Size = new System.Drawing.Size(35, 15);
             this.msaLabel.TabIndex = 13;
             this.msaLabel.Text = "MSA:";
             // 
             // frqLabel
             // 
             this.frqLabel.AutoSize = true;
-            this.frqLabel.Location = new System.Drawing.Point(78, 306);
+            this.frqLabel.Location = new System.Drawing.Point(68, 230);
             this.frqLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.frqLabel.Name = "frqLabel";
-            this.frqLabel.Size = new System.Drawing.Size(39, 20);
+            this.frqLabel.Size = new System.Drawing.Size(32, 15);
             this.frqLabel.TabIndex = 12;
             this.frqLabel.Text = "FRQ:";
             // 
             // frkLabel
             // 
             this.frkLabel.AutoSize = true;
-            this.frkLabel.Location = new System.Drawing.Point(78, 273);
+            this.frkLabel.Location = new System.Drawing.Point(68, 205);
             this.frkLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.frkLabel.Name = "frkLabel";
-            this.frkLabel.Size = new System.Drawing.Size(37, 20);
+            this.frkLabel.Size = new System.Drawing.Size(30, 15);
             this.frkLabel.TabIndex = 11;
             this.frkLabel.Text = "FRK:";
             // 
             // indLabel
             // 
             this.indLabel.AutoSize = true;
-            this.indLabel.Location = new System.Drawing.Point(78, 339);
+            this.indLabel.Location = new System.Drawing.Point(68, 254);
             this.indLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.indLabel.Name = "indLabel";
-            this.indLabel.Size = new System.Drawing.Size(38, 20);
+            this.indLabel.Size = new System.Drawing.Size(30, 15);
             this.indLabel.TabIndex = 10;
             this.indLabel.Text = "IND:";
             // 
             // clrLabel
             // 
             this.clrLabel.AutoSize = true;
-            this.clrLabel.Location = new System.Drawing.Point(78, 241);
+            this.clrLabel.Location = new System.Drawing.Point(68, 181);
             this.clrLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.clrLabel.Name = "clrLabel";
-            this.clrLabel.Size = new System.Drawing.Size(37, 20);
+            this.clrLabel.Size = new System.Drawing.Size(31, 15);
             this.clrLabel.TabIndex = 9;
             this.clrLabel.Text = "CLR:";
             // 
             // carLabel
             // 
             this.carLabel.AutoSize = true;
-            this.carLabel.Location = new System.Drawing.Point(78, 209);
+            this.carLabel.Location = new System.Drawing.Point(68, 157);
             this.carLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.carLabel.Name = "carLabel";
-            this.carLabel.Size = new System.Drawing.Size(40, 20);
+            this.carLabel.Size = new System.Drawing.Size(33, 15);
             this.carLabel.TabIndex = 8;
             this.carLabel.Text = "CAR:";
             // 
             // bobLabel
             // 
             this.bobLabel.AutoSize = true;
-            this.bobLabel.Location = new System.Drawing.Point(78, 176);
+            this.bobLabel.Location = new System.Drawing.Point(68, 132);
             this.bobLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.bobLabel.Name = "bobLabel";
-            this.bobLabel.Size = new System.Drawing.Size(41, 20);
+            this.bobLabel.Size = new System.Drawing.Size(33, 15);
             this.bobLabel.TabIndex = 7;
             this.bobLabel.Text = "BOB:";
             // 
             // indicatorLabel
             // 
             this.indicatorLabel.AutoSize = true;
-            this.indicatorLabel.Location = new System.Drawing.Point(145, 143);
+            this.indicatorLabel.Location = new System.Drawing.Point(127, 107);
             this.indicatorLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.indicatorLabel.Name = "indicatorLabel";
-            this.indicatorLabel.Size = new System.Drawing.Size(68, 20);
+            this.indicatorLabel.Size = new System.Drawing.Size(54, 15);
             this.indicatorLabel.TabIndex = 6;
             this.indicatorLabel.Text = "Indicator";
             // 
             // batteryTextBox
             // 
-            this.batteryTextBox.Location = new System.Drawing.Point(167, 77);
+            this.batteryTextBox.Location = new System.Drawing.Point(146, 58);
             this.batteryTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.batteryTextBox.Name = "batteryTextBox";
-            this.batteryTextBox.Size = new System.Drawing.Size(149, 27);
+            this.batteryTextBox.Size = new System.Drawing.Size(131, 23);
             this.batteryTextBox.TabIndex = 2;
             this.batteryTextBox.Enter += new System.EventHandler(this.batteryTextBox_Enter);
             this.batteryTextBox.Leave += new System.EventHandler(this.batteryTextBox_Leave);
@@ -678,56 +678,56 @@
             // batteryLabel
             // 
             this.batteryLabel.AutoSize = true;
-            this.batteryLabel.Location = new System.Drawing.Point(43, 77);
+            this.batteryLabel.Location = new System.Drawing.Point(38, 58);
             this.batteryLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.batteryLabel.Name = "batteryLabel";
-            this.batteryLabel.Size = new System.Drawing.Size(74, 20);
+            this.batteryLabel.Size = new System.Drawing.Size(58, 15);
             this.batteryLabel.TabIndex = 4;
             this.batteryLabel.Text = "Batteries: ";
             // 
             // serialNumberTextBox
             // 
-            this.serialNumberTextBox.Location = new System.Drawing.Point(167, 44);
+            this.serialNumberTextBox.Location = new System.Drawing.Point(146, 33);
             this.serialNumberTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.serialNumberTextBox.Name = "serialNumberTextBox";
-            this.serialNumberTextBox.Size = new System.Drawing.Size(149, 27);
+            this.serialNumberTextBox.Size = new System.Drawing.Size(131, 23);
             this.serialNumberTextBox.TabIndex = 1;
             // 
             // serialNumberLabel
             // 
             this.serialNumberLabel.AutoSize = true;
-            this.serialNumberLabel.Location = new System.Drawing.Point(43, 44);
+            this.serialNumberLabel.Location = new System.Drawing.Point(38, 33);
             this.serialNumberLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.serialNumberLabel.Name = "serialNumberLabel";
-            this.serialNumberLabel.Size = new System.Drawing.Size(111, 20);
+            this.serialNumberLabel.Size = new System.Drawing.Size(88, 15);
             this.serialNumberLabel.TabIndex = 2;
             this.serialNumberLabel.Text = "Serial Number: ";
             // 
             // dayOfWeekComboBox
             // 
             this.dayOfWeekComboBox.FormattingEnabled = true;
-            this.dayOfWeekComboBox.Location = new System.Drawing.Point(167, 11);
+            this.dayOfWeekComboBox.Location = new System.Drawing.Point(146, 8);
             this.dayOfWeekComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.dayOfWeekComboBox.Name = "dayOfWeekComboBox";
-            this.dayOfWeekComboBox.Size = new System.Drawing.Size(149, 28);
+            this.dayOfWeekComboBox.Size = new System.Drawing.Size(131, 23);
             this.dayOfWeekComboBox.TabIndex = 0;
             // 
             // dayOfWeekLabel
             // 
             this.dayOfWeekLabel.AutoSize = true;
-            this.dayOfWeekLabel.Location = new System.Drawing.Point(43, 11);
+            this.dayOfWeekLabel.Location = new System.Drawing.Point(38, 8);
             this.dayOfWeekLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.dayOfWeekLabel.Name = "dayOfWeekLabel";
-            this.dayOfWeekLabel.Size = new System.Drawing.Size(100, 20);
+            this.dayOfWeekLabel.Size = new System.Drawing.Size(79, 15);
             this.dayOfWeekLabel.TabIndex = 11;
             this.dayOfWeekLabel.Text = "Day of Week: ";
             // 
             // EdgeworkInputForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(344, 688);
+            this.ClientSize = new System.Drawing.Size(301, 647);
             this.Controls.Add(this.portPlateNumTextBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.batteryHolderTextBox);
@@ -787,6 +787,7 @@
             this.Controls.Add(this.serialNumberLabel);
             this.Controls.Add(this.dayOfWeekComboBox);
             this.Controls.Add(this.dayOfWeekLabel);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "EdgeworkInputForm";
             this.Text = "EdgeworkInputForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EdgeworkInputForm_FormClosing);
