@@ -143,7 +143,16 @@ namespace New_KTANE_Solver
 
             ShowAnswer(answer);
 
-            UpdateForm(stage + 1, Bomb, LogFileWriter, ModuleSelectionForm);
+            if (stage == 4)
+            {
+                firstStage.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
+                ResetModule();
+            }
+
+            else
+            { 
+                UpdateForm(stage + 1, Bomb, LogFileWriter, ModuleSelectionForm);
+            }
         }
 
         private void moduleSelection_Click(object sender, EventArgs e)
