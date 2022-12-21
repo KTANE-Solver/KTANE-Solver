@@ -1047,9 +1047,11 @@ namespace New_KTANE_Solver
             ShowAnswer(answer, true);
         }
 
+        /// <summary>
+        /// find the last node the player hits before htting the wall
+        /// </summary>
         public void UpdateGoal()
         {
-            //find the last node the player hits before htting the wall
             Node currentGoal = MainGoal;
 
             switch (MainCardinalGoal)
