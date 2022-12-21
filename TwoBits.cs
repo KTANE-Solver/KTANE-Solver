@@ -32,7 +32,7 @@ namespace New_KTANE_Solver
 
             //*Note: Skip this step if there is also an RJ45 port present.
 
-            if (!Bomb.Rj.Visible && Bomb.Stereo.Visible)
+            if (!Bomb.RJVisible && Bomb.RCAVisuble)
             {
                 initalCode *= 2;
             }

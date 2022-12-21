@@ -51,7 +51,7 @@ namespace New_KTANE_Solver
                 PrintDebugLine("The last digit of the controller's serial number is 1 or 4\n");
             }
             //Otherwise, if there is a lit indicator "SIG" or a RJ-45 port
-            else if (Bomb.Sig.Lit || Bomb.Rj.Visible)
+            else if (Bomb.Sig.Lit || Bomb.RJVisible)
             {
                 colorDictionary.Add("VCC", Color.Yellow);
                 colorDictionary.Add("AIN", Color.Red);

@@ -97,12 +97,7 @@ namespace New_KTANE_Solver
             bool emptyPortPlate = false;
             int portPlateNum = 0;
 
-            Port dvid = null;
-            Port parallel = null;
-            Port ps = null;
-            Port rj = null;
-            Port serial = null;
-            Port stereo = null;
+            List<Plate> plates = new List<Plate>();
 
             //if there is a problem reading Edgework.txt
             bool errorReached = false;
@@ -114,7 +109,7 @@ namespace New_KTANE_Solver
 
             //the line the reader is reading
 
-            for (int lineReaing = 1; lineReaing <= 23; lineReaing++)
+            for (int lineReaing = 1; lineReaing <= 16; lineReaing++)
             {
                 String currentLine = reader.ReadLine();
 
@@ -388,109 +383,27 @@ namespace New_KTANE_Solver
 
                         break;
 
-                    //empty port plate
+                    //Plates
+
                     case 16:
+
+                        string[] platesStr = currentLine.Split(',');
+
                         try
                         {
-                            emptyPortPlate = bool.Parse(currentLine);
+                            foreach (string platestr in platesStr)
+                            {
+                                string[] arr = platestr.Split('|');
+
+                                plates.Add(new Plate(bool.Parse(arr[0]), bool.Parse(arr[1]), bool.Parse(arr[2]), bool.Parse(arr[3]), bool.Parse(arr[4]), bool.Parse(arr[5])));
+                            }
                         }
+
                         catch
                         {
                             errorReached = true;
-                            errorString = $"Can't read empty port plate. Read " + currentLine;
+                            errorString = "Can't read ports line. Read " + currentLine;
                         }
-
-                        break;
-
-                    case 17:
-                        errorReached = !Int32.TryParse(currentLine, out portPlateNum);
-
-                        if (errorReached)
-                        {
-                            errorString = "Can't read portPlateNum. Read " + currentLine;
-                        }
-
-                        break;
-
-                    //Port dvid
-                    case 18:
-                        int portNum;
-
-                        errorReached = !Int32.TryParse(currentLine, out portNum);
-
-                        if (errorReached)
-                        {
-                            errorString = "Can't read dvid port num. Read " + currentLine;
-                        }
-
-                        dvid = new Port("DVI-D", portNum);
-
-                        break;
-
-                    //Port parallel
-                    case 19:
-
-                        errorReached = !Int32.TryParse(currentLine, out portNum);
-
-                        if (errorReached)
-                        {
-                            errorString = "Can't read parallel port num. Read " + currentLine;
-                        }
-
-                        parallel = new Port("Parallel", portNum);
-
-                        break;
-
-                    //Port ps/2
-                    case 20:
-                        errorReached = !Int32.TryParse(currentLine, out portNum);
-
-                        if (errorReached)
-                        {
-                            errorString = "Can't read ps port num. Read " + currentLine;
-                        }
-
-                        ps = new Port("PS/2", portNum);
-
-                        break;
-
-                    //Port rj-45
-                    case 21:
-                        errorReached = !Int32.TryParse(currentLine, out portNum);
-
-                        if (errorReached)
-                        {
-                            errorString = "Can't read rj-45 port num. Read " + currentLine;
-                        }
-
-                        rj = new Port("RJ-45", portNum);
-
-                        break;
-
-                    //Port serial
-                    case 22:
-                        errorReached = !Int32.TryParse(currentLine, out portNum);
-
-                        if (errorReached)
-                        {
-                            errorString = "Can't read serial port num. Read " + currentLine;
-                        }
-
-                        serial = new Port("Serial", portNum);
-
-                        break;
-
-                    //Port stereo
-                    case 23:
-                        errorReached = !Int32.TryParse(currentLine, out portNum);
-
-                        if (errorReached)
-                        {
-                            errorString = "Can't read stereo port num. Read " + currentLine;
-                        }
-
-                        stereo = new Port("Stero RCA", portNum);
-
                         break;
                 }
 
@@ -621,11 +534,11 @@ namespace New_KTANE_Solver
                     errorString = "Invalid port plate #";
                 }
 
-                //can't have no port plates but still have an empty port plate
+                //can't have no port Plates but still have an empty port plate
                 if (portPlateNum == 0 && emptyPortPlate)
                 {
                     errorReached = true;
-                    errorString = "Can't have no port plates but still have an empty port plate";
+                    errorString = "Can't have no port Plates but still have an empty port plate";
                 }
             }
 
@@ -669,14 +582,7 @@ namespace New_KTANE_Solver
                     sig,
                     snd,
                     trn,
-                    emptyPortPlate,
-                    portPlateNum,
-                    dvid,
-                    parallel,
-                    ps,
-                    rj,
-                    serial,
-                    stereo
+                    plates
                 );
 
                 confirmationForm = new EdgeworkConfirmationForm(

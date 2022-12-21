@@ -33,7 +33,7 @@ namespace New_KTANE_Solver
         //the number of battery holders
         private int batteryHolder;
 
-        private int portPlateNum;
+        public List<Plate> Plates { get; }
 
         //list of lit indicators
         public List<Indicator> LitIndicatorsList { get; }
@@ -75,25 +75,7 @@ namespace New_KTANE_Solver
         private Indicator trn;
 
         //if there is an empty port plate
-        private bool emptyPortPlate;
-
-        //dvid port
-        private Port dvid;
-
-        //parallel port
-        private Port parallel;
-
-        //ps2 port
-        private Port ps;
-
-        //rj45 port
-        private Port rj;
-
-        //serial port
-        private Port serial;
-
-        //stereo port
-        private Port stereo;
+        public bool EmptyPortPlate { get; }
 
         //the number of strikes
         private int strike;
@@ -387,93 +369,42 @@ namespace New_KTANE_Solver
 
         public int PortPlateNum
         {
-            get { return portPlateNum; }
-        }
-
-        public bool EmptyPortPlate
-        {
-            get { return emptyPortPlate; }
-        }
-
-        public Port Dvid
-        {
-            get { return dvid; }
-        }
-
-        public Port Parallel
-        {
-            get { return parallel; }
-        }
-
-        public Port Ps
-        {
-            get { return ps; }
-        }
-
-        public Port Rj
-        {
-            get { return rj; }
-        }
-
-        public Port Serial
-        {
-            get { return serial; }
-        }
-
-        public Port Stereo
-        {
-            get { return stereo; }
+            get { return Plates.Count; }
         }
 
         //the number of unique ports on the bomb
-        public int UniquePortNum
-        {
-            get
-            {
-                int num = 0;
-
-                if (dvid.Num > 0)
-                    num++;
-
-                if (parallel.Num > 0)
-                    num++;
-
-                if (ps.Num > 0)
-                    num++;
-
-                if (rj.Num > 0)
-                    num++;
-
-                if (serial.Num > 0)
-                    num++;
-
-                if (stereo.Num > 0)
-                    num++;
-
-                return num;
-            }
-        }
+        public int UniquePortNum { get; }
 
         //tells the total amount of ports on the bomb
         public int PortNum
         {
             get
             {
-                int num = dvid.Num;
-
-                num += parallel.Num;
-
-                num += ps.Num;
-
-                num += rj.Num;
-
-                num += serial.Num;
-
-                num += stereo.Num;
-
-                return num;
+                return PPNum + RcaNum + SerialNum + DviNum +  RJNum + PSNum;
             }
         }
+
+        public int PPNum { get; }
+        public int RcaNum { get; }
+        public int SerialNum { get; }
+        public int RJNum { get; }
+        public int DviNum { get; }
+        public int PSNum { get; }
+
+        public bool OnlyPP { get; }
+        public bool OnlyRCA { get; }
+        public bool OnlySerial { get; }
+        public bool OnlyRJ { get; }
+        public bool OnlyDVI { get; }
+        public bool OnlyPS { get; }
+
+        public bool PPVisuble { get { return PPNum > 0; } }
+        public bool RCAVisuble { get { return RcaNum > 0; } }
+        public bool SerialVisble { get { return SerialNum > 0; } }
+        public bool DVIVisble { get { return DviNum > 0; } }
+        public bool PSVisible { get { return PSNum > 0; } }
+        public bool RJVisible { get { return RJNum > 0; } }
+
 
         public int Strike
         {
@@ -500,13 +431,6 @@ namespace New_KTANE_Solver
         /// <param name="sig">the sig indicator</param>
         /// <param name="snd">the snd indicator</param>
         /// <param name="trn">the trn indicator</param>
-        /// <param name="emptyPortPlate">if there is an empty port plate</param>
-        /// <param name="dvid">the dvid port</param>
-        /// <param name="parallel">the parallel port</param>
-        /// <param name="ps">the ps/2 port</param>
-        /// <param name="rj">the rj-45 port</param>
-        /// <param name="serial">the serial port</param>
-        /// <param name="stereo">the stereo port</param>
         public Bomb(
             Day day,
             String serialNumber,
@@ -523,14 +447,7 @@ namespace New_KTANE_Solver
             Indicator sig,
             Indicator snd,
             Indicator trn,
-            bool emptyPortPlate,
-            int portPlateNum,
-            Port dvid,
-            Port parallel,
-            Port ps,
-            Port rj,
-            Port serial,
-            Port stereo
+            List<Plate> plates
         )
         {
             LitIndicatorsList = new List<Indicator>();
@@ -540,7 +457,6 @@ namespace New_KTANE_Solver
             this.serialNumber = serialNumber.ToUpper();
             this.battery = battery;
             this.batteryHolder = batteryHolder;
-            this.portPlateNum = portPlateNum;
             this.bob = bob;
             this.car = car;
             this.clr = clr;
@@ -552,13 +468,46 @@ namespace New_KTANE_Solver
             this.sig = sig;
             this.snd = snd;
             this.trn = trn;
-            this.emptyPortPlate = emptyPortPlate;
-            this.dvid = dvid;
-            this.parallel = parallel;
-            this.ps = ps;
-            this.rj = rj;
-            this.serial = serial;
-            this.stereo = stereo;
+
+            this.Plates = plates;
+
+            PPNum = plates.Where(x => x.pp).Count();
+            RcaNum = plates.Where(x => x.rca).Count();
+            SerialNum = plates.Where(x => x.serial).Count();
+            RJNum = plates.Where(x => x.rj).Count();
+            DviNum = plates.Where(x => x.dvi).Count();
+            PSNum = plates.Where(x => x.ps).Count();
+
+            OnlyPP = plates.Where(x => x.OnlyPP()).Count() > 0;
+            OnlyRCA = plates.Where(x => x.OnlyRCA()).Count() > 0;
+            OnlySerial = plates.Where(x => x.OnlySerial()).Count() > 0;
+            OnlyRJ = plates.Where(x => x.OnlyRJ()).Count() > 0;
+            OnlyDVI = plates.Where(x => x.OnlyDVI()).Count() > 0;
+            OnlyPS = plates.Where(x => x.OnlyPS()).Count() > 0;
+            EmptyPortPlate = plates.Where(x => x.Empty()).Count() > 0;
+
+
+
+            UniquePortNum = 0;
+
+            if (DviNum > 0)
+                UniquePortNum++;
+
+            if (PPNum > 0)
+                UniquePortNum++;
+
+            if (PSNum > 0)
+                UniquePortNum++;
+
+            if (RJNum > 0)
+                UniquePortNum++;
+
+            if (SerialNum > 0)
+                UniquePortNum++;
+
+            if (RcaNum > 0)
+                UniquePortNum++;
+
 
             if (bob.VisibleAndLit)
             {

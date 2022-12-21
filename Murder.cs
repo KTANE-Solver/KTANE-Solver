@@ -159,7 +159,7 @@ namespace New_KTANE_Solver
             }
 
             //Otherwise, if the bomb has 2 or more Stereo RCA ports, use row 8.
-            if (Bomb.Stereo.Num >= 2)
+            if (Bomb.RcaNum >= 2)
             {
                 return 8;
             }
@@ -215,7 +215,7 @@ namespace New_KTANE_Solver
             }
 
             //Otherwise, if the bomb has a serial port, use row 9.
-            if (Bomb.Serial.Visible)
+            if (Bomb.RCAVisuble)
             {
                 return 9;
             }
@@ -245,7 +245,7 @@ namespace New_KTANE_Solver
             }
 
             //Otherwise, if the bomb has 2 or more Stereo RCA ports, use row 2.
-            if (Bomb.Stereo.Num >= 2)
+            if (Bomb.RcaNum >= 2)
             {
                 return 2;
             }

@@ -147,7 +147,7 @@ namespace New_KTANE_Solver
 
         private Symbol Port()
         {
-            if (Bomb.Ps.Visible)
+            if (Bomb.PSVisible)
             {
                 PrintDebugLine("Skipping Port Row\n");
                 return Symbol.Null;
@@ -155,11 +155,11 @@ namespace New_KTANE_Solver
 
             PrintDebugLine("Port Row\n");
 
-            counter[Symbol.Rock] = Bomb.Rj.Num;
-            counter[Symbol.Paper] = Bomb.Parallel.Num;
-            counter[Symbol.Scissors] = Bomb.Serial.Num;
-            counter[Symbol.Lizard] = Bomb.Dvid.Num;
-            counter[Symbol.Spock] = Bomb.Stereo.Num;
+            counter[Symbol.Rock] = Bomb.RJNum;
+            counter[Symbol.Paper] = Bomb.PPNum;
+            counter[Symbol.Scissors] = Bomb.SerialNum;
+            counter[Symbol.Lizard] = Bomb.DviNum;
+            counter[Symbol.Spock] = Bomb.RcaNum;
 
             PrintDebugLine($"Rock: {counter[Symbol.Rock]}");
             PrintDebugLine($"Paper: {counter[Symbol.Paper]}");

@@ -457,7 +457,7 @@ namespace New_KTANE_Solver
             //Bomb has 2 or fewer battery holders:
             else
             {
-                //If there are more port plates than battery holders:
+                //If there are more port Plates than battery holders:
                 if (Bomb.BatteryHolder < Bomb.PortPlateNum)
                 {
                     switch (permutation)
@@ -483,12 +483,12 @@ namespace New_KTANE_Solver
                 }
                 //Otherwise, if there are any duplicate ports:
                 else if (
-                    Bomb.Rj.Num > 1
-                    || Bomb.Serial.Num > 1
-                    || Bomb.Stereo.Num > 1
-                    || Bomb.Dvid.Num > 1
-                    || Bomb.Ps.Num > 1
-                    || Bomb.Parallel.Num > 1
+                    Bomb.RJNum > 1
+                    || Bomb.SerialNum > 1
+                    || Bomb.RcaNum > 1
+                    || Bomb.DviNum > 1
+                    || Bomb.PSNum > 1
+                    || Bomb.PPNum > 1
                 )
                 {
                     switch (permutation)

@@ -33,6 +33,8 @@ namespace New_KTANE_Solver
         //Maze Colors
         private Color[] mazeColors;
 
+        private PlateForm plateForm;
+
         //PROPERTIES
 
         //CONSTRUCTOR
@@ -88,18 +90,10 @@ namespace New_KTANE_Solver
             SetupCheckBoxes(sndVisibleCheckBox, sndLitCheckBox);
             SetupCheckBoxes(trnVisibleCheckBox, trnLitCheckBox);
 
-            emptyPortPlateCheckBox.Checked = false;
-
             //setting promppt text for battery and port textboxes
             serialNumberTextBox.Text = "";
             SetPromptText(batteryTextBox, "# of batteries");
             SetPromptText(batteryHolderTextBox, "# of battery holders");
-            SetPromptText(dvidTextBox, "# of DVI-D ports");
-            SetPromptText(parallelTextBox, "# of parallel ports");
-            SetPromptText(psTextBox, "# of PS/2 ports");
-            SetPromptText(rjTextBox, "# of RJ-45 ports");
-            SetPromptText(serialTextBox, "# of serial ports");
-            SetPromptText(stereoTextBox, "# of stereo RCA ports");
 
             //setting the order of tab control
             dayOfWeekComboBox.TabIndex = 0;
@@ -107,13 +101,6 @@ namespace New_KTANE_Solver
             batteryTextBox.TabIndex = 2;
             batteryHolderTextBox.TabIndex = 3;
             portPlateNumTextBox.TabIndex = 4;
-            dvidTextBox.TabIndex = 5;
-            parallelTextBox.TabIndex = 6;
-            psTextBox.TabIndex = 7;
-            rjTextBox.TabIndex = 8;
-            serialTextBox.TabIndex = 9;
-            stereoTextBox.TabIndex = 10;
-            submitButton.TabIndex = 11;
 
             //labels shouldn't be in the tab order
             dayOfWeekLabel.TabStop = false;
@@ -134,11 +121,6 @@ namespace New_KTANE_Solver
             trnLabel.TabStop = false;
 
             portLabel.TabStop = false;
-            dvidLabel.TabStop = false;
-            psLabel.TabStop = false;
-            rjLabel.TabStop = false;
-            serialLabel.TabStop = false;
-            stereoLabel.TabStop = false;
 
             //checkbox shouldn't be in the tab order
             bobVisibleCheckBox.TabStop = false;
@@ -173,8 +155,6 @@ namespace New_KTANE_Solver
 
             trnVisibleCheckBox.TabStop = false;
             trnLitCheckBox.TabStop = false;
-
-            emptyPortPlateCheckBox.TabStop = false;
         }
 
         //METHODS
@@ -522,16 +502,11 @@ namespace New_KTANE_Solver
                 return;
             }
 
-            bool lastCharIsDigit =
-                serialNumber[serialNumber.Length - 1] >= 48
-                && serialNumber[serialNumber.Length - 1] <= 57;
-
-            if (!lastCharIsDigit)
+            if (!Char.IsDigit(serialNumber[serialNumber.Length - 1]))
             {
-                logFileWriter.WriteLine("The last character of the serial number isn't a number\n");
-                System.Diagnostics.Debug.WriteLine(
-                    "The last character of the serial number isn't a number\n"
-                );
+                string error = "The last character of the serial number isn't a number\n";
+                logFileWriter.WriteLine(error);
+                System.Diagnostics.Debug.WriteLine(error);
 
                 String text =
                     "You entered an invalid serial number. A valid serial number must have the last character be a number";
@@ -661,9 +636,6 @@ namespace New_KTANE_Solver
                 trnLitCheckBox.Checked
             );
 
-            //seeing if there is an empty port plate
-            bool emptyPortPlate = emptyPortPlateCheckBox.Checked;
-
             //see if port plate num is valid
             int portPlateNum;
 
@@ -682,167 +654,28 @@ namespace New_KTANE_Solver
                 return;
             }
 
-            //make sure dvid text box is valid
-            int dvidNum;
-
-            try
-            {
-                dvidNum = Int32.Parse(dvidTextBox.Text);
-            }
-            catch
-            {
-                String text = "You entered an invalid DVI-D port number";
-
-                String caption = "Invalid DVI-D Number";
-
-                ShowErrorMessageBox(caption, text);
-
-                return;
-            }
-
-            Port dvid = new Port("DVI-D", dvidNum);
-
-            //make sure parallel text box is valid
-            int parallelNum;
-
-            try
-            {
-                parallelNum = Int32.Parse(parallelTextBox.Text);
-            }
-            catch
-            {
-                String text = "You entered an invalid parallel port number";
-
-                String caption = "Invalid Parallel Number";
-
-                ShowErrorMessageBox(caption, text);
-
-                return;
-            }
-
-            Port parallel = new Port("parallel", parallelNum);
-
-            //make sure rj text box is valid
-            int rjNum;
-
-            try
-            {
-                rjNum = Int32.Parse(rjTextBox.Text);
-            }
-            catch
-            {
-                String text = "You entered an invalid RJ-45 port number";
-
-                String caption = "Invalid RJ-45 Number";
-
-                ShowErrorMessageBox(caption, text);
-
-                return;
-            }
-
-            Port rj = new Port("RJ-45", rjNum);
-
-            //make sure ps text box is valid
-            int psNum;
-
-            try
-            {
-                psNum = Int32.Parse(psTextBox.Text);
-            }
-            catch
-            {
-                String text = "You entered an invalid serial port number";
-
-                String caption = "Invalid Serial Number";
-
-                ShowErrorMessageBox(caption, text);
-
-                return;
-            }
-
-            Port ps = new Port("PS/2", psNum);
-
-            //make sure serial text box is valid
-            int serialNum;
-
-            try
-            {
-                serialNum = Int32.Parse(serialTextBox.Text);
-            }
-            catch
-            {
-                String text = "You entered an invalid serial port number";
-
-                String caption = "Invalid Serial Number";
-
-                ShowErrorMessageBox(caption, text);
-
-                return;
-            }
-
-            Port serial = new Port("serial", serialNum);
-
-            //make sure stereo text box is valid
-            int stereoNum;
-
-            //make sure parallel text box is valid
-            try
-            {
-                stereoNum = Int32.Parse(stereoTextBox.Text);
-            }
-            catch
-            {
-                String text = "You entered an invalid stereo port number";
-
-                String caption = "Invalid Stereo Number";
-
-                ShowErrorMessageBox(caption, text);
-
-                return;
-            }
-
-            Port stereo = new Port("stereo RCA", stereoNum);
-
-            //if this statement is reached, the bomb is valid.
             bomb = new Bomb(
-                day,
-                serialNumber,
-                battery,
-                batteryHolder,
-                bob,
-                car,
-                clr,
-                frk,
-                frq,
-                ind,
-                msa,
-                nsa,
-                sig,
-                snd,
-                trn,
-                emptyPortPlate,
-                portPlateNum,
-                dvid,
-                parallel,
-                ps,
-                rj,
-                serial,
-                stereo
-            );
+               day,
+               serialNumber,
+               battery,
+               batteryHolder,
+               bob,
+               car,
+               clr,
+               frk,
+               frq,
+               ind,
+               msa,
+               nsa,
+               sig,
+               snd,
+               trn,
+               new List<Plate>()
+           );
 
-            //going onto the confirmation page
+            plateForm = new PlateForm(1, portPlateNum, bomb, this, logFileWriter);
 
-            if (confirmationForm == null)
-            {
-                confirmationForm = new EdgeworkConfirmationForm(bomb, this, logFileWriter);
-            }
-            else
-            {
-                confirmationForm.UpdateForm(bomb, this);
-            }
-
-            this.Hide();
-            confirmationForm.Show();
+            plateForm.ShowDialog();
         }
 
         /// <summary>
@@ -941,66 +774,6 @@ namespace New_KTANE_Solver
         }
 
         /// <summary>
-        /// Deletes to prompt text
-        /// and make the textbox
-        /// text black
-        /// </summary>
-        private void dvidTextBox_Enter(object sender, EventArgs e)
-        {
-            DeletePromptText(dvidTextBox, "# of DVI-D ports");
-        }
-
-        /// <summary>
-        /// Deletes to prompt text
-        /// and make the textbox
-        /// text black
-        /// </summary>
-        private void parallelTextBox_Enter(object sender, EventArgs e)
-        {
-            DeletePromptText(parallelTextBox, "# of parallel ports");
-        }
-
-        /// <summary>
-        /// Deletes to prompt text
-        /// and make the textbox
-        /// text black
-        /// </summary>
-        private void psTextBox_Enter(object sender, EventArgs e)
-        {
-            DeletePromptText(psTextBox, "# of PS/2 ports");
-        }
-
-        /// <summary>
-        /// Deletes to prompt text
-        /// and make the textbox
-        /// text black
-        /// </summary>
-        private void rjTextBox_Enter(object sender, EventArgs e)
-        {
-            DeletePromptText(rjTextBox, "# of RJ-45 ports");
-        }
-
-        /// <summary>
-        /// Deletes to prompt text
-        /// and make the textbox
-        /// text black
-        /// </summary>
-        private void serialTextBox_Enter(object sender, EventArgs e)
-        {
-            DeletePromptText(serialTextBox, "# of serial ports");
-        }
-
-        /// <summary>
-        /// Deletes to prompt text
-        /// and make the textbox
-        /// text black
-        /// </summary>
-        private void stereoTextBox_Enter(object sender, EventArgs e)
-        {
-            DeletePromptText(stereoTextBox, "# of stereo RCA ports");
-        }
-
-        /// <summary>
         /// Sets the prompt text
         /// back up if the text box is blank
         /// </summary>
@@ -1029,78 +802,6 @@ namespace New_KTANE_Solver
             if (portPlateNumTextBox.Text == "")
             {
                 SetPromptText(portPlateNumTextBox, "# of Port Plates");
-            }
-        }
-
-        /// <summary>
-        /// Sets the prompt text
-        /// back up if the text box is blank
-        /// </summary>
-        private void dvidTextBox_Leave(object sender, EventArgs e)
-        {
-            if (dvidTextBox.Text == "")
-            {
-                SetPromptText(dvidTextBox, "# of DVI-D ports");
-            }
-        }
-
-        /// <summary>
-        /// Sets the prompt text
-        /// back up if the text box is blank
-        /// </summary>
-        private void parallelTextBox_Leave(object sender, EventArgs e)
-        {
-            if (parallelTextBox.Text == "")
-            {
-                SetPromptText(parallelTextBox, "# of parallel ports");
-            }
-        }
-
-        /// <summary>
-        /// Sets the prompt text
-        /// back up if the text box is blank
-        /// </summary>
-        private void psTextBox_Leave(object sender, EventArgs e)
-        {
-            if (psTextBox.Text == "")
-            {
-                SetPromptText(psTextBox, "# of PS/2 ports");
-            }
-        }
-
-        /// <summary>
-        /// Sets the prompt text
-        /// back up if the text box is blank
-        /// </summary>
-        private void rjTextBox_Leave(object sender, EventArgs e)
-        {
-            if (rjTextBox.Text == "")
-            {
-                SetPromptText(rjTextBox, "# of RJ-45 ports");
-            }
-        }
-
-        /// <summary>
-        /// Sets the prompt text
-        /// back up if the text box is blank
-        /// </summary>
-        private void serialTextBox_Leave(object sender, EventArgs e)
-        {
-            if (serialTextBox.Text == "")
-            {
-                SetPromptText(serialTextBox, "# of serial ports");
-            }
-        }
-
-        /// <summary>
-        /// Sets the prompt text
-        /// back up if the text box is blank
-        /// </summary>
-        private void stereoTextBox_Leave(object sender, EventArgs e)
-        {
-            if (stereoTextBox.Text == "")
-            {
-                SetPromptText(stereoTextBox, "# of stereo RCA ports");
             }
         }
     }

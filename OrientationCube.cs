@@ -61,7 +61,7 @@ namespace New_KTANE_Solver
                 }
             }
 
-            else if (Bomb.Ps.Visible || Bomb.Strike > 0)
+            else if (Bomb.PSVisible || Bomb.Strike > 0)
             {
                 switch (eyePosition)
                 {

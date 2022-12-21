@@ -96,7 +96,7 @@ namespace New_KTANE_Solver
                 new Card(Card.Number.JACK, Card.Suite.CLUB),
                 new Card(Card.Number.FOUR, Card.Suite.CLUB),
                 Bomb.Car.VisibleNotLit,
-                Bomb.Serial.Visible
+                Bomb.RCAVisuble
             );
 
             //fourth card
@@ -107,8 +107,8 @@ namespace New_KTANE_Solver
                 aceTree.Root.LeftNode.LeftNode,
                 new Card(Card.Number.TWO, Card.Suite.SPADE),
                 new Card(Card.Number.THREE, Card.Suite.DIAMOND),
-                Bomb.Rj.Visible,
-                Bomb.Ps.Visible
+                Bomb.RJVisible,
+                Bomb.PSVisible
             );
 
             //1. serial contain vowel
@@ -127,8 +127,8 @@ namespace New_KTANE_Solver
                 aceTree.Root.RightNode.LeftNode,
                 new Card(Card.Number.JACK, Card.Suite.SPADE),
                 new Card(Card.Number.ACE, Card.Suite.HEART),
-                Bomb.Dvid.Visible,
-                Bomb.Parallel.Visible
+                Bomb.DVIVisble,
+                Bomb.PPVisuble
             );
 
             //1, unlit snd or trn
@@ -219,7 +219,7 @@ namespace New_KTANE_Solver
                 new Card(Card.Number.FOUR, Card.Suite.CLUB),
                 new Card(Card.Number.THREE, Card.Suite.DIAMOND),
                 Bomb.Battery > 0,
-                Bomb.Parallel.Visible
+                Bomb.PPVisuble
             );
 
             //third card
@@ -231,7 +231,7 @@ namespace New_KTANE_Solver
                 new Card(Card.Number.FOUR, Card.Suite.HEART),
                 new Card(Card.Number.ACE, Card.Suite.HEART),
                 Bomb.Ind.Lit || Bomb.Msa.Lit || Bomb.Trn.Lit,
-                Bomb.Ps.Visible || Bomb.Dvid.Visible
+                Bomb.PSVisible || Bomb.DVIVisble
             );
 
             //three or fewer aa batteries
@@ -252,8 +252,8 @@ namespace New_KTANE_Solver
                 kingTree.Root.LeftNode.LeftNode,
                 new Card(Card.Number.FOUR, Card.Suite.SPADE),
                 new Card(Card.Number.KING, Card.Suite.SPADE),
-                Bomb.Stereo.Visible,
-                Bomb.Rj.Visible || Bomb.Serial.Visible
+                Bomb.RCAVisuble,
+                Bomb.RJVisible || Bomb.RCAVisuble
             );
 
             //lit sind
@@ -376,7 +376,7 @@ namespace New_KTANE_Solver
                 new Card(Card.Number.TWO, Card.Suite.SPADE),
                 new Card(Card.Number.NINE, Card.Suite.HEART),
                 Bomb.PortNum > 1,
-                Bomb.Ps.Visible || Bomb.Rj.Visible
+                Bomb.PSVisible || Bomb.RJVisible
             );
 
             //bob or unlit frq or sig
@@ -418,7 +418,7 @@ namespace New_KTANE_Solver
                 new Card(Card.Number.KING, Card.Suite.DIAMOND),
                 new Card(Card.Number.ACE, Card.Suite.DIAMOND),
                 Bomb.PortNum > 0,
-                Bomb.Parallel.Visible
+                Bomb.PPVisuble
             );
 
             //fewer than three ports
@@ -428,7 +428,7 @@ namespace New_KTANE_Solver
                 new Card(Card.Number.SEVEN, Card.Suite.DIAMOND),
                 new Card(Card.Number.FIVE, Card.Suite.CLUB),
                 Bomb.PortNum < 3,
-                Bomb.Stereo.Visible && Bomb.Dvid.Visible
+                Bomb.RCAVisuble && Bomb.DVIVisble
             );
 
             //fifth card
@@ -520,7 +520,7 @@ namespace New_KTANE_Solver
                 twoTree.Root.LeftNode,
                 new Card(Card.Number.TEN, Card.Suite.CLUB),
                 new Card(Card.Number.ACE, Card.Suite.SPADE),
-                Bomb.Dvid.Visible || Bomb.Stereo.Visible,
+                Bomb.DVIVisble || Bomb.RCAVisuble,
                 Bomb.DigitSum > 12
             );
 
@@ -530,8 +530,8 @@ namespace New_KTANE_Solver
                 twoTree.Root.RightNode,
                 new Card(Card.Number.FOUR, Card.Suite.HEART),
                 new Card(Card.Number.KING, Card.Suite.HEART),
-                Bomb.Parallel.Visible && Bomb.Serial.Visible,
-                Bomb.Rj.Visible
+                Bomb.PPVisuble && Bomb.RCAVisuble,
+                Bomb.RJVisible
             );
 
             //fourth card
@@ -552,7 +552,7 @@ namespace New_KTANE_Solver
                 twoTree.Root.LeftNode.RightNode,
                 new Card(Card.Number.TWO, Card.Suite.DIAMOND),
                 new Card(Card.Number.SIX, Card.Suite.HEART),
-                Bomb.Ps.Visible && Bomb.Parallel.Visible,
+                Bomb.PSVisible && Bomb.PPVisuble,
                 Bomb.PortNum <= 3
             );
 
@@ -987,7 +987,7 @@ namespace New_KTANE_Solver
                         return 4;
 
                     //Otherwise, if the second card is a club and there is no RJ - 45 port, press the second card.
-                    if (card2.suite == Card.Suite.CLUB && !Bomb.Rj.Visible)
+                    if (card2.suite == Card.Suite.CLUB && !Bomb.RJVisible)
                         return 2;
 
                     //Otherwise, press the first card.
@@ -1031,7 +1031,7 @@ namespace New_KTANE_Solver
                         return 4;
 
                     //Otherwise, if the starter card was the Five of Diamonds and there is a parallel port, press the first card.
-                    if (startingCard.suite == Card.Suite.DIAMOND && Bomb.Parallel.Visible)
+                    if (startingCard.suite == Card.Suite.DIAMOND && Bomb.PPVisuble)
                         return 1;
 
                     //Otherwise, if there is a lit TRN indicator and there is at least one black card, press the second card.

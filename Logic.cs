@@ -441,7 +441,7 @@ namespace New_KTANE_Solver
                 //P - Has parallel port
                 case 'P':
 
-                    statement = Bomb.Parallel.Visible;
+                    statement = Bomb.PPVisuble;
                     break;
 
                 //Q - Exactly 2 ports
@@ -453,7 +453,7 @@ namespace New_KTANE_Solver
                 //R - Has PS/2 port
                 case 'R':
 
-                    statement = Bomb.Ps.Visible;
+                    statement = Bomb.PSVisible;
                     break;
 
                 //S - Sum of digits in serial number > 10

@@ -54,7 +54,7 @@ namespace New_KTANE_Solver
                 "Unlit Nsa",
                 bomb.Frk.Lit,
                 "Lit Frk",
-                bomb.Rj.Visible,
+                bomb.RJVisible,
                 "RJ-45 Visible"
             );
 
@@ -70,7 +70,7 @@ namespace New_KTANE_Solver
                 "Unlit Ind",
                 bomb.Trn.VisibleNotLit,
                 "Unlit Trn",
-                bomb.Dvid.Visible,
+                bomb.DVIVisble,
                 "DVI-D Visible"
             );
 
@@ -101,9 +101,9 @@ namespace New_KTANE_Solver
                 "Lit Bob",
                 bomb.Clr.Lit,
                 "Lit Clr",
-                bomb.Ps.Visible,
+                bomb.PSVisible,
                 "PS/2 Visible",
-                bomb.Serial.Visible,
+                bomb.SerialVisble,
                 "Serial Visible"
             );
 
@@ -133,7 +133,7 @@ namespace New_KTANE_Solver
                 "Unlit Frk",
                 bomb.Msa.Lit,
                 "Lit Msa",
-                bomb.Parallel.Visible,
+                bomb.PPVisuble,
                 "Parallel Visible",
                 bomb.HasVowel,
                 "Vowel in serial number"
@@ -151,7 +151,7 @@ namespace New_KTANE_Solver
                 "Unlit Msa",
                 bomb.Snd.Lit,
                 "Lit Snd",
-                bomb.Stereo.Visible,
+                bomb.RCAVisuble,
                 "Stereo Visible"
             );
         }
