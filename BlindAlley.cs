@@ -11,7 +11,7 @@ namespace New_KTANE_Solver
     /// Author: Nya Bentley
     /// Purpose: Solves the blind alley module
     /// </summary>
-    class BlindAlley : Module
+    public class BlindAlley : Module
     {
         //FIELDS
         private Section topLeft;
