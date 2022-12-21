@@ -95,7 +95,7 @@ namespace New_KTANE_Solver
             PrintHeader();
 
             AdjacentLetters module = new AdjacentLetters(grid, Bomb, LogFileWriter);
-            module.Solve();
+            module.Solve(false);
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
         }
 
