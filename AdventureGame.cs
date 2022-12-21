@@ -81,7 +81,7 @@ namespace New_KTANE_Solver
         /// <summary>
         /// Solve the Advenuture Game module
         /// </summary>
-        public void Solve()
+        public string Solve(bool debug)
         {
             PrintDebugLine("======================ADVENTURE GAME======================\n");
 
@@ -137,7 +137,12 @@ namespace New_KTANE_Solver
 
             PrintDebugLine($"Answer:\n\n{answer}\n");
 
-            ShowAnswer(answer, true);
+            if (!debug)
+            { 
+                ShowAnswer(answer, true);
+            }
+
+            return answer;
         }
 
         private void CheckItem(Item item)
