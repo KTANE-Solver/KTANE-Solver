@@ -9,7 +9,16 @@ namespace New_KTANE_Solver
 {
     public class Microcontroller : Module
     {
-        private string whiteDotCorner;
+
+        public enum DotPos
+        {
+            TL,
+            TR,
+            BL,
+            BR
+        }
+
+        private DotPos whiteDotCorner;
         private string moduleType;
         private int pinNum;
         private int secondDigit;
@@ -20,7 +29,7 @@ namespace New_KTANE_Solver
         public Microcontroller(
             Bomb bomb,
             StreamWriter logFileWriter,
-            string whiteDotCorner,
+            DotPos whiteDotCorner,
             string moduleType,
             int pinNum,
             int secondDigit,
@@ -134,7 +143,7 @@ namespace New_KTANE_Solver
             int halfPinNum = pinNum / 2;
             switch (whiteDotCorner)
             {
-                case "Top Left":
+                case DotPos.TL:
 
                     for (int i = 0; i < halfPinNum; i++)
                     {
@@ -148,7 +157,7 @@ namespace New_KTANE_Solver
 
                     return answers;
 
-                case "Top Right":
+                case DotPos.TR:
                     for (int i = halfPinNum - 1; i >= 0; i--)
                     {
                         answers.Add(pinList[i].color);
@@ -161,7 +170,7 @@ namespace New_KTANE_Solver
 
                     return answers;
 
-                case "Bottom Left":
+                case DotPos.BL:
                     for (int i = pinNum - 1; i >= halfPinNum; i--)
                     {
                         answers.Add(pinList[i].color);

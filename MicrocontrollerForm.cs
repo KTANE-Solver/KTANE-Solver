@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace New_KTANE_Solver
 {
     public partial class MicrocontrollerForm : ModuleForm
@@ -39,10 +38,10 @@ namespace New_KTANE_Solver
 
             string[] corner = new string[]
             {
-                "Top Left",
-                "Top Right",
-                "Bottom Left",
-                "Bottom Right"
+                "TL",
+                "TR",
+                "BL",
+                "BR"
             };
 
             whiteDotComboBox.Items.Clear();
@@ -115,9 +114,9 @@ namespace New_KTANE_Solver
             }
 
             Microcontroller module = new Microcontroller(
-                Bomb,
-                LogFileWriter,
-                whiteDotComboBox.Text,
+            Bomb,
+            LogFileWriter,
+                (Microcontroller.DotPos)Enum.Parse(typeof(Microcontroller.DotPos), whiteDotComboBox.Text),
                 controllerTypeComboBox.Text,
                 pinNum,
                 secondNum,
