@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static New_KTANE_Solver.CheapCheckout;
 
 namespace New_KTANE_Solver
 {
@@ -156,12 +157,12 @@ namespace New_KTANE_Solver
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            String item1 = item1ComboBox.Text;
-            String item2 = item2ComboBox.Text;
-            String item3 = item3ComboBox.Text;
-            String item4 = item4ComboBox.Text;
-            String item5 = item5ComboBox.Text;
-            String item6 = item6ComboBox.Text;
+            string itemStr1 = RemoveSpaces(item1ComboBox.Text);
+            string itemStr2 = RemoveSpaces(item2ComboBox.Text);
+            string itemStr3 = RemoveSpaces(item3ComboBox.Text);
+            string itemStr4 = RemoveSpaces(item4ComboBox.Text);
+            string itemStr5 = RemoveSpaces(item5ComboBox.Text);
+            string itemStr6 = RemoveSpaces(item6ComboBox.Text);
 
             double item5Weight = Double.Parse(item5WeightComboBox.Text);
             double item6Weight = Double.Parse(item6WeightComboBox.Text);
@@ -188,18 +189,27 @@ namespace New_KTANE_Solver
             //no duplicate items
 
             if (
-                item1 == item2
-                || item1 == item3
-                || item1 == item4
-                || item2 == item3
-                || item2 == item4
-                || item3 == item4
-                || item5 == item6
+                   itemStr1 == itemStr2
+                || itemStr1 == itemStr3
+                || itemStr1 == itemStr4
+                || itemStr2 == itemStr3
+                || itemStr2 == itemStr4
+                || itemStr3 == itemStr4
+                || itemStr5 == itemStr6
             )
             {
                 ShowErrorMessage("Can't have duplicate items");
                 return;
             }
+
+            ItemName item1 = (ItemName)Enum.Parse(typeof(ItemName), itemStr1);
+            ItemName item2 = (ItemName)Enum.Parse(typeof(ItemName), itemStr2);
+            ItemName item3 = (ItemName)Enum.Parse(typeof(ItemName), itemStr3);
+            ItemName item4 = (ItemName)Enum.Parse(typeof(ItemName), itemStr4);
+            ItemName item5 = (ItemName)Enum.Parse(typeof(ItemName), itemStr5);
+            ItemName item6 = (ItemName)Enum.Parse(typeof(ItemName), itemStr6);
+
+
 
             CheapCheckout module = new CheapCheckout(
                 Bomb,
@@ -218,6 +228,20 @@ namespace New_KTANE_Solver
             module.Solve(false, 0);
 
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
+        }
+
+        private string RemoveSpaces(string str)
+        {
+            string s = (string)str.Clone();
+
+            int spaceIndex = str.IndexOf(' ');
+
+            if (spaceIndex != -1)
+            {
+                s = s.Remove(spaceIndex, 1);
+            }
+
+            return s;
         }
     }
 }
