@@ -59,7 +59,7 @@ namespace New_KTANE_Solver
 
             FastMath module = new FastMath(Bomb, LogFileWriter);
 
-            module.Solve(letters[0], letters[1]);
+            module.Solve(letters[0], letters[1], false);
 
             FastMathOtherStageForm stage2 = new FastMathOtherStageForm(
                 Bomb,

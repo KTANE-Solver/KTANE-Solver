@@ -22,12 +22,17 @@ namespace New_KTANE_Solver
             return answer;
         }
 
-        public void Solve(char leftLetter, char rightLetter)
+        public int Solve(char leftLetter, char rightLetter, bool debug)
         {
             GetInitialNumber(leftLetter, rightLetter);
             ModifyNumber();
 
-            ShowAnswer("" + answer, true);
+            if (!debug)
+            { 
+                ShowAnswer("" + answer, true);
+            }
+
+            return answer;
         }
 
         private void GetInitialNumber(char leftLetter, char rightLetter)
