@@ -81,7 +81,7 @@ namespace New_KTANE_Solver
                 Bomb,
                 LogFileWriter
             );
-            module.Solve();
+            module.Solve(false);
             UpdateForm();
         }
 
