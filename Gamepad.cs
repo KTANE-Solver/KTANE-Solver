@@ -11,7 +11,7 @@ namespace New_KTANE_Solver
     /// Author: Nya Bentley
     /// Purpose: Solves the gamepad module
     /// </summary>
-    class Gamepad : Module
+    public class Gamepad : Module
     {
         private int x,
             y,
@@ -42,7 +42,7 @@ namespace New_KTANE_Solver
             PrintDebugLine($"D: {d}\n");
         }
 
-        public void Solve()
+        public string Solve(bool debug)
         {
             SetFirstSubcommand();
             setSecondSubcommand();
@@ -53,11 +53,14 @@ namespace New_KTANE_Solver
 
             setOverrides();
 
-            String answer = string.Join(", ", command);
+            string answer = string.Join(", ", command);
 
-            PrintDebugLine($"Answer: {answer}\n");
+            if (!debug)
+            { 
+                ShowAnswer(answer, true);
+            }
 
-            ShowAnswer(answer, true);
+            return answer;
         }
 
         private void SetFirstSubcommand()
