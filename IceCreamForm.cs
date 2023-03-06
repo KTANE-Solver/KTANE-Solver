@@ -162,7 +162,7 @@ namespace New_KTANE_Solver
 
             PrintDebugLine($"{stageLabel.Text}\n");
 
-            module.Solve();
+            module.Solve(false);
 
             this.Hide();
 

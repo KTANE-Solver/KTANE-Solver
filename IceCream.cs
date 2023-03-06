@@ -62,7 +62,7 @@ namespace New_KTANE_Solver
         /// <summary>
         /// Solves the ice cream module
         /// </summary>
-        public void Solve()
+        public string Solve(bool debug)
         {
             PrintDebugLine($"Customer: {customer}\n");
 
@@ -116,22 +116,28 @@ namespace New_KTANE_Solver
             }
 
             //find the most popular flavor the user isn't allergic to
+
+            string answer = "Vanilla";
+
             foreach (IceCreamFlavor flavor in flavors)
             {
                 if (!IsAllergic(flavor))
                 {
-                    String message = ConvertFlavorEnumToString(flavor.FlavorProperty);
+                    answer = ConvertFlavorEnumToString(flavor.FlavorProperty);
 
-                    PrintDebugLine($"Answer: {message}\n");
-
-                    ShowAnswer(message, true);
-                    return;
+                    break;
                 }
             }
 
-            PrintDebugLine($"Answer: Vanilla\n");
+            PrintDebugLine($"Answer: {answer}\n");
 
-            ShowAnswer("Vanilla", true);
+            if (!debug)
+            {
+                ShowAnswer(answer, true);
+
+            }
+
+            return answer;
         }
 
         /// <summary>
