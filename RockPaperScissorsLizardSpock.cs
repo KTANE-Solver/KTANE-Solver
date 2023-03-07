@@ -38,7 +38,7 @@ namespace New_KTANE_Solver
             ResetValues();
         }
 
-        public void Solve()
+        public string Solve(bool debug)
         {
             bombSymbol = FindBombSymbol();
 
@@ -46,7 +46,12 @@ namespace New_KTANE_Solver
 
             PrintDebugLine($"Answer: {answer}\n");
 
-            ShowAnswer(answer, true);
+            if(!debug)
+            {
+                ShowAnswer(answer, true);
+            }
+
+            return answer;
         }
 
         private Symbol[] FindAnswer()
