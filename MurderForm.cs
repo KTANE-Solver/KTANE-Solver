@@ -58,6 +58,7 @@ namespace New_KTANE_Solver
             String[] rooms = new string[]
             {
                 "Ballroom",
+                "Billiard Room",
                 "Conservatory",
                 "Dining Room",
                 "Hall",
@@ -69,7 +70,7 @@ namespace New_KTANE_Solver
 
             bodyFoundComboBox.Items.AddRange(rooms);
 
-            bodyFoundComboBox.Text = "Ballroom";
+            bodyFoundComboBox.Text = rooms[0];
 
             bodyFoundComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
         }
