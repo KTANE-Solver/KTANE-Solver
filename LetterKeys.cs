@@ -17,62 +17,71 @@ namespace New_KTANE_Solver
             this.number = number;
         }
 
-        public string SolveDebug()
+        public string Solve(bool debug)
         {
+            string answer;
             PrintDebugLine("Number: " + number);
 
             if (number == 69)
             {
                 PrintDebugLine("The number indicated is equal to 69");
-                return "D";
+                answer =  "D";
             }
 
-            if (number % 6 == 0)
+            else if (number % 6 == 0)
             {
                 PrintDebugLine("The number indicated is divisible by 6");
-                return "A";
+                answer = "A";
             }
 
-            if (Bomb.Battery >= 2 && number % 3 == 0)
+            else if (Bomb.Battery >= 2 && number % 3 == 0)
             {
                 PrintDebugLine(
                     "There are two or more batteries on the bomb and the number is divisible by 3"
                 );
-                return "B";
+                answer = "B";
             }
 
-            bool containsCE3 =
-                Bomb.SerialNumber.Contains('C')
-                || Bomb.SerialNumber.Contains('E')
-                || Bomb.SerialNumber.Contains('3');
-
-            if (containsCE3 && number >= 22 && number <= 79)
+            else if (ContainsCE3() && number >= 22 && number <= 79)
             {
                 PrintDebugLine(
                     "The serial number contains a 'C' 'E' or '3' and the number is greater than or equal to 22, and less than or equal to 79"
                 );
-                return "B";
+                answer = "B";
             }
 
-            if (containsCE3)
+            else if (ContainsCE3())
             {
                 PrintDebugLine("The serial number contains a 'C' 'E' or '3'");
-                return "C";
+                answer = "C";
             }
 
-            if (number < 46)
+            else if (number < 46)
             {
                 PrintDebugLine("The indicated number is less than 46");
-                return "D";
+                answer = "D";
             }
 
-            PrintDebugLine("None of the previous rules applies");
-            return "A";
+            else
+            {
+                PrintDebugLine("None of the previous rules applies");
+                answer = "A";
+            }
+
+            if (!debug)
+            {
+                ShowAnswer(answer, true);
+            }
+
+            return answer;
+            
         }
 
-        public void Solve()
+        private bool ContainsCE3()
         {
-            ShowAnswer(SolveDebug(), true);
+            return Bomb.SerialNumber.Contains('C')
+                || Bomb.SerialNumber.Contains('E')
+                || Bomb.SerialNumber.Contains('3');
         }
     }
 }
