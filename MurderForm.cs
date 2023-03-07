@@ -207,7 +207,7 @@ namespace New_KTANE_Solver
             PrintHeader();
 
             Murder murder = new Murder(suspects, weapons, room, Bomb, LogFileWriter);
-            murder.Solve();
+            murder.Solve(false);
 
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
         }

@@ -11,7 +11,7 @@ namespace New_KTANE_Solver
     /// Date: 4/9/21
     /// Purpose: Solves the murder moudle
     /// </summary>
-    class Murder : Module
+    public class Murder : Module
     {
         //all the rooms
         public enum Room
@@ -72,7 +72,7 @@ namespace New_KTANE_Solver
             this.bodyRoom = Suspect.ConvertRoomToEnum(bodyRoom);
         }
 
-        public void Solve()
+        public string Solve(bool debug)
         {
             //who did it
             String murderer = null;
@@ -95,6 +95,7 @@ namespace New_KTANE_Solver
             }
 
             //the row to figure out where weapon was
+
             int weaponRow = FindWeaponRow();
 
             PrintDebugLine("Weapon Row: " + weaponRow + "\n");
@@ -125,19 +126,17 @@ namespace New_KTANE_Solver
                     break;
                 }
             }
+            string answer = $"{murderer} with the {killingItem} in the {room}";
 
-            if (!answerFound)
-            {
-                ShowErrorMessage("Something went wrong");
-            }
-            else
-            {
-                String answer = $"{murderer} with the {killingItem} in the {room}";
 
-                PrintDebugLine(answer + "\n");
+            PrintDebugLine(answer + "\n");
 
+            if (!debug)
+            { 
                 ShowAnswer(answer, true);
             }
+
+            return answer;
         }
 
         /// <summary>
@@ -215,7 +214,7 @@ namespace New_KTANE_Solver
             }
 
             //Otherwise, if the bomb has a serial port, use row 9.
-            if (Bomb.RCAVisuble)
+            if (Bomb.SerialVisble)
             {
                 return 9;
             }
