@@ -105,7 +105,7 @@ namespace New_KTANE_Solver
                 bottomLeft[0],
                 bottomRight[0]
             );
-            module.Solve();
+            module.Solve(false);
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
         }
 
