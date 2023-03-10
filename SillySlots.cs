@@ -82,21 +82,21 @@ namespace New_KTANE_Solver
                 PrintDebugLine($"Stage 1 Slot 3: {stage1Slot3.Color} {stage1Slot3.Object}\n");
             }
 
-            if (stage == 2)
+            else if (stage == 2)
             {
                 PrintDebugLine($"Stage 2 Slot 1: {stage2Slot1.Color} {stage2Slot1.Object}");
                 PrintDebugLine($"Stage 2 Slot 2: {stage2Slot2.Color} {stage2Slot2.Object}");
                 PrintDebugLine($"Stage 2 Slot 3: {stage2Slot3.Color} {stage2Slot3.Object}\n");
             }
 
-            if (stage == 3)
+            else if (stage == 3)
             {
                 PrintDebugLine($"Stage 3 Slot 1: {stage3Slot1.Color} {stage3Slot1.Object}");
                 PrintDebugLine($"Stage 3 Slot 2: {stage3Slot2.Color} {stage3Slot2.Object}");
                 PrintDebugLine($"Stage 3 Slot 3: {stage3Slot3.Color} {stage3Slot3.Object}\n");
             }
 
-            if (stage == 4)
+            else if (stage == 4)
             {
                 PrintDebugLine($"Stage 4 Slot 1: {stage4Slot1.Color} {stage4Slot1.Object}");
                 PrintDebugLine($"Stage 4 Slot 2: {stage4Slot2.Color} {stage4Slot2.Object}");
@@ -734,21 +734,15 @@ namespace New_KTANE_Solver
         public void UpdateModule(
             int stage,
             String keyword,
-            String slot1Color,
-            String slot1Object,
-            String slot2Color,
-            String slot2Object,
-            String slot3Color,
-            String slot3Object
+            Slot slot1,
+            Slot slot2,
+            Slot slot3
+
         )
         {
             //update the placeholders ahd slots
 
             this.keyword = keyword;
-
-            Slot slot1 = new Slot(slot1Color, slot1Object);
-            Slot slot2 = new Slot(slot2Color, slot2Object);
-            Slot slot3 = new Slot(slot3Color, slot3Object);
 
             placeholderSlot1 = new ConvertedSlot(slot1, keyword);
             placeholderSlot2 = new ConvertedSlot(slot2, keyword);
@@ -767,7 +761,7 @@ namespace New_KTANE_Solver
                 stage2Slot3 = slot3;
             }
 
-            if (stage == 3)
+            else if (stage == 3)
             {
                 stage3Slot1 = slot1;
                 stage3Slot2 = slot2;
