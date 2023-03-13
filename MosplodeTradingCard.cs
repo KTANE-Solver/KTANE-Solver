@@ -28,7 +28,7 @@ namespace New_KTANE_Solver
         /// <summary>
         /// Returns the cards that the player currently has
         /// </summary>
-        public void Solve(Card offeredCard)
+        public string Solve(Card offeredCard, bool debug)
         {
             System.Diagnostics.Debug.WriteLine("Card 1");
             hand[0].PrintCard();
@@ -58,16 +58,24 @@ namespace New_KTANE_Solver
                 position = 2;
             }
 
+            string answer = "";
             //see if the lowest card is worse than the offered card, if yes then trade, if not then keep
             if (lowestCard.Value >= offeredCard.Value)
             {
-                ShowAnswer("Press Keep", true);
+                answer = "Press Keep";
             }
             else
             {
-                ShowAnswer($"Trade Card {position + 1} ({lowestCard.Name})", true);
+                answer = $"Trade Card {position + 1} ({lowestCard.Name})";
                 hand[position] = offeredCard;
             }
+
+            if(!debug)
+            {
+                ShowAnswer(answer, true);
+            }
+
+            return answer;
         }
 
         public class Card
@@ -168,11 +176,11 @@ namespace New_KTANE_Solver
 
             public void PrintCard()
             {
+                System.Diagnostics.Debug.WriteLine($"Value: {Value}");
                 System.Diagnostics.Debug.WriteLine($"Name: {Name}");
                 System.Diagnostics.Debug.WriteLine($"Print Version: {PrintVersion}");
                 System.Diagnostics.Debug.WriteLine($"Rarity: {rarity}");
                 System.Diagnostics.Debug.WriteLine($"Bent Corners: {DentCorners}");
-                System.Diagnostics.Debug.WriteLine($"Value: {Value}");
                 System.Diagnostics.Debug.WriteLine($"Shiny: {Shiny}\n");
             }
 

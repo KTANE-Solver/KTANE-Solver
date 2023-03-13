@@ -147,7 +147,7 @@ namespace New_KTANE_Solver
                 return;
             }
 
-            module.Solve(offeringCard);
+            module.Solve(offeringCard, false);
 
             if (stage == 3)
             {
