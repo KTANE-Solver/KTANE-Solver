@@ -100,78 +100,38 @@ namespace New_KTANE_Solver
             IncrementStrike();
         }
 
-        private void PrintCard(Poker.Card card, int position)
-        {
-            System.Diagnostics.Debug.WriteLine($"Card {position}: {card.suite}");
-        }
-
         private void submitButton_Click(object sender, EventArgs e)
         {
-            Poker.Card card1 = SetUpCard(card1ComboBox.Text);
-            Poker.Card card2 = SetUpCard(card2ComboBox.Text);
-            Poker.Card card3 = SetUpCard(card3ComboBox.Text);
-            Poker.Card card4 = SetUpCard(card4ComboBox.Text);
 
-            System.Diagnostics.Debug.WriteLine($"Bet: {betAmountComboBox.Text}\n");
+            Poker.Card.Suite[] cards = { SetUpCard(card1ComboBox.Text),
+                                         SetUpCard(card2ComboBox.Text),
+                                         SetUpCard(card3ComboBox.Text),
+                                         SetUpCard(card4ComboBox.Text)};
 
-            PrintCard(card1, 1);
-            PrintCard(card2, 2);
-            PrintCard(card3, 3);
-            PrintCard(card4, 4);
 
-            int index = module.BettingRule(
-                Int32.Parse(betAmountComboBox.Text),
-                card1,
-                card2,
-                card3,
-                card4
-            );
+            module.CardAnswer(Int32.Parse(betAmountComboBox.Text), cards, false);
 
-            System.Diagnostics.Debug.WriteLine($"\nAnswer: {index}\n");
-
-            String prefix = "";
-
-            switch (index)
-            {
-                case 1:
-                    prefix = "1st";
-                    break;
-
-                case 2:
-                    prefix = "2nd";
-                    break;
-
-                case 3:
-                    prefix = "3rd";
-                    break;
-
-                case 4:
-                    prefix = "4th";
-                    break;
-            }
-
-            ShowAnswer($"Press the {prefix} card");
             this.Hide();
 
             pokerStage1Form.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
             pokerStage1Form.Show();
         }
 
-        private Poker.Card SetUpCard(String suite)
+        private Poker.Card.Suite SetUpCard(String suite)
         {
             switch (suite)
             {
                 case "CLUB":
-                    return new Poker.Card(Poker.Card.Number.ACE, Poker.Card.Suite.CLUB);
+                    return Poker.Card.Suite.CLUB;
 
                 case "DIAMOND":
-                    return new Poker.Card(Poker.Card.Number.ACE, Poker.Card.Suite.DIAMOND);
+                    return Poker.Card.Suite.DIAMOND;
 
                 case "HEART":
-                    return new Poker.Card(Poker.Card.Number.ACE, Poker.Card.Suite.HEART);
+                    return Poker.Card.Suite.HEART;
 
                 default:
-                    return new Poker.Card(Poker.Card.Number.ACE, Poker.Card.Suite.SPADE);
+                    return Poker.Card.Suite.SPADE;
             }
         }
 

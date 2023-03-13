@@ -99,7 +99,7 @@ namespace New_KTANE_Solver
             );
             PrintDebugLine($"Secondary Cardinal Direction: {Module.SecondaryCardinalGoal}\n");
 
-            Module.Solve();
+            Module.Solve(false);
 
             this.Hide();
             firstStageForm.UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);

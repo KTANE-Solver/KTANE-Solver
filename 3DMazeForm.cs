@@ -165,7 +165,7 @@ namespace New_KTANE_Solver
             module.PlayerDirection = module.ConvertPlayerDirection(playerPosition[2]);
 
             //find how to get to the closest cardinal
-            module.FindCardinal();
+            module.FindCardinal(false);
 
             module.PrintPlayerPosition();
 
