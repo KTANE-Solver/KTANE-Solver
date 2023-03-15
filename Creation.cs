@@ -62,6 +62,8 @@ namespace New_KTANE_Solver
             this.upperRightElement = upperRightElement;
             this.lowerLeftElement = lowerLeftElement;
             this.lowerRightElement = lowerRightElement;
+
+            SetUpModule();
         }
 
         public enum Weather
@@ -658,7 +660,7 @@ namespace New_KTANE_Solver
             brokenUpDirections.Reverse();
         }
 
-        public string SolveTest(Weather currentWeather, int index)
+        public string Solve(Weather currentWeather, int index, bool debug)
         {
             string affectedElement = null;
             string newElement = null;
@@ -706,60 +708,13 @@ namespace New_KTANE_Solver
                 answerSegments.Add($"{element1} + {element2}");
             }
 
-            return string.Join(",\n", answerSegments);
-        }
-
-        public void Solve(Weather currentWeather, int index)
-        {
-            string affectedElement = null;
-            string newElement = null;
-
-            PrintDebugLine("Current Weather: " + currentWeather.ToString());
-
-            switch (currentWeather)
+            string answer  = string.Join(",\n", answerSegments);
+            if (!debug)
             {
-                case Weather.HeatWave:
-                    affectedElement = "Fire";
-                    newElement = "Water";
-                    break;
-
-                case Weather.Wind:
-                    affectedElement = "Air";
-                    newElement = "Earth";
-                    break;
-
-                case Weather.MeteorShower:
-                    affectedElement = "Earth";
-                    newElement = "Air";
-                    break;
-
-                case Weather.Rain:
-                    affectedElement = "Water";
-                    newElement = "Fire";
-                    break;
+                ShowAnswer(answer, true);
             }
 
-            List<string> answerSegments = new List<string>();
-
-            foreach (LifeForm[] arr in brokenUpDirections[index])
-            {
-                string element1 = arr[1].Name;
-                string element2 = arr[2].Name;
-
-                if (element1 == affectedElement)
-                {
-                    element1 = newElement;
-                }
-
-                if (element2 == affectedElement)
-                {
-                    element2 = newElement;
-                }
-
-                answerSegments.Add($"{element1} + {element2}");
-            }
-
-            ShowAnswer($"\n" + string.Join(",\n", answerSegments), true);
+            return answer;
         }
 
         public class LifeForm
