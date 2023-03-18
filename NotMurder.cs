@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace New_KTANE_Solver
 {
@@ -20,6 +21,11 @@ namespace New_KTANE_Solver
             Rope,
             Spanner
         }
+
+        Suspect plum;
+        Suspect green;
+        Suspect peacock;
+
 
         Room[,] rooms = new Room[2,3]; 
         
@@ -39,7 +45,30 @@ namespace New_KTANE_Solver
             FillSuspects(suspects);
             FillRooms(rooms, redRoom);
             greenClockwise = true;
-            
+            pausePlum = false;
+
+            plum = FindSuspect("Plum");
+            peacock = FindSuspect("Peacock");
+            green = FindSuspect("Green");
+
+        }
+
+        private Suspect FindSuspect(string name)
+        {
+            Suspect suspect;
+
+            try
+            {
+                suspect = this.suspects.First(s => s.Name == name);
+            }
+
+            catch
+
+            {
+                suspect = null;
+            }
+
+            return suspect;
         }
 
         private void FillItems(Item[] weapons)
@@ -67,7 +96,7 @@ namespace New_KTANE_Solver
         {
             this.suspects[0] = new Suspect(suspects[0], items[0]);
 
-            bool left = Bomb.Trn.Lit;
+            bool left = Bomb.Trn.Visible;
 
             PrintDebugLine($"Suspects: {(left ? "left" : "right")}");
 
@@ -84,7 +113,7 @@ namespace New_KTANE_Solver
             int suspectCounter = 0;
             bool left = Bomb.DigitSum > 14;
 
-            PrintDebugLine($"Rooms: {(left ? "left" : "right")}");
+            PrintDebugLine($"Rooms: {(left ? "left" : "right")}\n");
 
             for (int i = 0; i < 6; i++)
             {
@@ -106,7 +135,7 @@ namespace New_KTANE_Solver
 
                     Room room = this.rooms[row, col];
 
-                    suspect.SetCurrentRoom(room);
+                    suspect.CurrentRoom = room;
 
                     if (suspect.Name == "Peacock")
                     {
@@ -157,12 +186,12 @@ namespace New_KTANE_Solver
             }
         }
 
-        public void Solve()
+        public string Solve(bool debug)
         {
             PrintHouse(0);
 
 
-            for (int i = 1; i <= 6; i++)
+            for (int i = 1; i <= 5; i++)
             {
                 Move();
 
@@ -173,6 +202,15 @@ namespace New_KTANE_Solver
 
                 PrintHouse(i);
             }
+
+            string answer = string.Join("\n", suspects.Select(s => $"{s.Name} with the {s.Item} in the {s.CurrentRoom.Name}"));
+
+            if (!debug)
+            {
+                ShowAnswer(answer, true);
+            }
+
+            return answer;
         }
 
         public void PrintHouse(int stage)
@@ -196,45 +234,32 @@ namespace New_KTANE_Solver
             {
                 if (s.Name == "Plum" && pausePlum)
                 {
+                    pausePlum= false;
                     continue;
                 }
 
                 s.Move(greenClockwise, peacockRooms);
             }
 
+            foreach(Room r in rooms)
+            {
+                r.Suspects.Clear();
+            }
+
+            foreach (Suspect s in suspects)
+            {
+                s.CurrentRoom = s.NewRoom ?? s.CurrentRoom;
+                s.CurrentRoom.AddSuspect(s);
+            }
+
+
             //if plum is used, check to see if he will be frozen on the next turn
-
-            Suspect plum;
-
-            try
-            {
-                plum = suspects.Where(s => s.Name == "Plum").First();
-            }
-
-            catch
-
-            {
-                plum = null;
-            }
-
             if (!pausePlum && plum != null && new string[] { "Library", "Lounge", "Study" }.Contains(plum.CurrentRoom.Name))
             {
                 pausePlum = true;
             }
 
             //if green is used, update his directional movement here
-            Suspect green;
-
-            try
-            {
-                green = suspects.Where(s => s.Name == "Green").First();
-            }
-
-            catch
-
-            {
-                green = null;
-            }
 
             if (green != null && new string[] { "Conservatory", "Kitchen", "Study" }.Contains(green.CurrentRoom.Name))
             {
@@ -242,18 +267,6 @@ namespace New_KTANE_Solver
             }
 
             //if peacock is used, update which rooms she has gone from here
-            Suspect peacock;
-
-            try
-            {
-                peacock = suspects.Where(s => s.Name == "Peacock").First();
-            }
-
-            catch
-
-            {
-                peacock = null;
-            }
 
             if (peacock != null) 
             {
@@ -261,26 +274,17 @@ namespace New_KTANE_Solver
             }
         }
 
-        
-
-
-
         public class Suspect
         {
             public string Name { get; }
             public Item Item;
             public Room CurrentRoom;
+            public Room NewRoom;
             public Suspect(string name, Item item)
             {
                 Name = name;
                 Item = item;
             }
-
-            public void SetCurrentRoom(Room room)
-            {
-                CurrentRoom = room;
-            }
-
 
             public string SuspectInfo()
             {
@@ -289,8 +293,7 @@ namespace New_KTANE_Solver
 
             public void Move(bool greenClockwise, List<string> peacockRooms)
             {
-                Room previousRoom = CurrentRoom;
-
+                NewRoom = null;
                 List<Room> adjacentRooms = CurrentRoom.AdjacentRooms();
 
                 switch (Name)
@@ -299,12 +302,12 @@ namespace New_KTANE_Solver
                         
                         if (greenClockwise)
                         {
-                            CurrentRoom = CurrentRoom.Clock;
+                            NewRoom = CurrentRoom.Clock;
                         }
-
+                        
                         else
                         {
-                            CurrentRoom = CurrentRoom.Counter;
+                            NewRoom = CurrentRoom.Counter;
                         }
 
                         break;
@@ -319,12 +322,12 @@ namespace New_KTANE_Solver
                         //If she cannot move into a room she has not already entered, she move about the building in a counter-clockwise direction.
                         if (avaiableRooms.Count == 0)
                         {
-                            CurrentRoom = CurrentRoom.Counter;
+                            NewRoom = CurrentRoom.Counter;
                         }
 
                         else
                         {
-                            CurrentRoom = avaiableRooms.First();
+                            NewRoom = avaiableRooms.First();
                         }
 
 
@@ -336,7 +339,7 @@ namespace New_KTANE_Solver
 
                         if (isEmpty)
                         {
-                            CurrentRoom = CurrentRoom.Top ?? CurrentRoom.Down;
+                            NewRoom = CurrentRoom.Top ?? CurrentRoom.Down;
                         }
 
                         else
@@ -345,17 +348,29 @@ namespace New_KTANE_Solver
 
                             foreach (Room r in adjacentRooms)
                             {
-                                d.Add(r, r.Suspects.Count);
+                                if(r.Suspects.Count != 0)
+                                {
+                                    d.Add(r, r.Suspects.Count);
+                                }
                             }
 
-                            int max = d.Values.Max();
+                            if (d.Keys.Count == 1)
+                            { 
+                                NewRoom = d.Keys.First();
+                            }
 
-                            bool tie = d.Values.Select(n => n == max).Count() > 1;
-
-                            if (!tie)
+                            else
                             {
-                                CurrentRoom = d.First(x => x.Value == max).Key;
+                                int max = d.Values.Max();
+
+                                bool tie = d.Values.Where(n => n == max).Count() > 1;
+
+                                if (!tie)
+                                {
+                                    NewRoom = d.First(x => x.Value == max).Key;
+                                }
                             }
+                            
                         }
 
 
@@ -366,13 +381,13 @@ namespace New_KTANE_Solver
 
                         if (emptyRooms.Count == 1)
                         {
-                            CurrentRoom = emptyRooms.First();
+                            NewRoom = emptyRooms.First();
                         }
 
                         else
                         {
                             adjacentRooms.Sort((r1, r2) => r1.Name.CompareTo(r2.Name));
-                            CurrentRoom = adjacentRooms.First();
+                            NewRoom = adjacentRooms.First();
                         }
                         break;
 
@@ -395,7 +410,7 @@ namespace New_KTANE_Solver
                             whiteRooms.Sort((r1, r2) => r1.Name.CompareTo(r2.Name));
                             List<Room> preferredRooms = whiteRooms.Where(r => !new string[] { "Ballroom", "Billiard", "Conservatory" }.Contains(r.Name)).ToList();
 
-                            CurrentRoom = preferredRooms.Count > 0 ? preferredRooms.First() : CurrentRoom = whiteRooms.First();
+                            NewRoom = preferredRooms.Count > 0 ? preferredRooms.First() : whiteRooms.First();
                         }
                         break;
 
@@ -405,23 +420,23 @@ namespace New_KTANE_Solver
 
                         if (Item == Item.Revolver)
                         {
-                            List<Room> rooms = adjacentRooms.Where(r => r.Suspects.Count != 0).ToList();
+                            List<Room> rooms = adjacentRooms.Where(r => r.Suspects.Count != 1).ToList();
 
                             if (rooms.Count > 0)
                             {
                                 if (rooms.Contains(CurrentRoom.Clock))
                                 {
-                                    CurrentRoom = CurrentRoom.Clock;
+                                    NewRoom = CurrentRoom.Clock;
                                 }
 
                                 else if (CurrentRoom.Top != null && CurrentRoom.Down != null)
                                 {
-                                    CurrentRoom = CurrentRoom.Top ?? CurrentRoom.Down;
+                                    NewRoom = CurrentRoom.Top ?? CurrentRoom.Down;
                                 }
 
                                 else
                                 {
-                                    CurrentRoom = CurrentRoom.Counter;
+                                    NewRoom = CurrentRoom.Counter;
                                 }
                             }
                         }
@@ -432,28 +447,23 @@ namespace New_KTANE_Solver
                             {
                                 Room revolverRoom = adjacentRooms.Where(r => r.Suspects.Where(s => s.Item == Item.Revolver).Any()).First();
 
-                                CurrentRoom = revolverRoom;
+                                NewRoom = revolverRoom;
                             }
                             catch
                             {
-                                if (CurrentRoom.Top != null && CurrentRoom.Down != null)
+                                if (CurrentRoom.Left != null && CurrentRoom.Right != null)
                                 {
-                                    CurrentRoom = CurrentRoom.Top ?? CurrentRoom.Down;
+                                    NewRoom = CurrentRoom.Top ?? CurrentRoom.Down;
                                 }
 
                                 else
                                 {
-                                    CurrentRoom = CurrentRoom.Right ?? CurrentRoom.Left;
+                                    NewRoom = CurrentRoom.Right ?? CurrentRoom.Left;
                                 }
                             }
                         }
                         break;
                 }
-
-                previousRoom.RemoveSuspect(Name);
-                CurrentRoom.AddSuspect(this);
-
-
             }
         }
 
@@ -461,8 +471,7 @@ namespace New_KTANE_Solver
 
         public class Room
         {
-            public List<Suspect> Suspects { get { return new List<Suspect>(suspects); } }
-            private List<Suspect>  suspects;
+            public List<Suspect>  Suspects;
             public Room Top { get; set; }
             public Room Left { get; set; }
             public Room Down { get; set; }
@@ -474,13 +483,13 @@ namespace New_KTANE_Solver
             public Room(string name)
             {
                 this.Name = name;
-                suspects = new List<Suspect>();
+                Suspects = new List<Suspect>();
             }
 
             public Room(string name, Suspect suspect)
             {
                 this.Name = name;
-                suspects = new List<Suspect>() { suspect };
+                Suspects = new List<Suspect>() { suspect };
                 Top = null;
                 Left = null;
                 Down = null;
@@ -491,14 +500,7 @@ namespace New_KTANE_Solver
 
             public void AddSuspect(Suspect suspect)
             {
-                suspects.Add(suspect);
-            }
-
-            public void RemoveSuspect(string name)
-            {
-                Suspect suspect = suspects.Where(s => s.Name == name).First();
-
-                suspects.Remove(suspect);
+                Suspects.Add(suspect);
             }
 
             public List<Room> AdjacentRooms()
@@ -508,10 +510,10 @@ namespace New_KTANE_Solver
 
             public void SwapWeapons()
             {
-                if (suspects.Count == 2)
+                if (Suspects.Count == 2)
                 { 
-                    Suspect s1 = suspects[0];
-                    Suspect s2 = suspects[1];
+                    Suspect s1 = Suspects[0];
+                    Suspect s2 = Suspects[1];
 
                     Item temp = s1.Item;
 
