@@ -67,7 +67,7 @@ namespace New_KTANE_Solver
 
             Color color = GetColor(colorComboBox.Text);
 
-            module.Solve(color, wordComboBox.Text);
+            module.Solve(color, wordComboBox.Text, false);
         }
 
         private Color GetColor(string str)

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using static New_KTANE_Solver.CheapCheckout.Item;
 
 namespace New_KTANE_Solver
 {
@@ -13,7 +14,58 @@ namespace New_KTANE_Solver
     /// </summary>
     public class CheapCheckout : Module
     {
-        List<Item> itemList;
+
+        public enum ItemName
+        {
+            Bananas,
+            Broccoli,
+            CandyCanes,
+            CanolaOil,
+            Cereal,
+            Cheese,
+            Chicken,
+            ChocolateBar,
+            ChocolateMilk,
+            CoffeeBeans,
+            Cookies,
+            Deodorant,
+            FruitPunch,
+            GrapeJelly,
+            Grapefruit,
+            Gum,
+            Honey,
+            Ketchup,
+            Lemons,
+            Lettuce,
+            Lollipops,
+            Lotion,
+            Mayonnaise,
+            Mints,
+            Mustard,
+            Oranges,
+            PaperTowels,
+            PastaSauce,
+            PeanutButter,
+            Pork,
+            PotatoChips,
+            Potatoes,
+            Shampoo,
+            Socks,
+            Soda,
+            Spaghetti,
+            Steak,
+            Sugar,
+            Tea,
+            Tissues,
+            Tomatoes,
+            Toothpaste,
+            Turkey,
+            WaterBottles,
+            WhiteBread,
+            WhiteMilk
+        }
+        
+                List<Item> itemList;
 
         Decimal amount;
 
@@ -24,14 +76,14 @@ namespace New_KTANE_Solver
             Bomb bomb,
             StreamWriter logFileWriter,
             Decimal amount,
-            String item1Name,
-            String item2Name,
-            String item3Name,
-            String item4Name,
+            ItemName item1Name,
+            ItemName item2Name,
+            ItemName item3Name,
+            ItemName item4Name,
             double item5Weight,
-            String item5Name,
+            ItemName item5Name,
             double item6Wieght,
-            String item6Name
+            ItemName item6Name
         ) : base(bomb, logFileWriter, "Cheap Checkout")
         {
             itemList = new List<Item>()
@@ -97,7 +149,10 @@ namespace New_KTANE_Solver
 
                 PrintDebugLine($"Answer: ${answer}\n");
 
-                ShowAnswer($"${string.Format("{0:0.00}", answer)}", true);
+                if (!debug)
+                { 
+                    ShowAnswer($"${string.Format("{0:0.00}", answer)}", true);
+                }
             }
 
             else if(debug)
@@ -144,7 +199,7 @@ namespace New_KTANE_Solver
 
                     for (int i = 0; i < 4; i++)
                     {
-                        if (itemList[i].name.ToUpper().Contains('S'))
+                        if (itemList[i].name.ToString().ToUpper().Contains('S'))
                         {
                             itemList[i].price += 2.15m;
                         }
@@ -233,15 +288,15 @@ namespace New_KTANE_Solver
         private Decimal WackyWednesday(Decimal price)
         {
             //convert price to string
-            String priceString = ("" + price);
+            string pricestring = ("" + price);
 
             //find highest value
 
-            char highestDigit = priceString[0];
+            char highestDigit = pricestring[0];
 
-            for (int i = 1; i < priceString.Length; i++)
+            for (int i = 1; i < pricestring.Length; i++)
             {
-                char currentChar = priceString[i];
+                char currentChar = pricestring[i];
 
                 //highest character can't be '.'
                 if (currentChar == '.')
@@ -257,17 +312,17 @@ namespace New_KTANE_Solver
 
             //find the lowest digit
 
-            char lowestDigit = priceString[0];
+            char lowestDigit = pricestring[0];
 
-            for (int i = 1; i < priceString.Length; i++)
+            for (int i = 1; i < pricestring.Length; i++)
             {
                 //lowest digit can't be '.'
                 if (lowestDigit == '.')
                 {
-                    lowestDigit = priceString[i];
+                    lowestDigit = pricestring[i];
                 }
 
-                char currentChar = priceString[i];
+                char currentChar = pricestring[i];
 
                 //lowest digit can't be '.'
                 if (currentChar == '.')
@@ -281,27 +336,27 @@ namespace New_KTANE_Solver
                 }
             }
 
-            String newPrice = "";
+            string newPrice = "";
 
             //for every place with the lowest digit, swap it with the highest digit
 
             //for every place with the highest digit, swap it with the lowest digit
 
-            for (int i = 0; i < priceString.Length; i++)
+            for (int i = 0; i < pricestring.Length; i++)
             {
-                char currentChar = priceString[i];
+                char currentChar = pricestring[i];
 
                 if (currentChar == highestDigit)
                     newPrice += lowestDigit;
                 else if (currentChar == lowestDigit)
                     newPrice += highestDigit;
                 else
-                    newPrice += priceString[i];
+                    newPrice += pricestring[i];
             }
 
             //insert the .
 
-            newPrice.Insert(priceString.IndexOf('.'), ".");
+            newPrice.Insert(pricestring.IndexOf('.'), ".");
 
             //parse the price and return
 
@@ -312,11 +367,11 @@ namespace New_KTANE_Solver
         {
             //remove .
 
-            String newPriceString = price.ToString().Replace(".", "");
+            string newPricestring = price.ToString().Replace(".", "");
 
             //convert to int
 
-            int newPrice = Int32.Parse(newPriceString);
+            int newPrice = Int32.Parse(newPricestring);
 
             int root = 0;
 
@@ -366,7 +421,7 @@ namespace New_KTANE_Solver
                 Water
             }
 
-            public String name;
+            public ItemName name;
 
             public Decimal price;
 
@@ -374,7 +429,7 @@ namespace New_KTANE_Solver
 
             public Category category;
 
-            public Item(String name, double weight)
+            public Item(ItemName name, double weight)
             {
                 this.name = name;
                 this.weight = weight;
@@ -382,232 +437,232 @@ namespace New_KTANE_Solver
                 //set up price and category
                 switch (name)
                 {
-                    case "Bananas":
+                    case ItemName.Bananas:
                         price = Convert.ToDecimal(RoundPrice(0.87m, weight));
                         category = Category.Fruit;
                         break;
 
-                    case "Broccoli":
+                    case ItemName.Broccoli:
                         price = Convert.ToDecimal(RoundPrice(1.39m, weight));
                         category = Category.Vegetable;
                         break;
 
-                    case "Candy Canes":
+                    case ItemName.CandyCanes:
                         price = Convert.ToDecimal(RoundPrice(3.51m, weight));
                         category = Category.Sweet;
                         break;
 
-                    case "Canola Oil":
+                    case ItemName.CanolaOil:
                         price = Convert.ToDecimal(RoundPrice(2.28m, weight));
                         category = Category.Oil;
                         break;
 
-                    case "Cereal":
+                    case ItemName.Cereal:
                         price = Convert.ToDecimal(RoundPrice(4.19m, weight));
                         category = Category.Grain;
                         break;
 
-                    case "Cheese":
+                    case ItemName.Cheese:
                         price = Convert.ToDecimal(RoundPrice(4.49m, weight));
                         category = Category.Dairy;
                         break;
 
-                    case "Chicken":
+                    case ItemName.Chicken:
                         price = Convert.ToDecimal(RoundPrice(1.99m, weight));
                         category = Category.Protein;
                         break;
 
-                    case "Chocolate Bar":
+                    case ItemName.ChocolateBar:
                         price = Convert.ToDecimal(RoundPrice(2.10m, weight));
                         category = Category.Sweet;
                         break;
 
-                    case "Chocolate Milk":
+                    case ItemName.ChocolateMilk:
                         price = Convert.ToDecimal(RoundPrice(5.68m, weight));
                         category = Category.Dairy;
                         break;
 
-                    case "Coffee Beans":
+                    case ItemName.CoffeeBeans:
                         price = Convert.ToDecimal(RoundPrice(7.85m, weight));
                         category = Category.Other;
                         break;
 
-                    case "Cookies":
+                    case ItemName.Cookies:
                         price = Convert.ToDecimal(RoundPrice(2.00m, weight));
                         category = Category.Sweet;
                         break;
 
-                    case "Deodorant":
+                    case ItemName.Deodorant:
                         price = Convert.ToDecimal(RoundPrice(3.97m, weight));
                         category = Category.CareProduct;
                         break;
 
-                    case "Fruit Punch":
+                    case ItemName.FruitPunch:
                         price = Convert.ToDecimal(RoundPrice(2.08m, weight));
                         category = Category.Sweet;
                         break;
 
-                    case "Grape Jelly":
+                    case ItemName.GrapeJelly:
                         price = Convert.ToDecimal(RoundPrice(2.98m, weight));
                         category = Category.Sweet;
                         break;
 
-                    case "Grapefruit":
+                    case ItemName.Grapefruit:
                         price = Convert.ToDecimal(RoundPrice(1.08m, weight));
                         category = Category.Fruit;
                         break;
 
-                    case "Gum":
+                    case ItemName.Gum:
                         price = Convert.ToDecimal(RoundPrice(1.12m, weight));
                         category = Category.Sweet;
                         break;
 
-                    case "Honey":
+                    case ItemName.Honey:
                         price = Convert.ToDecimal(RoundPrice(8.25m, weight));
                         category = Category.Sweet;
                         break;
 
-                    case "Ketchup":
+                    case ItemName.Ketchup:
                         price = Convert.ToDecimal(RoundPrice(3.59m, weight));
                         category = Category.Other;
                         break;
 
-                    case "Lemons":
+                    case ItemName.Lemons:
                         price = Convert.ToDecimal(RoundPrice(1.74m, weight));
                         category = Category.Fruit;
                         break;
 
-                    case "Lettuce":
+                    case ItemName.Lettuce:
                         price = Convert.ToDecimal(RoundPrice(1.10m, weight));
                         category = Category.Vegetable;
                         break;
 
-                    case "Lollipops":
+                    case ItemName.Lollipops:
                         price = Convert.ToDecimal(RoundPrice(2.61m, weight));
                         category = Category.Sweet;
                         break;
 
-                    case "Lotion":
+                    case ItemName.Lotion:
                         price = Convert.ToDecimal(RoundPrice(7.97m, weight));
                         category = Category.CareProduct;
                         break;
 
-                    case "Mayonnaise":
+                    case ItemName.Mayonnaise:
                         price = Convert.ToDecimal(RoundPrice(3.99m, weight));
                         category = Category.Oil;
                         break;
 
-                    case "Mints":
+                    case ItemName.Mints:
                         price = Convert.ToDecimal(RoundPrice(6.39m, weight));
                         category = Category.Sweet;
                         break;
 
-                    case "Mustard":
+                    case ItemName.Mustard:
                         price = Convert.ToDecimal(RoundPrice(2.36m, weight));
                         category = Category.Other;
                         break;
 
-                    case "Oranges":
+                    case ItemName.Oranges:
                         price = Convert.ToDecimal(RoundPrice(0.80m, weight));
                         category = Category.Fruit;
                         break;
 
-                    case "Paper Towels":
+                    case ItemName.PaperTowels:
                         price = Convert.ToDecimal(RoundPrice(9.46m, weight));
                         category = Category.CareProduct;
                         break;
 
-                    case "Pasta Sauce":
+                    case ItemName.PastaSauce:
                         price = Convert.ToDecimal(RoundPrice(2.30m, weight));
                         category = Category.Vegetable;
                         break;
 
-                    case "Peanut Butter":
+                    case ItemName.PeanutButter:
                         price = Convert.ToDecimal(RoundPrice(5.00m, weight));
                         category = Category.Protein;
                         break;
 
-                    case "Pork":
+                    case ItemName.Pork:
                         price = Convert.ToDecimal(RoundPrice(4.14m, weight));
                         category = Category.Protein;
                         break;
 
-                    case "Potato Chips":
+                    case ItemName.PotatoChips:
                         price = Convert.ToDecimal(RoundPrice(3.25m, weight));
                         category = Category.Oil;
                         break;
 
-                    case "Potatoes":
+                    case ItemName.Potatoes:
                         price = Convert.ToDecimal(RoundPrice(0.68m, weight));
                         category = Category.Vegetable;
                         break;
 
-                    case "Shampoo":
+                    case ItemName.Shampoo:
                         price = Convert.ToDecimal(RoundPrice(4.98m, weight));
                         category = Category.CareProduct;
                         break;
 
-                    case "Socks":
+                    case ItemName.Socks:
                         price = Convert.ToDecimal(RoundPrice(6.97m, weight));
                         category = Category.Other;
                         break;
 
-                    case "Soda":
+                    case ItemName.Soda:
                         price = Convert.ToDecimal(RoundPrice(2.05m, weight));
                         category = Category.Sweet;
                         break;
 
-                    case "Spaghetti":
+                    case ItemName.Spaghetti:
                         price = Convert.ToDecimal(RoundPrice(2.92m, weight));
                         category = Category.Grain;
                         break;
 
-                    case "Steak":
+                    case ItemName.Steak:
                         price = Convert.ToDecimal(RoundPrice(4.97m, weight));
                         category = Category.Protein;
                         break;
 
-                    case "Sugar":
+                    case ItemName.Sugar:
                         price = Convert.ToDecimal(RoundPrice(2.08m, weight));
                         category = Category.Sweet;
                         break;
 
-                    case "Tea":
+                    case ItemName.Tea:
                         price = Convert.ToDecimal(RoundPrice(2.35m, weight));
                         category = Category.Water;
                         break;
 
-                    case "Tissues":
+                    case ItemName.Tissues:
                         price = Convert.ToDecimal(RoundPrice(3.94m, weight));
                         category = Category.CareProduct;
                         break;
 
-                    case "Tomatoes":
+                    case ItemName.Tomatoes:
                         price = Convert.ToDecimal(RoundPrice(1.80m, weight));
                         category = Category.Fruit;
                         break;
 
-                    case "Toothpaste":
+                    case ItemName.Toothpaste:
                         price = Convert.ToDecimal(RoundPrice(2.50m, weight));
                         category = Category.CareProduct;
                         break;
 
-                    case "Turkey":
+                    case ItemName.Turkey:
                         price = Convert.ToDecimal(RoundPrice(2.98m, weight));
                         category = Category.Protein;
                         break;
 
-                    case "Water Bottles":
+                    case ItemName.WaterBottles:
                         price = Convert.ToDecimal(RoundPrice(9.37m, weight));
                         category = Category.Water;
                         break;
 
-                    case "White Bread":
+                    case ItemName.WhiteBread:
                         price = Convert.ToDecimal(RoundPrice(2.43m, weight));
                         category = Category.Grain;
                         break;
 
-                    case "White Milk":
+                    case ItemName.WhiteMilk:
                         price = Convert.ToDecimal(RoundPrice(3.62m, weight));
                         category = Category.Dairy;
                         break;

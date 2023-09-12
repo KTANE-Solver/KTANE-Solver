@@ -30,6 +30,8 @@ namespace New_KTANE_Solver
 
         public List<Card> hand;
 
+        private string rank;
+
         //opponent's response
         public String response;
 
@@ -96,7 +98,7 @@ namespace New_KTANE_Solver
                 new Card(Card.Number.JACK, Card.Suite.CLUB),
                 new Card(Card.Number.FOUR, Card.Suite.CLUB),
                 Bomb.Car.VisibleNotLit,
-                Bomb.Serial.Visible
+                Bomb.RCAVisuble
             );
 
             //fourth card
@@ -107,8 +109,8 @@ namespace New_KTANE_Solver
                 aceTree.Root.LeftNode.LeftNode,
                 new Card(Card.Number.TWO, Card.Suite.SPADE),
                 new Card(Card.Number.THREE, Card.Suite.DIAMOND),
-                Bomb.Rj.Visible,
-                Bomb.Ps.Visible
+                Bomb.RJVisible,
+                Bomb.PSVisible
             );
 
             //1. serial contain vowel
@@ -127,8 +129,8 @@ namespace New_KTANE_Solver
                 aceTree.Root.RightNode.LeftNode,
                 new Card(Card.Number.JACK, Card.Suite.SPADE),
                 new Card(Card.Number.ACE, Card.Suite.HEART),
-                Bomb.Dvid.Visible,
-                Bomb.Parallel.Visible
+                Bomb.DVIVisble,
+                Bomb.PPVisuble
             );
 
             //1, unlit snd or trn
@@ -219,7 +221,7 @@ namespace New_KTANE_Solver
                 new Card(Card.Number.FOUR, Card.Suite.CLUB),
                 new Card(Card.Number.THREE, Card.Suite.DIAMOND),
                 Bomb.Battery > 0,
-                Bomb.Parallel.Visible
+                Bomb.PPVisuble
             );
 
             //third card
@@ -231,7 +233,7 @@ namespace New_KTANE_Solver
                 new Card(Card.Number.FOUR, Card.Suite.HEART),
                 new Card(Card.Number.ACE, Card.Suite.HEART),
                 Bomb.Ind.Lit || Bomb.Msa.Lit || Bomb.Trn.Lit,
-                Bomb.Ps.Visible || Bomb.Dvid.Visible
+                Bomb.PSVisible || Bomb.DVIVisble
             );
 
             //three or fewer aa batteries
@@ -252,8 +254,8 @@ namespace New_KTANE_Solver
                 kingTree.Root.LeftNode.LeftNode,
                 new Card(Card.Number.FOUR, Card.Suite.SPADE),
                 new Card(Card.Number.KING, Card.Suite.SPADE),
-                Bomb.Stereo.Visible,
-                Bomb.Rj.Visible || Bomb.Serial.Visible
+                Bomb.RCAVisuble,
+                Bomb.RJVisible || Bomb.RCAVisuble
             );
 
             //lit sind
@@ -376,7 +378,7 @@ namespace New_KTANE_Solver
                 new Card(Card.Number.TWO, Card.Suite.SPADE),
                 new Card(Card.Number.NINE, Card.Suite.HEART),
                 Bomb.PortNum > 1,
-                Bomb.Ps.Visible || Bomb.Rj.Visible
+                Bomb.PSVisible || Bomb.RJVisible
             );
 
             //bob or unlit frq or sig
@@ -418,7 +420,7 @@ namespace New_KTANE_Solver
                 new Card(Card.Number.KING, Card.Suite.DIAMOND),
                 new Card(Card.Number.ACE, Card.Suite.DIAMOND),
                 Bomb.PortNum > 0,
-                Bomb.Parallel.Visible
+                Bomb.PPVisuble
             );
 
             //fewer than three ports
@@ -428,7 +430,7 @@ namespace New_KTANE_Solver
                 new Card(Card.Number.SEVEN, Card.Suite.DIAMOND),
                 new Card(Card.Number.FIVE, Card.Suite.CLUB),
                 Bomb.PortNum < 3,
-                Bomb.Stereo.Visible && Bomb.Dvid.Visible
+                Bomb.RCAVisuble && Bomb.DVIVisble
             );
 
             //fifth card
@@ -520,7 +522,7 @@ namespace New_KTANE_Solver
                 twoTree.Root.LeftNode,
                 new Card(Card.Number.TEN, Card.Suite.CLUB),
                 new Card(Card.Number.ACE, Card.Suite.SPADE),
-                Bomb.Dvid.Visible || Bomb.Stereo.Visible,
+                Bomb.DVIVisble || Bomb.RCAVisuble,
                 Bomb.DigitSum > 12
             );
 
@@ -530,8 +532,8 @@ namespace New_KTANE_Solver
                 twoTree.Root.RightNode,
                 new Card(Card.Number.FOUR, Card.Suite.HEART),
                 new Card(Card.Number.KING, Card.Suite.HEART),
-                Bomb.Parallel.Visible && Bomb.Serial.Visible,
-                Bomb.Rj.Visible
+                Bomb.PPVisuble && Bomb.RCAVisuble,
+                Bomb.RJVisible
             );
 
             //fourth card
@@ -552,7 +554,7 @@ namespace New_KTANE_Solver
                 twoTree.Root.LeftNode.RightNode,
                 new Card(Card.Number.TWO, Card.Suite.DIAMOND),
                 new Card(Card.Number.SIX, Card.Suite.HEART),
-                Bomb.Ps.Visible && Bomb.Parallel.Visible,
+                Bomb.PSVisible && Bomb.PPVisuble,
                 Bomb.PortNum <= 3
             );
 
@@ -639,13 +641,28 @@ namespace New_KTANE_Solver
         }
 
         /// <summary>
-        /// A method that will set up the hand. YES IS LEFT. RIGHT IS NO
+        /// Will return the next card that needs to be added to the hand
         /// </summary>
-        public void SetHand()
+        /// <param name="condition">the condition of wheter to go left or right</param>
+        /// <param name="parent"></param>
+        /// <param name="tree"></param>
+        /// <returns></returns>
+        public BinaryTreeNode ChoosePath(BinaryTreeNode parent)
         {
-            hand = new List<Card>();
+            if (parent.Condition)
+            {
+                return parent.LeftNode;
+            }
 
-            hand.Add(startingCard);
+            return parent.RightNode;
+        }
+
+        public string GetStage1Answer(bool debug)
+        {
+            hand = new List<Card>
+            {
+                startingCard
+            };
 
             BinaryTreeNode currentNode;
 
@@ -677,23 +694,50 @@ namespace New_KTANE_Solver
 
                 hand.Add(currentNode.Data);
             }
-        }
 
-        /// <summary>
-        /// Will return the next card that needs to be added to the hand
-        /// </summary>
-        /// <param name="condition">the condition of wheter to go left or right</param>
-        /// <param name="parent"></param>
-        /// <param name="tree"></param>
-        /// <returns></returns>
-        public BinaryTreeNode ChoosePath(BinaryTreeNode parent)
-        {
-            if (parent.Condition)
+            //print the cards that were gotten
+            PrintHand();
+
+            //set the rank
+            SetRank();
+
+            String answer;
+
+            switch (rank)
             {
-                return parent.LeftNode;
+                case "Royal Flush":
+                case "Straight Flush":
+                case "Four of a Kind":
+                    answer = "All-in";
+                    break;
+
+                case "Full House":
+                case "Flush":
+                    answer = "Max Raise";
+                    break;
+
+                case "Straight":
+                case "Three of a Kind":
+                    answer = "Min Raise";
+                    break;
+
+                case "Two Pair":
+                case "Pair":
+                    answer = "Check";
+                    break;
+
+                default:
+                    answer = "Fold";
+                    break;
             }
 
-            return parent.RightNode;
+            if (!debug)
+            { 
+                ShowAnswer($"Press {answer}", true);
+            }
+
+            return answer;
+
         }
 
         /// <summary>
@@ -701,7 +745,7 @@ namespace New_KTANE_Solver
         /// </summary>
         /// <param name="hand"></param>
         /// <returns></returns>
-        public String SetRank(Card[] hand)
+        public String SetRank()
         {
             //sort the cards from lowest to highest based on the numbers
             for (int i = 0; i < 5; i++)
@@ -718,11 +762,11 @@ namespace New_KTANE_Solver
             }
 
             //royal flush - Ten, Jack, Queen, King, Ace of the same suit
-            bool kingFound = FindNumber(Card.Number.KING, hand);
-            bool queenFound = FindNumber(Card.Number.QUEEN, hand);
-            bool jackFound = FindNumber(Card.Number.JACK, hand);
-            bool aceFound = FindNumber(Card.Number.ACE, hand);
-            bool tenFound = FindNumber(Card.Number.TEN, hand);
+            bool kingFound = FindNumber(Card.Number.KING);
+            bool queenFound = FindNumber(Card.Number.QUEEN);
+            bool jackFound = FindNumber(Card.Number.JACK);
+            bool aceFound = FindNumber(Card.Number.ACE);
+            bool tenFound = FindNumber(Card.Number.TEN);
 
             if (
                 hand[0].suite == hand[1].suite
@@ -736,11 +780,11 @@ namespace New_KTANE_Solver
                 && tenFound
             )
             {
-                return "Royal Flush";
+                rank = "Royal Flush";
             }
 
             //straight flush - Five consecutive values of the same suit
-            if (
+            else if (
                 hand[0].suite == hand[1].suite
                 && hand[0].suite == hand[2].suite
                 && hand[0].suite == hand[3].suite
@@ -755,26 +799,26 @@ namespace New_KTANE_Solver
                     && (int)hand[3].number + 1 == (int)hand[4].number
                 )
                 {
-                    return "Straight Flush";
+                    rank = "Straight Flush";
                 }
 
                 //if there is an Ace, check to see if it with the ace being at the bottom
-                if (
-                    FindNumber(Card.Number.ACE, hand)
+                else if (
+                    FindNumber(Card.Number.ACE)
                     && (int)hand[0].number + 1 == (int)hand[1].number
                     && (int)hand[1].number + 1 == (int)hand[2].number
                     && (int)hand[2].number + 1 == (int)hand[3].number
                 )
                 {
-                    return "Straight Flush";
+                    rank = "Straight Flush";
                 }
             }
 
             //four of a kind - four cards of the same value
             foreach (Card card in hand)
             {
-                if (FindNumberNum(card.number, hand) == 4)
-                    return "Four of a Kind";
+                if (FindNumberNum(card.number) == 4)
+                    rank = "Four of a Kind";
             }
 
             //full house - three cards of the same value and two cards if another value
@@ -782,7 +826,7 @@ namespace New_KTANE_Solver
 
             foreach (Card card in hand)
             {
-                if (FindNumberNum(card.number, hand) == 3)
+                if (FindNumberNum(card.number) == 3)
                 {
                     foundThreeSameNumber = true;
                     break;
@@ -793,52 +837,52 @@ namespace New_KTANE_Solver
             {
                 foreach (Card card in hand)
                 {
-                    if (FindNumberNum(card.number, hand) == 2)
+                    if (FindNumberNum(card.number) == 2)
                     {
-                        return "Full House";
+                        rank = "Full House";
                     }
                 }
             }
 
             //flush - five cards of the same suit
-            if (
+            else if (
                 hand[0].suite == hand[1].suite
                 && hand[0].suite == hand[2].suite
                 && hand[0].suite == hand[3].suite
                 && hand[0].suite == hand[4].suite
             )
             {
-                return "Flush";
+                rank = "Flush";
             }
 
             //straight - Five consecutive values of any suit
 
             //check to see if there is a straight noramally
-            if (
+            else if (
                 (int)hand[0].number + 1 == (int)hand[1].number
                 && (int)hand[1].number + 1 == (int)hand[2].number
                 && (int)hand[2].number + 1 == (int)hand[3].number
                 && (int)hand[3].number + 1 == (int)hand[4].number
             )
             {
-                return "Straight";
+                rank = "Straight";
             }
 
             //if there is an Ace, check to see if it with the ace being at the bottom
-            if (
-                FindNumber(Card.Number.ACE, hand)
+            else if (
+                FindNumber(Card.Number.ACE)
                 && (int)hand[0].number + 1 == (int)hand[1].number
                 && (int)hand[1].number + 1 == (int)hand[2].number
                 && (int)hand[2].number + 1 == (int)hand[3].number
             )
             {
-                return "Straight";
+                rank = "Straight";
             }
 
             //three of a kind - three cards of the same value
             foreach (Card card in hand)
             {
-                if (FindNumberNum(card.number, hand) == 3)
+                if (FindNumberNum(card.number) == 3)
                 {
                     return "Three of a Kind";
                 }
@@ -849,7 +893,7 @@ namespace New_KTANE_Solver
 
             foreach (Card card in hand)
             {
-                if (FindNumberNum(card.number, hand) == 2)
+                if (FindNumberNum(card.number) == 2)
                 {
                     firstPair = card;
                     break;
@@ -860,9 +904,9 @@ namespace New_KTANE_Solver
             {
                 foreach (Card card in hand)
                 {
-                    if (firstPair != card && FindNumberNum(card.number, hand) == 2)
+                    if (firstPair != card && FindNumberNum(card.number) == 2)
                     {
-                        return "Two Pair";
+                        rank = "Two Pair";
                     }
                 }
             }
@@ -870,68 +914,64 @@ namespace New_KTANE_Solver
             //Pair - two cards of the same value
             foreach (Card card in hand)
             {
-                if (FindNumberNum(card.number, hand) == 2)
+                if (FindNumberNum(card.number) == 2)
                 {
-                    return "Pair";
+                    rank = "Pair";
                 }
             }
 
-            return "No Hand";
+            if (rank == "")
+            { 
+                rank = "No Hand";
+            }
+
+            return rank;
+
         }
 
         /// <summary>
         /// Tells wether bluff or truth given opponent response
         /// </summary>
         /// <returns></returns>
-        public String BluffTruth()
+        public String BluffTruth(bool debug)
         {
+            string answer;
+
             switch (response)
             {
                 case "Terrible play!":
+                    answer = startingCard.number == Card.Number.TWO ? "Bluff" : "Truth";
 
-                    if (startingCard.number == Card.Number.TWO)
-                        return "Bluff";
-
-                    return "Truth";
+                    break;
 
                 case "Awful play!":
-                    if (
-                        startingCard.number == Card.Number.TWO
-                        || startingCard.number == Card.Number.ACE
-                    )
-                        return "Bluff";
+                    answer = startingCard.number == Card.Number.TWO || startingCard.number == Card.Number.ACE ? "Bluff" : "Truth";
 
-                    return "Truth";
+                    break;
 
                 case "Really?":
-                    if (startingCard.number == Card.Number.ACE)
-                        return "Truth";
+                    answer = startingCard.number == Card.Number.ACE ? "Truth" : "Bluff";
 
-                    return "Bluff";
-
+                    break;
                 case "Really, really?":
-                    if (startingCard.number == Card.Number.FIVE)
-                        return "Truth";
-
-                    return "Bluff";
+                    answer = startingCard.number == Card.Number.FIVE ? "Truth" : "Bluff";
+                    break;
 
                 case "Sure about that?":
-                    if (
-                        startingCard.number == Card.Number.KING
-                        || startingCard.number == Card.Number.FIVE
-                    )
-                        return "Bluff";
+                    answer = startingCard.number == Card.Number.KING || startingCard.number == Card.Number.FIVE ? "Bluff" : "Truth";
+                    break;
 
-                    return "Truth";
-
-                case "Are you sure?":
-                    if (startingCard.number == Card.Number.ACE)
-                        return "Bluff";
-
-                    return "Truth";
+                default:
+                    answer = startingCard.number == Card.Number.ACE ? "Bluff" : "Truth";
+                    break;
             }
 
-            return "Bluff";
+            if (!debug)
+            {
+                ShowAnswer(answer, true);
+            }
+
+            return answer;
         }
 
         /// <summary>
@@ -939,350 +979,356 @@ namespace New_KTANE_Solver
         /// </summary>
         /// <param name="betAmount"></param>
         /// <returns></returns>
-        public int BettingRule(int betAmount, Card card1, Card card2, Card card3, Card card4)
+        public string CardAnswer(int betAmount, Card.Suite[] cards, bool debug)
         {
+            int answer;
+            string reason = "";
+            int diamondNum = SuitNum(cards, Card.Suite.DIAMOND);
+            int spadeNum = SuitNum(cards, Card.Suite.SPADE);
+            int clubNum = SuitNum(cards, Card.Suite.CLUB);
+            int heartNum = SuitNum(cards, Card.Suite.HEART);
+
+            PrintDebugLine("Bet amount: " + betAmount);
+            PrintDebugLine("Card 1: " + cards[0]);
+            PrintDebugLine("Card 2: " + cards[1]);
+            PrintDebugLine("Card 3: " + cards[2]);
+            PrintDebugLine("Card 4: " + cards[3] + "\n");
+
+
             switch (betAmount)
             {
                 case 25:
 
                     //If the first card is red and there is a lit BOB indicator, press the fourth card.
                     if (
-                        (card1.suite == Card.Suite.DIAMOND || card1.suite == Card.Suite.HEART)
+                        (cards[0] == Card.Suite.DIAMOND || cards[0] == Card.Suite.HEART)
                         && Bomb.Bob.Lit
                     )
-                        return 4;
+                    {
+                        reason = "the first card is red and there is a lit BOB indicator";
+                        answer = 4;
+
+                    }
 
                     //Otherwise, if your opponent said "Awful play!" and the starter card was the Ace of Spades, press the first card.
-                    if (response == "Awful play!" && startingCard.number == Card.Number.ACE)
-                        return 1;
+                    else if (response == "Awful play!" && startingCard.number == Card.Number.ACE)
+                    {
+                        reason = "your opponent said \"Awful play!\" and the starter card was the Ace of Spades";
+                        answer = 1;
+                    }
 
                     //Otherwise, if there is an unlit FRQ indicator and the fourth card is black, press the second card.
-                    if (
+                    else if (
                         Bomb.Frq.VisibleNotLit
-                        && (card4.suite == Card.Suite.CLUB || card4.suite == Card.Suite.SPADE)
+                        && (cards[3] == Card.Suite.CLUB || cards[3] == Card.Suite.SPADE)
                     )
-                        return 2;
-
+                    {
+                        reason = "there is an unlit FRQ indicator and the fourth card is black, press the second card";
+                        answer = 2;
+                    }
                     //Otherwise, if there is at least one diamond and your opponent said "Really?" or "Really, really?", press the third card.
-                    if (
-                        DiamondNum(card1, card2, card3, card4) >= 1
+                    else if (
+                        diamondNum >= 1
                         && (response == "Really, really?" || response == "Really?")
                     )
-                        return 3;
+                    {
+                        reason = "there is at least one diamond and your opponent said \"Really?\" or \"Really, really?\"";
+                        answer = 3;
+                    }
 
                     //Otherwise, if the fourth card is a spade and there are more than four batteries, press the third card.
-                    if (card4.suite == Card.Suite.SPADE && Bomb.Battery > 4)
-                        return 3;
-
+                    else if (cards[3] == Card.Suite.SPADE && Bomb.Battery > 4)
+                    {
+                        reason = "the fourth card is a spade and there are more than four batteries";
+                        answer = 3;
+                    }
                     //Otherwise, if the third card is a diamond and the second card is not a club, press the second card.
-                    if (card3.suite == Card.Suite.DIAMOND && card2.suite != Card.Suite.CLUB)
-                        return 2;
-
+                    else if (cards[2] == Card.Suite.DIAMOND && cards[1] != Card.Suite.CLUB)
+                    {
+                        reason = "the third card is a diamond and the second card is not a club";
+                        answer = 2;
+                    }
                     //Otherwise, if your opponent said "Are you sure?" and the starter card was the Two of Clubs, press the first card.
-                    if (response == "Are you sure?" && startingCard.suite == Card.Suite.CLUB)
-                        return 1;
-
+                    else if (response == "Are you sure?" && startingCard.suite == Card.Suite.CLUB)
+                    {
+                        reason = "your opponent said \"Are you sure?\" and the starter card was the Two of Clubs";
+                        answer = 1;
+                    }
                     //Otherwise, if the starter card was the Five of Diamonds, press the fourth card.
-                    if (startingCard.suite == Card.Suite.DIAMOND)
-                        return 4;
-
+                    else if (startingCard.suite == Card.Suite.DIAMOND)
+                    {
+                        reason = "the starter card was the Five of Diamonds";
+                        answer = 4;
+                    }
                     //Otherwise, if the second card is a club and there is no RJ - 45 port, press the second card.
-                    if (card2.suite == Card.Suite.CLUB && !Bomb.Rj.Visible)
-                        return 2;
-
+                    else if (cards[1] == Card.Suite.CLUB && !Bomb.RJVisible)
+                    {
+                        reason = "the second card is a club and there is no RJ - 45 port";
+                        answer = 2;
+                    }
                     //Otherwise, press the first card.
-                    return 1;
+                    else
+                    {
+                        reason = "None of the other conditions applied";
+                        answer = 1;
+                    }
+                    break;
 
                 case 50:
                     //If your opponent said "Sure about that?" and the fourth card is a heart, press the first card.
-                    if (response == "Sure about that?" && card4.suite == Card.Suite.HEART)
-                        return 1;
-
+                    if (response == "Sure about that?" && cards[3] == Card.Suite.HEART)
+                    {
+                        reason = "your opponent said \"Sure about that?\" and the fourth card is a heart";
+                        answer = 1;
+                    }
                     //Otherwise, if there are no clubs and the starter card was the Two of Clubs, press the third card.
-                    if (
-                        ClubNum(card1, card2, card3, card4) == 0
+                    else if (
+                        clubNum == 0
                         && startingCard.suite == Card.Suite.CLUB
                     )
-                        return 3;
-
+                    {
+                        reason = "there are no clubs and the starter card was the Two of Clubs";
+                        answer = 3;
+                    }
                     //Otherwise, if a heart appears anywhere above a spade and there are no diamonds press the fourth card.
-                    if (
-                        DiamondNum(card1, card2, card3, card4) == 0
+                    else if (
+                        diamondNum == 0
                         && (
-                            (card1.suite == Card.Suite.HEART && card2.suite == Card.Suite.SPADE)
-                            || (card1.suite == Card.Suite.HEART && card3.suite == Card.Suite.SPADE)
-                            || (card1.suite == Card.Suite.HEART && card4.suite == Card.Suite.SPADE)
-                            || (card2.suite == Card.Suite.HEART && card3.suite == Card.Suite.SPADE)
-                            || (card2.suite == Card.Suite.HEART && card4.suite == Card.Suite.SPADE)
-                            || (card3.suite == Card.Suite.HEART && card4.suite == Card.Suite.SPADE)
+                               (cards[0] == Card.Suite.HEART && cards[1] == Card.Suite.SPADE)
+                            || (cards[0] == Card.Suite.HEART && cards[2] == Card.Suite.SPADE)
+                            || (cards[0] == Card.Suite.HEART && cards[3] == Card.Suite.SPADE)
+                            || (cards[1] == Card.Suite.HEART && cards[2] == Card.Suite.SPADE)
+                            || (cards[1] == Card.Suite.HEART && cards[3] == Card.Suite.SPADE)
+                            || (cards[2] == Card.Suite.HEART && cards[3] == Card.Suite.SPADE)
                         )
                     )
-                        return 4;
-
+                    {
+                        reason = "a heart appears anywhere above a spade and there are no diamonds";
+                        answer = 4;
+                    }
                     //Otherwise, if the first card is a heart and the starter card was not the King of Hearts, press the second card.
-                    if (card1.suite == Card.Suite.HEART && startingCard.suite != Card.Suite.HEART)
-                        return 2;
-
+                    else if (cards[0] == Card.Suite.HEART && startingCard.suite != Card.Suite.HEART)
+                    {
+                        reason = "the first card is a heart and the starter card was not the King of Hearts";
+                        answer = 2;
+                    }
                     //Otherwise, if your opponent said "Really, really?" and the first or second card are hearts, press the fourth card.
-                    if (
+                    else if (
                         response == "Really, really?"
-                        && (card1.suite == Card.Suite.HEART || card2.suite == Card.Suite.HEART)
+                        && (cards[0] == Card.Suite.HEART || cards[1] == Card.Suite.HEART)
                     )
-                        return 4;
-
+                    {
+                        reason = "your opponent said \"Really, really?\" and the first or second card are hearts";
+                        answer = 4;
+                    }
                     //Otherwise, if the starter card was the Five of Diamonds and there is a parallel port, press the first card.
-                    if (startingCard.suite == Card.Suite.DIAMOND && Bomb.Parallel.Visible)
-                        return 1;
-
+                    else if (startingCard.suite == Card.Suite.DIAMOND && Bomb.PPVisuble)
+                    {
+                        reason = "the starter card was the Five of Diamonds and there is a parallel port";
+                        answer = 1;
+                    }
                     //Otherwise, if there is a lit TRN indicator and there is at least one black card, press the second card.
-                    if (
+                    else if (
                         Bomb.Trn.Lit
-                        && ClubNum(card1, card2, card3, card4)
-                            + SpadeNum(card1, card2, card3, card4)
+                        && clubNum
+                            + spadeNum
                             >= 1
                     )
-                        return 2;
-
+                    {
+                        reason = "there is a lit TRN indicator and there is at least one black card";
+                        answer = 2;
+                    }
                     //Otherwise, if your opponent said "Terrible play!", press the third card.
-                    if (response == "Terrible play!")
-                        return 3;
-
+                    else if (response == "Terrible play!")
+                    {
+                        reason = "your opponent said \"Terrible play!\"";
+                        answer = 3;
+                    }
                     //Otherwise, if the digits of the serial number add up to less than ten press the first card.
-                    if (Bomb.DigitSum < 10)
-                        return 1;
-
+                    else if (Bomb.DigitSum < 10)
+                    {
+                        reason = "the digits of the serial number add up to less than ten";
+                        answer = 1;
+                    }
                     //Otherwise, press the third card.
-                    return 3;
+                    else
+                    {
+                        reason = "None of the other conditions applied";
+                        answer = 3;
+                    }
+                    break;
 
                 case 100:
                     //If your opponent said "Really, really?", press the second card.
                     if (response == "Really, really?")
-                        return 2;
-
+                    {
+                        reason = "your opponent said \"Really, really?\"";
+                        answer = 2;
+                    }
                     //Otherwise, if your opponent said, "Really?", press the fourth card.
-                    if (response == "Really?")
-                        return 4;
-
+                    else if (response == "Really?")
+                    {
+                        reason = "your opponent said, \"Really?\"";
+                        answer = 4;
+                    }
                     //Otherwise, if there are no D batteries and the starter card was the Ace of Spades, press the first card.
-                    if (Bomb.DBattery == 0 && startingCard.suite == Card.Suite.SPADE)
-                        return 1;
-
+                    else if (Bomb.DBattery == 0 && startingCard.suite == Card.Suite.SPADE)
+                    {
+                        reason = "there are no D batteries and the starter card was the Ace of Spades";
+                        answer = 1;
+                    }
                     //Otherwise, if the digits of the serial number add up to a prime number and there is at least one heart, press the fourth card.
-                    if (
+                    else if (
                         IsPrime(Bomb.DigitSum)
-                        && (
-                            card1.suite == Card.Suite.HEART
-                            || card2.suite == Card.Suite.HEART
-                            || card3.suite == Card.Suite.HEART
-                            || card4.suite == Card.Suite.HEART
-                        )
-                    )
-
-                        return 4;
+                        && heartNum >= 1)
+                    {
+                        reason = "the digits of the serial number add up to a prime number and there is at least one heart";
+                        answer = 4;
+                    }
 
                     //Otherwise, if a club and a spade appear and your opponent said "Sure about that?", press the third card.
-                    if (
+                    else if (
                         response == "Sure about that?"
                         && (
-                            (card1.suite == Card.Suite.CLUB && card2.suite == Card.Suite.SPADE)
-                            || (card1.suite == Card.Suite.CLUB && card3.suite == Card.Suite.SPADE)
-                            || (card1.suite == Card.Suite.CLUB && card4.suite == Card.Suite.SPADE)
-                            || (card2.suite == Card.Suite.CLUB && card1.suite == Card.Suite.SPADE)
-                            || (card2.suite == Card.Suite.CLUB && card3.suite == Card.Suite.SPADE)
-                            || (card2.suite == Card.Suite.CLUB && card4.suite == Card.Suite.SPADE)
-                            || (card3.suite == Card.Suite.CLUB && card1.suite == Card.Suite.SPADE)
-                            || (card3.suite == Card.Suite.CLUB && card2.suite == Card.Suite.SPADE)
-                            || (card3.suite == Card.Suite.CLUB && card4.suite == Card.Suite.SPADE)
-                            || (card4.suite == Card.Suite.CLUB && card1.suite == Card.Suite.SPADE)
-                            || (card4.suite == Card.Suite.CLUB && card3.suite == Card.Suite.SPADE)
+                            (cards[0] == Card.Suite.CLUB && cards[1] == Card.Suite.SPADE)
+                            || (cards[0] == Card.Suite.CLUB && cards[2] == Card.Suite.SPADE)
+                            || (cards[0] == Card.Suite.CLUB && cards[3] == Card.Suite.SPADE)
+                            || (cards[1] == Card.Suite.CLUB && cards[0] == Card.Suite.SPADE)
+                            || (cards[1] == Card.Suite.CLUB && cards[2] == Card.Suite.SPADE)
+                            || (cards[1] == Card.Suite.CLUB && cards[3] == Card.Suite.SPADE)
+                            || (cards[2] == Card.Suite.CLUB && cards[0] == Card.Suite.SPADE)
+                            || (cards[2] == Card.Suite.CLUB && cards[1] == Card.Suite.SPADE)
+                            || (cards[2] == Card.Suite.CLUB && cards[3] == Card.Suite.SPADE)
+                            || (cards[3] == Card.Suite.CLUB && cards[0] == Card.Suite.SPADE)
+                            || (cards[3] == Card.Suite.CLUB && cards[2] == Card.Suite.SPADE)
                         )
                     )
-                        return 3;
+                    {
+                        reason = "a club and a spade appear and your opponent said \"Sure about that?\"";
+                        answer = 3;
+                    }
 
                     //Otherwise, if a club and a spade appear next to each other, press the second card.
-                    if (
-                        (card1.suite == Card.Suite.CLUB && card2.suite == Card.Suite.SPADE)
-                        || (card2.suite == Card.Suite.CLUB && card3.suite == Card.Suite.SPADE)
-                        || (card3.suite == Card.Suite.CLUB && card4.suite == Card.Suite.SPADE)
-                        || (card1.suite == Card.Suite.SPADE && card2.suite == Card.Suite.CLUB)
-                        || (card2.suite == Card.Suite.SPADE && card3.suite == Card.Suite.CLUB)
-                        || (card3.suite == Card.Suite.SPADE && card4.suite == Card.Suite.CLUB)
+                    else if (
+                        (cards[0] == Card.Suite.CLUB && cards[1] == Card.Suite.SPADE)
+                        || (cards[1] == Card.Suite.CLUB && cards[2] == Card.Suite.SPADE)
+                        || (cards[2] == Card.Suite.CLUB && cards[3] == Card.Suite.SPADE)
+                        || (cards[0] == Card.Suite.SPADE && cards[1] == Card.Suite.CLUB)
+                        || (cards[1] == Card.Suite.SPADE && cards[2] == Card.Suite.CLUB)
+                        || (cards[2] == Card.Suite.SPADE && cards[3] == Card.Suite.CLUB)
                     )
-                        return 2;
-
+                    {
+                        reason = "a club and a spade appear next to each other";
+                        answer = 2;
+                    }
                     //Otherwise, if there is an unlit MSA indicator, press the first card.
-                    if (Bomb.Msa.Lit)
-                        return 1;
-
+                    else if (Bomb.Msa.Lit)
+                    {
+                        reason = "there is an unlit MSA indicator";
+                        answer = 1;
+                    }
                     //Otherwise, if there is at least one diamond, press the third card.
-                    if (DiamondNum(card1, card2, card3, card4) >= 1)
-                        return 3;
-
+                    else if (diamondNum >= 1)
+                    {
+                        reason = "there is at least one diamond";
+                        answer = 3;
+                    }
                     //Otherwise, if your opponent said "Awful play!", press the fourth card.
-                    if (response == "Awful play!")
-                        return 4;
-
+                    else if (response == "Awful play!")
+                    {
+                        reason = "your opponent said \"Awful play!\"";
+                        answer = 4;
+                    }
                     //Otherwise, press the second card.
-                    return 2;
+                    else
+                    {
+                        reason = "None of the other conditions applied";
+                        answer = 2;
+                    }
+                    break;
 
-                case 500:
+                default:
                     //If there is more than one club, press the third card.
-                    if (ClubNum(card1, card2, card3, card4) > 1)
-                        return 3;
-
+                    if (clubNum > 1)
+                    {
+                        reason = "there is more than one club";
+                        answer = 3;
+                    }
                     //Otherwise, if the serial number contains a vowel and there is at least one spade, press the second card.
-                    if (Bomb.HasVowel && SpadeNum(card1, card2, card3, card4) >= 1)
-                        return 2;
-
+                    else if (Bomb.HasVowel && spadeNum >= 1)
+                    {
+                        reason = "if the serial number contains a vowel and there is at least one spade";
+                        answer = 2;
+                    }
                     //Otherwise, if there are no ports and there is at least one heart, press the first card.
-                    if (Bomb.PortNum == 0 && HeartNum(card1, card2, card3, card4) >= 1)
-                        return 1;
+                    else if (Bomb.PortNum == 0 && heartNum >= 1)
+                        answer = 1;
 
                     //Otherwise, if there are no red cards, press the fourth card.
-                    if (
-                        HeartNum(card1, card2, card3, card4) == 0
-                        && DiamondNum(card1, card2, card3, card4) == 0
+                    else if (
+                        heartNum == 0 && diamondNum == 0
                     )
-                        return 4;
-
+                    {
+                        reason = "there are no red cards";
+                        answer = 4;
+                    }
                     //Otherwise, if your opponent said "Are you sure?", press the fourth card.
-                    if (response == "Are you sure?")
-                        return 4;
+                    else if (response == "Are you sure?")
+                    {
+                        reason = "your opponent said \"Are you sure?\"";
+                        answer = 4;
 
+                    }
                     //Otherwise, if there are no lit indicators and the first card is a heart, press the third card.
-                    if (Bomb.LitIndicatorsList.Count == 0 && card1.suite == Card.Suite.HEART)
-                        return 3;
-
+                    else if (Bomb.LitIndicatorsList.Count == 0 && cards[0] == Card.Suite.HEART)
+                    {
+                        reason = "there are no lit indicators and the first card is a heart";
+                        answer = 3;
+                    }
                     //Otherwise, if there is at least one unlit indicator and the second card is a club, press the second card.
-                    if (Bomb.UnlitIndicatorsList.Count >= 1 && card2.suite == Card.Suite.CLUB)
-                        return 2;
-
+                    else if (Bomb.UnlitIndicatorsList.Count >= 1 && cards[1] == Card.Suite.CLUB)
+                    {
+                        reason = "there is at least one unlit indicator and the second card is a club";
+                        answer = 2;
+                    }
                     //Otherwise, if your opponent said "Really?" and there are no black cards, press the first card.
-                    if (
-                        response == "Really?"
-                        && SpadeNum(card1, card2, card3, card4) == 0
-                        && ClubNum(card1, card2, card3, card4) == 0
-                    )
-                        return 1;
-
+                    else if (response == "Really?" && spadeNum == 0 && clubNum == 0)
+                    {
+                        reason = "your opponent said \"Really?\" and there are no black cards";
+                        answer = 1;
+                    }
                     //Otherwise, if there is more than one D battery, press the third card.
-                    if (Bomb.DBattery > 1)
-                        return 3;
-
+                    else if (Bomb.DBattery > 1)
+                    {
+                        reason = "there is more than one D battery";
+                        answer = 3;
+                    }
                     //Otherwise, press the fourth card.
-                    return 4;
+                    else
+                    {
+                        reason = "None of the other conditions applied";
+                        answer = 4;
+                    }
+                    break;
             }
 
-            return -1;
+            string strAnswer = "Card " + answer;
+
+            PrintDebugLine(reason);
+
+            if (!debug)
+            {
+                ShowAnswer(strAnswer, true);
+            }
+
+            return strAnswer;
         }
 
-        /// <summary>
-        /// A method that tells how many clubs there are in the final stage
-        /// </summary>
-        /// <param name="card1"></param>
-        /// <param name="card2"></param>
-        /// <param name="card3"></param>
-        /// <param name="card4"></param>
-        /// <returns></returns>
-        public int ClubNum(Card card1, Card card2, Card card3, Card card4)
+        private int SuitNum(Card.Suite[] cards, Card.Suite desiredSuit)
         {
-            int num = 0;
-
-            if (card1.suite == Card.Suite.CLUB)
-                num++;
-
-            if (card2.suite == Card.Suite.CLUB)
-                num++;
-
-            if (card3.suite == Card.Suite.CLUB)
-                num++;
-
-            if (card4.suite == Card.Suite.CLUB)
-                num++;
-
-            return num;
+            return cards.Where(s => s == desiredSuit).Count();
         }
 
-        /// <summary>
-        /// A method that tells how many hears there are in the final stage
-        /// </summary>
-        /// <param name="card1"></param>
-        /// <param name="card2"></param>
-        /// <param name="card3"></param>
-        /// <param name="card4"></param>
-        /// <returns></returns>
-        public int HeartNum(Card card1, Card card2, Card card3, Card card4)
-        {
-            int num = 0;
-
-            if (card1.suite == Card.Suite.HEART)
-                num++;
-
-            if (card2.suite == Card.Suite.HEART)
-                num++;
-
-            if (card3.suite == Card.Suite.HEART)
-                num++;
-
-            if (card4.suite == Card.Suite.HEART)
-                num++;
-
-            return num;
-        }
-
-        /// <summary>
-        /// A method that tells how many clubs there are in the final stage
-        /// </summary>
-        /// <param name="card1"></param>
-        /// <param name="card2"></param>
-        /// <param name="card3"></param>
-        /// <param name="card4"></param>
-        /// <returns></returns>
-        public int SpadeNum(Card card1, Card card2, Card card3, Card card4)
-        {
-            int num = 0;
-
-            if (card1.suite == Card.Suite.SPADE)
-                num++;
-
-            if (card2.suite == Card.Suite.SPADE)
-                num++;
-
-            if (card3.suite == Card.Suite.SPADE)
-                num++;
-
-            if (card4.suite == Card.Suite.SPADE)
-                num++;
-
-            return num;
-        }
-
-        /// <summary>
-        /// A method that tells how many clubs there are in the final stage
-        /// </summary>
-        /// <param name="card1"></param>
-        /// <param name="card2"></param>
-        /// <param name="card3"></param>
-        /// <param name="card4"></param>
-        /// <returns></returns>
-        public int DiamondNum(Card card1, Card card2, Card card3, Card card4)
-        {
-            int num = 0;
-
-            if (card1.suite == Card.Suite.DIAMOND)
-                num++;
-
-            if (card2.suite == Card.Suite.DIAMOND)
-                num++;
-
-            if (card3.suite == Card.Suite.DIAMOND)
-                num++;
-
-            if (card4.suite == Card.Suite.DIAMOND)
-                num++;
-
-            return num;
-        }
 
         public bool IsPrime(int number)
         {
@@ -1308,7 +1354,7 @@ namespace New_KTANE_Solver
         /// <param name="target"></param>
         /// <param name="hand"></param>
         /// <returns></returns>
-        public bool FindNumber(Card.Number target, Card[] hand)
+        public bool FindNumber(Card.Number target)
         {
             foreach (Card card in hand)
             {
@@ -1325,26 +1371,9 @@ namespace New_KTANE_Solver
         /// <param name="target"></param>
         /// <param name="hand"></param>
         /// <returns></returns>
-        public int FindNumberNum(Card.Number target, Card[] hand)
+        public int FindNumberNum(Card.Number target)
         {
-            int num = 0;
-
-            if (hand[0].number == target)
-                num++;
-
-            if (hand[1].number == target)
-                num++;
-
-            if (hand[2].number == target)
-                num++;
-
-            if (hand[3].number == target)
-                num++;
-
-            if (hand[4].number == target)
-                num++;
-
-            return num;
+            return hand.Where(x => x.number == target).Count();
         }
 
         /// <summary>
@@ -1415,6 +1444,18 @@ namespace New_KTANE_Solver
                 parent.LeftNode = new BinaryTreeNode(leftCard, leftCondition);
                 parent.RightNode = new BinaryTreeNode(rightCard, rightCondition);
             }
+        }
+
+        private void PrintHand()
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                Card c = hand[i];
+                PrintDebugLine($"Card {i + 1}: {c.number} of {c.suite}");
+            }
+
+            PrintDebugLine("");
+
         }
 
         /// <summary>

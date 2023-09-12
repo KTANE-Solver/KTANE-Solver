@@ -211,7 +211,7 @@ namespace New_KTANE_Solver
                 card3
             );
 
-            module.Solve(offeringCard);
+            module.Solve(offeringCard, false);
 
             this.Hide();
             MonsplodeTradingCardOtherStageForm secondStage = new MonsplodeTradingCardOtherStageForm(

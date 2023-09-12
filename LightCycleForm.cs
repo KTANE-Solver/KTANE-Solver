@@ -147,7 +147,7 @@ namespace New_KTANE_Solver
             PrintHeader();
 
             LightCycle module = new LightCycle(Bomb, LogFileWriter, cycle);
-            module.Solve();
+            module.Solve(false);
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
         }
     }

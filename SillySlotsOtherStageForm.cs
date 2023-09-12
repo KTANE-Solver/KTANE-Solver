@@ -256,23 +256,17 @@ namespace New_KTANE_Solver
             //updating the module
             keyword = keywordComboBox.Text;
 
-            String slot1Color = slot1ColorComboBox.Text;
-            String slot2Color = slot2ColorComboBox.Text;
-            String slot3Color = slot3ColorComboBox.Text;
+            SillySlots.Slot slot1 = new SillySlots.Slot(slot1ColorComboBox.Text, slot1ObjectComboBox.Text);
+            SillySlots.Slot slot2 = new SillySlots.Slot(slot2ColorComboBox.Text, slot2ObjectComboBox.Text);
+            SillySlots.Slot slot3 = new SillySlots.Slot(slot3ColorComboBox.Text, slot3ObjectComboBox.Text);
 
-            String slot1Object = slot1ObjectComboBox.Text;
-            String slot2Object = slot2ObjectComboBox.Text;
-            String slot3Object = slot3ObjectComboBox.Text;
 
             sillySlotsModule.UpdateModule(
                 stage,
                 keyword,
-                slot1Color,
-                slot1Object,
-                slot2Color,
-                slot2Object,
-                slot3Color,
-                slot3Object
+                slot1,
+                slot2,
+                slot3
             );
 
             //getting the answer and showing the appropriate form next

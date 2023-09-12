@@ -275,7 +275,7 @@ namespace New_KTANE_Solver
                 return;
             }
 
-            RoundKeypad module = new RoundKeypad(Bomb, LogFileWriter, symbols.ToList());
+            RoundKeypad module = new RoundKeypad(LogFileWriter, symbols.ToList());
 
             RoundKeypad.Symbol[] answer = module.Solve();
 

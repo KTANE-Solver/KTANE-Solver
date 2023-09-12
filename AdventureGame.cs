@@ -81,7 +81,7 @@ namespace New_KTANE_Solver
         /// <summary>
         /// Solve the Advenuture Game module
         /// </summary>
-        public void Solve()
+        public string Solve(bool debug)
         {
             PrintDebugLine("======================ADVENTURE GAME======================\n");
 
@@ -137,7 +137,12 @@ namespace New_KTANE_Solver
 
             PrintDebugLine($"Answer:\n\n{answer}\n");
 
-            ShowAnswer(answer, true);
+            if (!debug)
+            { 
+                ShowAnswer(answer, true);
+            }
+
+            return answer;
         }
 
         private void CheckItem(Item item)
@@ -186,12 +191,12 @@ namespace New_KTANE_Solver
 
                 //There are two or more of the same port on the bomb.
                 case Item.HARDDRIVE:
-                    return Bomb.Dvid.Num > 1
-                        || Bomb.Parallel.Num > 1
-                        || Bomb.Ps.Num > 1
-                        || Bomb.Rj.Num > 1
-                        || Bomb.Serial.Num > 1
-                        || Bomb.Stereo.Num > 1;
+                    return Bomb.DviNum > 1
+                        || Bomb.PPNum > 1
+                        || Bomb.PSNum > 1
+                        || Bomb.RJNum > 1
+                        || Bomb.SerialNum > 1
+                        || Bomb.RcaNum > 1;
 
                 //Temperature is less than 12°C, and not fighting a Lizard.
                 case Item.LAMP:

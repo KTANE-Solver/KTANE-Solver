@@ -124,7 +124,7 @@ namespace New_KTANE_Solver
                 PrintDebugLine("Current number is less than 3 and is even");
                 return currentNumber / 2;
             }
-            else if (Bomb.Stereo.Visible || Bomb.Ps.Visible)
+            else if (Bomb.RCAVisuble || Bomb.PSVisible)
             {
                 PrintDebugLine("Current number doesn't change");
                 return currentNumber;
@@ -150,7 +150,7 @@ namespace New_KTANE_Solver
                 return num + Bomb.LastDigit;
             }
 
-            if (Bomb.Parallel.Visible)
+            if (Bomb.PPVisuble)
             {
                 PrintDebugLine("there is a parallel port on the bomb");
                 return num * -1;
@@ -204,7 +204,7 @@ namespace New_KTANE_Solver
         {
             int num = currentNumbers[2];
 
-            if (Bomb.Serial.Visible)
+            if (Bomb.SerialVisble)
             {
                 PrintDebugLine("there is a serial port on the bomb");
                 return num + Bomb.LargestDigit;

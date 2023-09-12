@@ -111,7 +111,7 @@ namespace New_KTANE_Solver
         private void SetComboBox(ComboBox comboBox)
         {
             comboBox.Items.Clear();
-            String[] operations = new String[] { "∧", "∨", "	⊻", "|", "↓", "↔", "→", "←" };
+            String[] operations = new String[] { "∧", "∨", "⊻", "|", "↓", "↔", "→", "←" };
             comboBox.Items.AddRange(operations);
             comboBox.Text = operations[0];
             comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -358,7 +358,7 @@ namespace New_KTANE_Solver
                 LogFileWriter
             );
 
-            logicModule.Solve();
+            logicModule.Solve(false);
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
         }
 

@@ -11,7 +11,7 @@ namespace New_KTANE_Solver
     /// Author: Nya Bentley
     /// Purpose: Solves the gamepad module
     /// </summary>
-    class Gamepad : Module
+    public class Gamepad : Module
     {
         private int x,
             y,
@@ -42,7 +42,7 @@ namespace New_KTANE_Solver
             PrintDebugLine($"D: {d}\n");
         }
 
-        public void Solve()
+        public string Solve(bool debug)
         {
             SetFirstSubcommand();
             setSecondSubcommand();
@@ -53,11 +53,14 @@ namespace New_KTANE_Solver
 
             setOverrides();
 
-            String answer = string.Join(", ", command);
+            string answer = string.Join(", ", command);
 
-            PrintDebugLine($"Answer: {answer}\n");
+            if (!debug)
+            { 
+                ShowAnswer(answer, true);
+            }
 
-            ShowAnswer(answer, true);
+            return answer;
         }
 
         private void SetFirstSubcommand()
@@ -154,7 +157,7 @@ namespace New_KTANE_Solver
                 secondSubcommand = new String[] { "DOWN", "RIGHT", "B", "UP" };
             }
             //c - d = 4 and has a stereo rca
-            else if (c - d == 4 && Bomb.Stereo.Visible)
+            else if (c - d == 4 && Bomb.RCAVisuble)
             {
                 secondSubcommand = new String[] { "RIGHT", "A", "DOWN", "DOWN" };
             }
@@ -179,7 +182,7 @@ namespace New_KTANE_Solver
                 secondSubcommand = new String[] { "A", "UP", "LEFT", "DOWN" };
             }
             //y = 4n - 1 or has a ps2
-            else if ((y + 1) % 4 == 0 || Bomb.Ps.Visible)
+            else if ((y + 1) % 4 == 0 || Bomb.PSVisible)
             {
                 secondSubcommand = new String[] { "UP", "B", "B", "B" };
             }

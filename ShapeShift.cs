@@ -62,7 +62,7 @@ namespace New_KTANE_Solver
             Ticket flatRound = new Ticket(
                 TicketShape.Flat,
                 TicketShape.Round,
-                Bomb.Dvid.Visible,
+                Bomb.DVIVisble,
                 "There a DVI-D port"
             );
             Ticket roundDiamond = new Ticket(
@@ -74,7 +74,7 @@ namespace New_KTANE_Solver
             Ticket diamondTicket = new Ticket(
                 TicketShape.Point,
                 TicketShape.Ticket,
-                Bomb.Rj.Visible,
+                Bomb.RJVisible,
                 "There an RJ-45 port"
             );
             Ticket roundRound = new Ticket(
@@ -86,7 +86,7 @@ namespace New_KTANE_Solver
             Ticket ticketDiamond = new Ticket(
                 TicketShape.Ticket,
                 TicketShape.Point,
-                Bomb.Ps.Visible,
+                Bomb.PSVisible,
                 "There's a PS/2 port"
             );
             Ticket diamondDiamond = new Ticket(
@@ -104,7 +104,7 @@ namespace New_KTANE_Solver
             Ticket diamondRound = new Ticket(
                 TicketShape.Point,
                 TicketShape.Round,
-                Bomb.Parallel.Visible,
+                Bomb.PPVisuble,
                 "There's a parallel port"
             );
             Ticket ticketTicket = new Ticket(
@@ -140,7 +140,7 @@ namespace New_KTANE_Solver
             Ticket ticketRound = new Ticket(
                 TicketShape.Ticket,
                 TicketShape.Round,
-                Bomb.Stereo.Visible,
+                Bomb.RCAVisuble,
                 "There's a stereo RCA port"
             );
             Ticket roundFlat = new Ticket(

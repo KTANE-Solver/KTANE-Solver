@@ -10,7 +10,7 @@ namespace New_KTANE_Solver
     /// Author: Nya Bentley
     /// Purpose: Solves the Rubik cube module
     /// </summary>
-    class RubikCube : Module
+    public class RubikCube : Module
     {
         //all the possible colors of each face
         public enum Face
@@ -54,7 +54,7 @@ namespace New_KTANE_Solver
         /// <summary>
         /// Getting the moves required to solve the module
         /// </summary>
-        public void Solve()
+        public string Solve(bool debug)
         {
             PrintDebugLine($"Up: {upFace}");
             PrintDebugLine($"Left: {leftFace}");
@@ -228,11 +228,16 @@ namespace New_KTANE_Solver
                 }
             }
 
-            String answer = string.Join(", ", directions);
+            string answer = string.Join(", ", directions);
 
             PrintDebugLine($"Answer is [{answer}]\n");
 
-            ShowAnswer(answer, true);
+            if (!debug)
+            { 
+                ShowAnswer(answer, true);
+            }
+
+            return answer;
         }
 
         /// <summary>

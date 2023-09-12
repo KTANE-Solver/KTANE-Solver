@@ -143,9 +143,10 @@ namespace New_KTANE_Solver
                 directions.Add("Don't Cut");
         }
 
+
         private void AddParallelCondition()
         {
-            if (Bomb.Parallel.Visible)
+            if (Bomb.PPVisuble)
                 directions.Add("Cut");
             else
                 directions.Add("Don't Cut");

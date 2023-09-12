@@ -57,7 +57,7 @@ namespace New_KTANE_Solver
 
             Creation.Weather weather = (Creation.Weather)
                 Enum.Parse(typeof(Creation.Weather), weatherStr);
-            module.Solve(weather, stage - 1);
+            module.Solve(weather, stage - 1, false);
 
             if (module.DirectionCount == stage)
             {

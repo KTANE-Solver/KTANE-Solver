@@ -385,7 +385,7 @@ namespace New_KTANE_Solver
             };
         }
 
-        public void Solve()
+        public string Solve(bool debug)
         {
             NumberPadNode currentNode;
 
@@ -597,7 +597,14 @@ namespace New_KTANE_Solver
             int answer = firstNumber * 1000 + secondNumber * 100 + thirdNumber * 10 + fourthNumber;
             answer %= 10000;
 
-            ShowAnswer(answer.ToString("D4"), true);
+            string strAnswer = answer.ToString("D4");
+
+            if (!debug)
+            {
+                ShowAnswer(strAnswer, true);
+            }
+            
+            return strAnswer;
         }
 
         private int AddDigit(int digit)

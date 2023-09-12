@@ -49,7 +49,7 @@ namespace New_KTANE_Solver
             thirdCondition = SetCondition(thirdColor);
         }
 
-        public void Solve()
+        public string Solve(bool debug)
         {
             PrintDebugLine($"First Number: {firstColor} {firstNumber}");
             PrintDebugLine($"Second Number: {secondColor} {secondNumber}");
@@ -75,7 +75,7 @@ namespace New_KTANE_Solver
 
             //At least one Serial and Parallel port are present on the bomb.
 
-            if (Bomb.Serial.Visible && Bomb.Parallel.Visible)
+            if (Bomb.SerialVisble && Bomb.PPVisuble)
             {
                 PrintDebugLine("At least one Serial and Parallel port are present on the bomb\n");
 
@@ -96,7 +96,7 @@ namespace New_KTANE_Solver
             }
 
             //At least one DVI-D and Stereo RCA port are present on the bomb
-            if (Bomb.Dvid.Visible && Bomb.Stereo.Visible)
+            if (Bomb.DVIVisble && Bomb.RCAVisuble)
             {
                 PrintDebugLine("At least one DVI-D and Stereo RCA port are present on the bomb\n");
 
@@ -158,7 +158,13 @@ namespace New_KTANE_Solver
             string answer = $"1.{firstNumAnswer}\n2.{secondNumAnswer}\n3.{thirdNumAnswer}\n";
 
             PrintDebugLine(answer);
-            ShowAnswer(answer, true);
+
+            if (!debug)
+            { 
+                ShowAnswer(answer, true);
+            }
+
+            return answer;
         }
 
         private String GetAnswer(int num)

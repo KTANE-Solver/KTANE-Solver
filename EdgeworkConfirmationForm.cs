@@ -152,12 +152,12 @@ namespace New_KTANE_Solver
 
             PrintDebugLine($"Empty Port Plate: {bomb.EmptyPortPlate}", logFileWriter);
             PrintDebugLine($"# Port Plates: {bomb.PortPlateNum}", logFileWriter);
-            PrintDebugLine("# of dvid ports: " + bomb.Dvid.Num, logFileWriter);
-            PrintDebugLine("# of parallel ports: " + bomb.Parallel.Num, logFileWriter);
-            PrintDebugLine("# of ps ports: " + bomb.Ps.Num, logFileWriter);
-            PrintDebugLine("# of rj ports: " + bomb.Rj.Num, logFileWriter);
-            PrintDebugLine("# of serial ports: " + bomb.Serial.Num, logFileWriter);
-            PrintDebugLine("# of stereo ports: " + bomb.Stereo.Num + "\n", logFileWriter);
+            PrintDebugLine("# of dvid ports: " + bomb.DviNum, logFileWriter);
+            PrintDebugLine("# of parallel ports: " + bomb.PPNum, logFileWriter);
+            PrintDebugLine("# of ps ports: " + bomb.PSNum, logFileWriter);
+            PrintDebugLine("# of rj ports: " + bomb.RJNum, logFileWriter);
+            PrintDebugLine("# of serial ports: " + bomb.SerialNum, logFileWriter);
+            PrintDebugLine("# of stereo ports: " + bomb.RcaNum + "\n", logFileWriter);
         }
 
         /// <summary>
@@ -195,14 +195,14 @@ namespace New_KTANE_Solver
                 SetLabel(emptyPortPlateLabel, "There isn't an empty port plate", 18);
             }
 
-            SetLabel(portPlateNumLabel, "# of port plates: " + bomb.PortPlateNum, 19);
+            SetLabel(portPlateNumLabel, "# of port Plates: " + bomb.PortPlateNum, 19);
 
-            SetPortLabel(dvidLabel, bomb.Dvid, 20);
-            SetPortLabel(parallelLabel, bomb.Parallel, 21);
-            SetPortLabel(psLabel, bomb.Ps, 22);
-            SetPortLabel(rjLabel, bomb.Rj, 23);
-            SetPortLabel(serialLabel, bomb.Serial, 24);
-            SetPortLabel(stereoLabel, bomb.Stereo, 25);
+            SetPortLabel(dvidLabel, "DVID", bomb.DviNum, 20);
+            SetPortLabel(parallelLabel, "Parallel", bomb.PPNum , 21);
+            SetPortLabel(psLabel, "PS/2", bomb.PSNum, 22);
+            SetPortLabel(rjLabel, "RJ-45", bomb.RJNum, 23);
+            SetPortLabel(serialLabel, "Serial", bomb.SerialNum, 24);
+            SetPortLabel(stereoLabel, "Stero RCA", bomb.RcaNum, 25);
         }
 
         /// <summary>
@@ -211,9 +211,9 @@ namespace New_KTANE_Solver
         /// <param name="label">the label itself</param>
         /// <param name="port">the port for the label</param>
         /// <param name="index">where the label in terms of the rest of the labels</param>
-        public void SetPortLabel(Label label, Port port, int index)
+        public void SetPortLabel(Label label, string name, int num, int index)
         {
-            SetLabel(label, $"# of {port.Name} ports: {port.Num}", index);
+            SetLabel(label, $"# of {name} ports: {num}", index);
         }
 
         /// <summary>
@@ -338,116 +338,6 @@ namespace New_KTANE_Solver
         {
             logFileWriter.WriteLine(message);
             System.Diagnostics.Debug.WriteLine(message);
-        }
-
-        private void clrLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void sndLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void sigLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void nsaLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void msaLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void indLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void frqLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void frkLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void trnLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void bobLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void carLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void indicatorLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void batteryHolderLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void batteryLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void serialNumberLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dayOfWeekLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void stereoLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void serialLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rjLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void psLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void parallelLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dvidLabel_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

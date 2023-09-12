@@ -301,14 +301,16 @@ namespace New_KTANE_Solver
                 SaveIndicator(writer, bomb.Snd);
                 SaveIndicator(writer, bomb.Trn);
 
-                writer.WriteLine(bomb.EmptyPortPlate);
-                writer.WriteLine(bomb.PortPlateNum);
-                writer.WriteLine(bomb.Dvid.Num);
-                writer.WriteLine(bomb.Parallel.Num);
-                writer.WriteLine(bomb.Ps.Num);
-                writer.WriteLine(bomb.Rj.Num);
-                writer.WriteLine(bomb.Serial.Num);
-                writer.WriteLine(bomb.Stereo.Num);
+
+
+                List<string> plates = new List<string>();
+
+                foreach (Plate plate in bomb.Plates)
+                {
+                    plates.Add($"{plate.pp}|{plate.rca}|{plate.serial}|{plate.rj}|{plate.dvi}|{plate.ps}");
+                }
+
+                writer.WriteLine(string.Join(",", plates));
 
                 writer.Close();
 

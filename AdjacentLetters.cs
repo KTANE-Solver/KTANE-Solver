@@ -12,7 +12,7 @@ namespace New_KTANE_Solver
     /// Author: Nya Bentley
     /// Purpose: Solves the Adjacent Letters module
     /// </summary>
-    class AdjacentLetters : Module
+    public class AdjacentLetters : Module
     {
         private char[,] Grid { get; }
         private bool[,] Answer { get; set; }
@@ -26,7 +26,7 @@ namespace New_KTANE_Solver
         /// <summary>
         /// Solves the Adjacent Letters module
         /// </summary>
-        public void Solve()
+        public bool[,] Solve(bool debug)
         {
             Answer = new bool[3, 4];
 
@@ -47,11 +47,16 @@ namespace New_KTANE_Solver
 
             PrintDebugLine("");
 
-            AdjacentLettersAnswerForm answerForm = new AdjacentLettersAnswerForm(
-                Answer,
-                LogFileWriter
-            );
-            answerForm.Show();
+            if (!debug)
+            {
+                AdjacentLettersAnswerForm answerForm = new AdjacentLettersAnswerForm(
+                    Answer,
+                    LogFileWriter
+                );
+                answerForm.Show();
+            }
+
+            return Answer;
         }
 
         /// <summary>

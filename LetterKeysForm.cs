@@ -42,7 +42,7 @@ namespace New_KTANE_Solver
             }
 
             LetterKeys module = new LetterKeys(Bomb, LogFileWriter, num);
-            module.Solve();
+            module.Solve(false);
 
             textBox1.Text = "";
         }

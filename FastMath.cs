@@ -22,12 +22,17 @@ namespace New_KTANE_Solver
             return answer;
         }
 
-        public void Solve(char leftLetter, char rightLetter)
+        public int Solve(char leftLetter, char rightLetter, bool debug)
         {
             GetInitialNumber(leftLetter, rightLetter);
             ModifyNumber();
 
-            ShowAnswer("" + answer, true);
+            if (!debug)
+            { 
+                ShowAnswer("" + answer, true);
+            }
+
+            return answer;
         }
 
         private void GetInitialNumber(char leftLetter, char rightLetter)
@@ -803,7 +808,7 @@ namespace New_KTANE_Solver
                 PrintDebugLine("Bomb has a lit MSA: adding 20\n");
             }
 
-            if (Bomb.Serial.Visible)
+            if (Bomb.RCAVisuble)
             {
                 answer += 14;
                 PrintDebugLine("Bomb has a serial port: adding 14\n");
@@ -822,7 +827,7 @@ namespace New_KTANE_Solver
                 );
             }
 
-            if (Bomb.Rj.Visible)
+            if (Bomb.RJVisible)
             {
                 answer += 27;
                 PrintDebugLine("Bomb has a RJ-45 port: adding 27\n");

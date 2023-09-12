@@ -16,7 +16,7 @@ namespace New_KTANE_Solver
         public Button(Bomb bomb, StreamWriter logFileWriter) : base(bomb, logFileWriter, "Button")
         { }
 
-        public string Solve(Color color, String word)
+        public string Solve(Color color, String word, bool debug)
         {
             string answer;
             PrintDebugLine($"{color} {word}\n");
@@ -78,7 +78,10 @@ namespace New_KTANE_Solver
                 }
             }
 
-            ShowAnswer(answer, true);
+            if (!debug)
+            { 
+                ShowAnswer(answer, true);
+            }
             return answer;
         }
 

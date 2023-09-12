@@ -584,7 +584,7 @@ namespace New_KTANE_Solver
                         return 9;
                     }
 
-                    return Bomb.Rj.Num;
+                    return Bomb.RJNum;
 
                 case 2:
                 case 3:
@@ -595,7 +595,7 @@ namespace New_KTANE_Solver
                     }
                     else if (place == 2)
                     {
-                        return Bomb.Ps.Num;
+                        return Bomb.PSNum;
                     }
                     else if (place == 3)
                     {
@@ -617,7 +617,7 @@ namespace New_KTANE_Solver
                     }
                     else if (place == 3)
                     {
-                        return Bomb.Serial.Num;
+                        return Bomb.RcaNum;
                     }
 
                     return 4;
@@ -626,7 +626,7 @@ namespace New_KTANE_Solver
 
                     if (place == 1)
                     {
-                        return Bomb.Dvid.Num;
+                        return Bomb.DviNum;
                     }
                     else if (place == 2)
                     {

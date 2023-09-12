@@ -83,9 +83,7 @@ namespace New_KTANE_Solver
 
             System.Diagnostics.Debug.WriteLine($"Response: {module.response}\n");
 
-            String answer = module.BluffTruth();
-
-            ShowAnswer($"Press {answer}");
+            module.BluffTruth(false);
 
             this.Hide();
 

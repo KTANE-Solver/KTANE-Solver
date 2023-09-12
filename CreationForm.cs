@@ -103,7 +103,7 @@ namespace New_KTANE_Solver
                 lowerRight
             );
             module.SetUpModule();
-            module.Solve(startingWeather, 0);
+            module.Solve(startingWeather, 0, false);
 
             this.Hide();
 

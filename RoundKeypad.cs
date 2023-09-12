@@ -44,8 +44,8 @@ namespace New_KTANE_Solver
             Null
         }
 
-        public RoundKeypad(Bomb bomb, StreamWriter logFileWriter, List<Symbol> symbolList)
-            : base(bomb, logFileWriter, "Round Keypad")
+        public RoundKeypad(StreamWriter logFileWriter, List<Symbol> symbolList)
+            : base(null, logFileWriter, "Round Keypad")
         {
             symbolRowList = new List<SymbolRow>
             {
@@ -59,7 +59,7 @@ namespace New_KTANE_Solver
                         Symbol.Squid,
                         Symbol.H,
                         Symbol.BackwardsC
-                    }
+                    },1
                 ),
                 new SymbolRow(
                     new Symbol[]
@@ -71,7 +71,7 @@ namespace New_KTANE_Solver
                         Symbol.WhiteStar,
                         Symbol.H,
                         Symbol.QuestionMark
-                    }
+                    },2
                 ),
                 new SymbolRow(
                     new Symbol[]
@@ -83,7 +83,7 @@ namespace New_KTANE_Solver
                         Symbol.UfinishedR,
                         Symbol.Lambda,
                         Symbol.WhiteStar
-                    }
+                    },3
                 ),
                 new SymbolRow(
                     new Symbol[]
@@ -95,7 +95,7 @@ namespace New_KTANE_Solver
                         Symbol.X,
                         Symbol.QuestionMark,
                         Symbol.SmilyFace
-                    }
+                    },4
                 ),
                 new SymbolRow(
                     new Symbol[]
@@ -107,7 +107,7 @@ namespace New_KTANE_Solver
                         Symbol.Paragraph,
                         Symbol.Three,
                         Symbol.BlackStar
-                    }
+                    },5
                 ),
                 new SymbolRow(
                     new Symbol[]
@@ -119,7 +119,7 @@ namespace New_KTANE_Solver
                         Symbol.Trident,
                         Symbol.N,
                         Symbol.Omega
-                    }
+                    },6
                 )
             };
 
@@ -128,12 +128,24 @@ namespace New_KTANE_Solver
 
         public Symbol[] Solve()
         {
+            PrintDebugLine("Selected Symbols: ");
+
+            foreach (Symbol s in symbolList)
+            {
+                PrintDebugLine(s.ToString());
+            }
+
+            PrintDebugLine("");
+
             List<int> symbolNumList = new List<int>();
 
-            foreach (SymbolRow symbolRow in symbolRowList)
+            for (int i = 0; i < 6; i++)
             {
+                SymbolRow symbolRow = symbolRowList[i];
                 symbolRow.SetSymbolNum(symbolList);
                 symbolNumList.Add(symbolRow.foundSymbolNum);
+
+                PrintDebugLine($"Row {i + 1} count: {symbolRow.foundSymbolNum}");
             }
 
             int maxValue = symbolNumList.Max();
@@ -148,6 +160,8 @@ namespace New_KTANE_Solver
 
             SymbolRow answerRow = symbolRowList.Last();
 
+            PrintDebugLine($"\nUsing Row {answerRow.rowIndex}\n");
+
             List<Symbol> answers = new List<Symbol>();
 
             foreach (Symbol symbol in symbolList)
@@ -158,6 +172,10 @@ namespace New_KTANE_Solver
                 }
             }
 
+            string asnwer = string.Join(", ", answers.ToArray());
+
+            PrintDebugLine("Answer Symbols: " + asnwer);
+
             return answers.ToArray();
         }
 
@@ -165,11 +183,13 @@ namespace New_KTANE_Solver
         {
             public Symbol[] row;
             public int foundSymbolNum;
+            public int rowIndex;
 
-            public SymbolRow(Symbol[] row)
+            public SymbolRow(Symbol[] row, int rowIndex)
             {
                 this.row = row;
                 foundSymbolNum = 0;
+                this.rowIndex = rowIndex;
             }
 
             public void SetSymbolNum(List<Symbol> symbolList)

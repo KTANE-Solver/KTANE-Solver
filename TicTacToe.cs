@@ -38,7 +38,7 @@ namespace New_KTANE_Solver
                 DebugLinesForCurrentRow(row);
             }
 
-            if (Bomb.Parallel.Visible)
+            if (Bomb.PPVisuble)
             {
                 PrintDebugLine("A pararrel port is present");
                 for (int i = row.Count - 1; i > -1; i--)

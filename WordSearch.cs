@@ -139,7 +139,7 @@ namespace New_KTANE_Solver
             );
         }
 
-        public void Solve()
+        public string Solve(bool debug)
         {
             String topLeftWord;
             String topRightWord;
@@ -184,7 +184,14 @@ namespace New_KTANE_Solver
 
             words = words.Distinct().ToList();
 
-            ShowAnswer($"{string.Join("\n", words)}", true);
+            string answer = $"{string.Join("\n", words)}";
+
+            if (!debug)
+            { 
+                ShowAnswer(answer, true);
+            }
+
+            return answer;
         }
 
         public class Letter

@@ -32,7 +32,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.batteryHolderTextBox = new System.Windows.Forms.TextBox();
             this.batteryHolderLabel = new System.Windows.Forms.Label();
-            this.emptyPortPlateCheckBox = new System.Windows.Forms.CheckBox();
             this.carLitCheckBox = new System.Windows.Forms.CheckBox();
             this.carVisibleCheckBox = new System.Windows.Forms.CheckBox();
             this.clrLitCheckBox = new System.Windows.Forms.CheckBox();
@@ -55,19 +54,7 @@
             this.sigVisibleCheckBox = new System.Windows.Forms.CheckBox();
             this.bobLitCheckBox = new System.Windows.Forms.CheckBox();
             this.bobVisibleCheckBox = new System.Windows.Forms.CheckBox();
-            this.parallelTextBox = new System.Windows.Forms.TextBox();
-            this.psTextBox = new System.Windows.Forms.TextBox();
-            this.rjTextBox = new System.Windows.Forms.TextBox();
-            this.serialTextBox = new System.Windows.Forms.TextBox();
-            this.stereoTextBox = new System.Windows.Forms.TextBox();
-            this.dvidTextBox = new System.Windows.Forms.TextBox();
             this.submitButton = new System.Windows.Forms.Button();
-            this.stereoLabel = new System.Windows.Forms.Label();
-            this.serialLabel = new System.Windows.Forms.Label();
-            this.rjLabel = new System.Windows.Forms.Label();
-            this.psLabel = new System.Windows.Forms.Label();
-            this.parallelLabel = new System.Windows.Forms.Label();
-            this.dvidLabel = new System.Windows.Forms.Label();
             this.portLabel = new System.Windows.Forms.Label();
             this.trnLabel = new System.Windows.Forms.Label();
             this.sndLabel = new System.Windows.Forms.Label();
@@ -91,7 +78,7 @@
             // 
             // portPlateNumTextBox
             // 
-            this.portPlateNumTextBox.Location = new System.Drawing.Point(108, 439);
+            this.portPlateNumTextBox.Location = new System.Drawing.Point(106, 425);
             this.portPlateNumTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.portPlateNumTextBox.Name = "portPlateNumTextBox";
             this.portPlateNumTextBox.Size = new System.Drawing.Size(138, 23);
@@ -102,7 +89,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(30, 439);
+            this.label1.Location = new System.Drawing.Point(28, 425);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 15);
@@ -128,17 +115,6 @@
             this.batteryHolderLabel.Size = new System.Drawing.Size(86, 15);
             this.batteryHolderLabel.TabIndex = 57;
             this.batteryHolderLabel.Text = "Battery Holder:";
-            // 
-            // emptyPortPlateCheckBox
-            // 
-            this.emptyPortPlateCheckBox.AutoSize = true;
-            this.emptyPortPlateCheckBox.Location = new System.Drawing.Point(88, 418);
-            this.emptyPortPlateCheckBox.Margin = new System.Windows.Forms.Padding(2);
-            this.emptyPortPlateCheckBox.Name = "emptyPortPlateCheckBox";
-            this.emptyPortPlateCheckBox.Size = new System.Drawing.Size(114, 19);
-            this.emptyPortPlateCheckBox.TabIndex = 26;
-            this.emptyPortPlateCheckBox.Text = "Empty Port Plate";
-            this.emptyPortPlateCheckBox.UseVisualStyleBackColor = true;
             // 
             // carLitCheckBox
             // 
@@ -404,69 +380,9 @@
             this.bobVisibleCheckBox.UseVisualStyleBackColor = true;
             this.bobVisibleCheckBox.CheckedChanged += new System.EventHandler(this.bobVisibleCheckBox_CheckedChanged);
             // 
-            // parallelTextBox
-            // 
-            this.parallelTextBox.Location = new System.Drawing.Point(108, 488);
-            this.parallelTextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.parallelTextBox.Name = "parallelTextBox";
-            this.parallelTextBox.Size = new System.Drawing.Size(138, 23);
-            this.parallelTextBox.TabIndex = 5;
-            this.parallelTextBox.Enter += new System.EventHandler(this.parallelTextBox_Enter);
-            this.parallelTextBox.Leave += new System.EventHandler(this.parallelTextBox_Leave);
-            // 
-            // psTextBox
-            // 
-            this.psTextBox.Location = new System.Drawing.Point(108, 512);
-            this.psTextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.psTextBox.Name = "psTextBox";
-            this.psTextBox.Size = new System.Drawing.Size(138, 23);
-            this.psTextBox.TabIndex = 6;
-            this.psTextBox.Enter += new System.EventHandler(this.psTextBox_Enter);
-            this.psTextBox.Leave += new System.EventHandler(this.psTextBox_Leave);
-            // 
-            // rjTextBox
-            // 
-            this.rjTextBox.Location = new System.Drawing.Point(108, 537);
-            this.rjTextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.rjTextBox.Name = "rjTextBox";
-            this.rjTextBox.Size = new System.Drawing.Size(138, 23);
-            this.rjTextBox.TabIndex = 7;
-            this.rjTextBox.Enter += new System.EventHandler(this.rjTextBox_Enter);
-            this.rjTextBox.Leave += new System.EventHandler(this.rjTextBox_Leave);
-            // 
-            // serialTextBox
-            // 
-            this.serialTextBox.Location = new System.Drawing.Point(108, 562);
-            this.serialTextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.serialTextBox.Name = "serialTextBox";
-            this.serialTextBox.Size = new System.Drawing.Size(138, 23);
-            this.serialTextBox.TabIndex = 8;
-            this.serialTextBox.Enter += new System.EventHandler(this.serialTextBox_Enter);
-            this.serialTextBox.Leave += new System.EventHandler(this.serialTextBox_Leave);
-            // 
-            // stereoTextBox
-            // 
-            this.stereoTextBox.Location = new System.Drawing.Point(108, 586);
-            this.stereoTextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.stereoTextBox.Name = "stereoTextBox";
-            this.stereoTextBox.Size = new System.Drawing.Size(138, 23);
-            this.stereoTextBox.TabIndex = 9;
-            this.stereoTextBox.Enter += new System.EventHandler(this.stereoTextBox_Enter);
-            this.stereoTextBox.Leave += new System.EventHandler(this.stereoTextBox_Leave);
-            // 
-            // dvidTextBox
-            // 
-            this.dvidTextBox.Location = new System.Drawing.Point(108, 464);
-            this.dvidTextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.dvidTextBox.Name = "dvidTextBox";
-            this.dvidTextBox.Size = new System.Drawing.Size(138, 23);
-            this.dvidTextBox.TabIndex = 4;
-            this.dvidTextBox.Enter += new System.EventHandler(this.dvidTextBox_Enter);
-            this.dvidTextBox.Leave += new System.EventHandler(this.dvidTextBox_Leave);
-            // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(119, 613);
+            this.submitButton.Location = new System.Drawing.Point(106, 464);
             this.submitButton.Margin = new System.Windows.Forms.Padding(2);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(75, 28);
@@ -474,66 +390,6 @@
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
             this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
-            // 
-            // stereoLabel
-            // 
-            this.stereoLabel.AutoSize = true;
-            this.stereoLabel.Location = new System.Drawing.Point(30, 586);
-            this.stereoLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.stereoLabel.Name = "stereoLabel";
-            this.stereoLabel.Size = new System.Drawing.Size(43, 15);
-            this.stereoLabel.TabIndex = 25;
-            this.stereoLabel.Text = "Stereo:";
-            // 
-            // serialLabel
-            // 
-            this.serialLabel.AutoSize = true;
-            this.serialLabel.Location = new System.Drawing.Point(30, 562);
-            this.serialLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.serialLabel.Name = "serialLabel";
-            this.serialLabel.Size = new System.Drawing.Size(38, 15);
-            this.serialLabel.TabIndex = 24;
-            this.serialLabel.Text = "Serial:";
-            // 
-            // rjLabel
-            // 
-            this.rjLabel.AutoSize = true;
-            this.rjLabel.Location = new System.Drawing.Point(30, 537);
-            this.rjLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.rjLabel.Name = "rjLabel";
-            this.rjLabel.Size = new System.Drawing.Size(38, 15);
-            this.rjLabel.TabIndex = 22;
-            this.rjLabel.Text = "RJ-45:";
-            // 
-            // psLabel
-            // 
-            this.psLabel.AutoSize = true;
-            this.psLabel.Location = new System.Drawing.Point(30, 512);
-            this.psLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.psLabel.Name = "psLabel";
-            this.psLabel.Size = new System.Drawing.Size(34, 15);
-            this.psLabel.TabIndex = 21;
-            this.psLabel.Text = "PS/2:";
-            // 
-            // parallelLabel
-            // 
-            this.parallelLabel.AutoSize = true;
-            this.parallelLabel.Location = new System.Drawing.Point(30, 488);
-            this.parallelLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.parallelLabel.Name = "parallelLabel";
-            this.parallelLabel.Size = new System.Drawing.Size(48, 15);
-            this.parallelLabel.TabIndex = 20;
-            this.parallelLabel.Text = "Parallel:";
-            // 
-            // dvidLabel
-            // 
-            this.dvidLabel.AutoSize = true;
-            this.dvidLabel.Location = new System.Drawing.Point(30, 464);
-            this.dvidLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.dvidLabel.Name = "dvidLabel";
-            this.dvidLabel.Size = new System.Drawing.Size(41, 15);
-            this.dvidLabel.TabIndex = 19;
-            this.dvidLabel.Text = "DVI-D:";
             // 
             // portLabel
             // 
@@ -727,12 +583,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(301, 647);
+            this.ClientSize = new System.Drawing.Size(301, 504);
             this.Controls.Add(this.portPlateNumTextBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.batteryHolderTextBox);
             this.Controls.Add(this.batteryHolderLabel);
-            this.Controls.Add(this.emptyPortPlateCheckBox);
             this.Controls.Add(this.carLitCheckBox);
             this.Controls.Add(this.carVisibleCheckBox);
             this.Controls.Add(this.clrLitCheckBox);
@@ -755,19 +610,7 @@
             this.Controls.Add(this.sigVisibleCheckBox);
             this.Controls.Add(this.bobLitCheckBox);
             this.Controls.Add(this.bobVisibleCheckBox);
-            this.Controls.Add(this.parallelTextBox);
-            this.Controls.Add(this.psTextBox);
-            this.Controls.Add(this.rjTextBox);
-            this.Controls.Add(this.serialTextBox);
-            this.Controls.Add(this.stereoTextBox);
-            this.Controls.Add(this.dvidTextBox);
             this.Controls.Add(this.submitButton);
-            this.Controls.Add(this.stereoLabel);
-            this.Controls.Add(this.serialLabel);
-            this.Controls.Add(this.rjLabel);
-            this.Controls.Add(this.psLabel);
-            this.Controls.Add(this.parallelLabel);
-            this.Controls.Add(this.dvidLabel);
             this.Controls.Add(this.portLabel);
             this.Controls.Add(this.trnLabel);
             this.Controls.Add(this.sndLabel);
@@ -802,7 +645,6 @@
         private Label label1;
         private TextBox batteryHolderTextBox;
         private Label batteryHolderLabel;
-        private CheckBox emptyPortPlateCheckBox;
         private CheckBox carLitCheckBox;
         private CheckBox carVisibleCheckBox;
         private CheckBox clrLitCheckBox;
@@ -825,19 +667,7 @@
         private CheckBox sigVisibleCheckBox;
         private CheckBox bobLitCheckBox;
         private CheckBox bobVisibleCheckBox;
-        private TextBox parallelTextBox;
-        private TextBox psTextBox;
-        private TextBox rjTextBox;
-        private TextBox serialTextBox;
-        private TextBox stereoTextBox;
-        private TextBox dvidTextBox;
         private System.Windows.Forms.Button submitButton;
-        private Label stereoLabel;
-        private Label serialLabel;
-        private Label rjLabel;
-        private Label psLabel;
-        private Label parallelLabel;
-        private Label dvidLabel;
         private Label portLabel;
         private Label trnLabel;
         private Label sndLabel;

@@ -84,7 +84,7 @@ namespace New_KTANE_Solver
             }
 
 
-            module.Solve(letters[0], letters[1]);
+            module.Solve(letters[0], letters[1], false);
 
             if (stage == 5)
             {

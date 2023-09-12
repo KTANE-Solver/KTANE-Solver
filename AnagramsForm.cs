@@ -88,7 +88,7 @@ namespace New_KTANE_Solver
         private void submitButton_Click(object sender, EventArgs e)
         {
             Anagrams module = new Anagrams(Bomb, LogFileWriter);
-            module.Solve(wordComboBox.Text);
+            module.Solve(wordComboBox.Text, false);
             UpdateForm(Bomb, LogFileWriter, ModuleSelectionForm);
         }
     }

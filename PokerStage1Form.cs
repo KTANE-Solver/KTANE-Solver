@@ -67,46 +67,7 @@ namespace New_KTANE_Solver
 
             Poker module = new Poker(Bomb, LogFileWriter, cardComboBox.Text);
 
-            module.SetHand();
-
-            PrintCards(module.hand);
-
-            Poker.Card[] hand = module.hand.ToArray();
-            String rank = module.SetRank(hand);
-
-            System.Diagnostics.Debug.WriteLine($"Rank: {rank}\n");
-
-            String answer;
-
-            switch (rank)
-            {
-                case "Royal Flush":
-                case "Straight Flush":
-                case "Four of a Kind":
-                    answer = "All-in";
-                    break;
-
-                case "Full House":
-                case "Flush":
-                    answer = "Max Raise";
-                    break;
-
-                case "Straight":
-                case "Three of a Kind":
-                    answer = "Min Raise";
-                    break;
-
-                case "Two Pair":
-                case "Pair":
-                    answer = "Check";
-                    break;
-
-                default:
-                    answer = "Fold";
-                    break;
-            }
-
-            ShowAnswer($"Press {answer}");
+            module.GetStage1Answer(false);
 
             this.Hide();
 

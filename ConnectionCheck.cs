@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -307,7 +308,7 @@ namespace New_KTANE_Solver
             }
         }
 
-        public void Solve()
+        public string Solve(bool debug)
         {
             FindTargetIndex();
 
@@ -324,7 +325,12 @@ namespace New_KTANE_Solver
                 }
             );
 
-            ShowAnswer(answer, true);
+            if (!debug)
+            { 
+                ShowAnswer(answer, true);
+            }
+
+            return answer;
         }
 
         private string GetAnswer(int[] pairs)

@@ -132,7 +132,7 @@ namespace New_KTANE_Solver
             this.bottomFirstTwoFirst = bottomFirstTwoFirst;
         }
 
-        public void Solve()
+        public string Solve(bool debug)
         {
             //setting the statements
             for (int i = 0; i < 3; i++)
@@ -230,7 +230,13 @@ namespace New_KTANE_Solver
                 bottomEvaluation
             );
 
-            ShowAnswer($"\nTop: {topEvaluation} \nBottom: {bottomEvaluation}", true);
+            if (!debug)
+            { 
+                ShowAnswer($"\nTop: {topEvaluation} \nBottom: {bottomEvaluation}", true);
+
+            }
+
+            return $"{topEvaluation} {bottomEvaluation}".ToUpper();
         }
 
         /// <summary>
@@ -441,7 +447,7 @@ namespace New_KTANE_Solver
                 //P - Has parallel port
                 case 'P':
 
-                    statement = Bomb.Parallel.Visible;
+                    statement = Bomb.PPVisuble;
                     break;
 
                 //Q - Exactly 2 ports
@@ -453,7 +459,7 @@ namespace New_KTANE_Solver
                 //R - Has PS/2 port
                 case 'R':
 
-                    statement = Bomb.Ps.Visible;
+                    statement = Bomb.PSVisible;
                     break;
 
                 //S - Sum of digits in serial number > 10

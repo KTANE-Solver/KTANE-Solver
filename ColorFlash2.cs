@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace New_KTANE_Solver
 {
@@ -21,54 +22,62 @@ namespace New_KTANE_Solver
         {
             int answer = -1;
             string button = "Yes";
+            string reason = "";
+
+            PrintDebugLine("Last Color: " + colors[7]);
 
             switch (colors[7])
             {
-                case "Red":
+                case "R":
                     if (words.Where(x => x == "G").Count() >= 3)
                     {
                         answer = WordColorIndexes("G")[2] + 1;
                         button = "Yes";
+                        reason = "Green is used as the word at least three times in the sequence";
                     }
 
                     else if (words.Where(x => x == "B").Count() == 1)
                     {
                         answer = words.IndexOf("M");
                         button = "No";
-
+                        reason = "Blue is used as the colour of the word exactly once";
                     }
 
                     else
                     { 
                         answer = WordColorIndexes("W").Last() + 1;
                         button = "Yes";
+                        reason = "No other condition applied";
                     }
                     break;
 
-                case "Yellow":
+                case "Y":
 
                     if (FindColorAndWord("G", "B") != -1)
                     {
                         answer = colors.IndexOf("G");
                         button = "Yes";
+                        reason = "the word Blue is shown in Green colour";
                     }
 
                     else if (FindColorAndWord("R", "W") != -1 || FindColorAndWord("W", "W") != -1)
                     {
                         answer = MisMatchIndex()[1];
                         button = "Yes";
+                        reason = " the word White is shown in either White or Red colour";
                     }
 
                     else
                     {
                         answer = WordColorIndexes("M").Count();
                         button = "No";
+                        reason = "No other condition applied";
                     }
 
                     break;
 
 
-                case "Green":
+                case "G":
 
                     for (int i = 0; i < 7; i++)
                     {
@@ -77,6 +86,7 @@ namespace New_KTANE_Solver
                         {
                             answer = 5;
                             button = "No";
+                            reason = "a word occurs consecutively with different colours";
                             break;
                         }
                     }
@@ -99,6 +109,8 @@ namespace New_KTANE_Solver
                                 button = "No";
                                 answer = wordYellow;
                             }
+
+                            reason = "Magenta is used as the word at least three times in the sequence";
                         }
 
                         else
@@ -112,38 +124,44 @@ namespace New_KTANE_Solver
                                     break;
                                 }
                             }
+
+                            reason = "No other condition applied";
                         }
                     }
                     break;
 
-                case "Blue":
+                case "B":
                     int[] misMatches = MisMatchIndex();
                     if (misMatches.Length >= 3)
                     {
                         button = "Yes";
                         answer = misMatches[0] + 1;
+                        reason = "the colour of the word does not match the word itself three times or more in the sequence";
                     }
 
                     else if (FindColorAndWord("Y", "R") != -1 || FindColorAndWord("W", "Y") != -1)
                     {
                         button = "No";
                         answer = FindColorAndWord("R", "W") + 1;
+                        reason = "the word Red is shown in Yellow colour, or the word Yellow is shown in White colour";
                     }
 
                     else
                     {
                         button = "Yes";
                         answer = WordColorIndexes("G").Last() + 1;
+                        reason = "No other condition applied";
                     }
                     break;
 
-                case "Magenta":
+                case "M":
                     for (int i = 0; i < 7; i++)
                     {
                         int index = ConsecutivePair(colors, i);
                         if (index != -1 && words[index] != words[index + 1])
                         {
                             answer = 3;
+                            reason = "a colour occurs consecutively with different words";
                             break;
                         }
                     }
@@ -164,6 +182,7 @@ namespace New_KTANE_Solver
                         {
                             button = "No";
                             answer = yellowWords.Last();
+                            reason = "the number of times the word Yellow appears is greater than the number of times that the colour of the word is Blue";
                         }
 
                         else
@@ -172,6 +191,7 @@ namespace New_KTANE_Solver
 
                             button = "No";
                             answer = colors.IndexOf(desiredColor);
+                            reason = "No other condition applied";
                         }
                     }
 
@@ -182,6 +202,7 @@ namespace New_KTANE_Solver
                     {
                         button = "No";
                         answer = WordColorIndexes("B").First();
+                        reason = "the colour of the third word matches the word of the fourth word or fifth word";
                     }
 
                     else if (FindColorAndWord("R", "Y") == -1)
@@ -192,6 +213,7 @@ namespace New_KTANE_Solver
                             {
                                 button = "No";
                                 answer = i;
+                                reason = "the word Yellow is shown in Red colour";
                                 break;
                             }
                         }
@@ -199,15 +221,16 @@ namespace New_KTANE_Solver
 
                     else
                     {
-                        button = "Yes";
+                        button = "No";
                         answer = -1;
+                        reason = "No other condition applied";
                     }
 
                     break;
 
             }
 
-            answer++;
+            PrintDebugLine("Reason: " + reason);
 
             if (!debug)
             {

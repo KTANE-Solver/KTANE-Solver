@@ -988,7 +988,7 @@ namespace New_KTANE_Solver
         /// <summary>
         /// Find the closetest cardinal based on the player's current position and tell them how to get to that cardinal
         /// </summary>
-        public void FindCardinal()
+        public string FindCardinal(bool debug)
         {
             //find all of the cardials
             Dictionary<Node, int> cardinalList = new Dictionary<Node, int>();
@@ -1044,12 +1044,19 @@ namespace New_KTANE_Solver
             );
             PrintDebugLine($"Direction to cardinal: {answer}\n" + $"" + $"");
 
-            ShowAnswer(answer, true);
+            if(!debug)
+            {
+                ShowAnswer(answer, true);
+            }
+
+            return answer;
         }
 
+        /// <summary>
+        /// find the last node the player hits before htting the wall
+        /// </summary>
         public void UpdateGoal()
         {
-            //find the last node the player hits before htting the wall
             Node currentGoal = MainGoal;
 
             switch (MainCardinalGoal)
@@ -1148,7 +1155,7 @@ namespace New_KTANE_Solver
         /// <summary>
         /// Finds and where the user needs to go in order to solve the module
         /// </summary>
-        public void Solve()
+        public string Solve(bool debug)
         {
             PrintPlayerPosition();
 
@@ -1167,16 +1174,24 @@ namespace New_KTANE_Solver
             PrintDebugLine("Main Goal Distance: " + mainGoalDistance);
             PrintDebugLine($"Secondary Goal Distance: {secondaryGoalDistance}\n");
 
+            string answer;
+
             if (usingMainGoal)
             {
                 PrintDebugLine("Using main goal\n");
-                SolveMaze(MainGoal, MainCardinalGoal);
+                answer = SolveMaze(MainGoal, MainCardinalGoal);
             }
             else
             {
                 PrintDebugLine("Using secondary goal\n");
-                SolveMaze(SecondaryGoal, SecondaryCardinalGoal);
+                answer = SolveMaze(SecondaryGoal, SecondaryCardinalGoal);
             }
+
+            if (!debug)
+            {
+                ShowAnswer(answer, true);
+            }
+            return answer;
         }
 
         /// <summary>
@@ -1184,7 +1199,7 @@ namespace New_KTANE_Solver
         /// </summary>
         /// <param name="goal"></param>
         /// <param name="cardinal"></param>
-        private void SolveMaze(Node goal, string cardinal)
+        private string SolveMaze(Node goal, string cardinal)
         {
             List<string> answerList = FindPath(PlayerPosition, goal, false);
 
@@ -1255,7 +1270,7 @@ namespace New_KTANE_Solver
 
             PrintDebugLine("Directions to goal: " + fullAnswer + "\n");
 
-            ShowAnswer(fullAnswer, true);
+            return fullAnswer;
         }
 
         /// <summary>

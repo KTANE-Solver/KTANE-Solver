@@ -229,7 +229,7 @@ namespace New_KTANE_Solver
                     if (colorIndex % 3 + 1 == Bomb.PortPlateNum)
                     {
                         PrintDebugLine(
-                            $"Stage {stage + 1}'s hole position in the bottom row is equal to the number of port plates\n"
+                            $"Stage {stage + 1}'s hole position in the bottom row is equal to the number of port Plates\n"
                         );
                         return "2nd position";
                     }

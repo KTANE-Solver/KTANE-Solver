@@ -11,7 +11,7 @@ namespace New_KTANE_Solver
     /// Author: Nya Bentley
     /// Purpose: Solves the light cycle module
     /// </summary>
-    class LightCycle : Module
+    public class LightCycle : Module
     {
         String pair1,
             pair2,
@@ -40,7 +40,7 @@ namespace New_KTANE_Solver
             pair6 = "" + bomb.SerialNumber[5] + bomb.SerialNumber[bomb.SerialNumber.Length - 6];
         }
 
-        public void Solve()
+        public string Solve(bool debug)
         {
             string orignalcycle = cycle;
 
@@ -94,9 +94,12 @@ namespace New_KTANE_Solver
 
             String answer = GetAnswer(cycle, orignalcycle);
 
-            PrintDebugLine($"\nAnswer: {answer}\n");
-
+            if (!debug)
+            { 
             ShowAnswer(answer, true);
+            }
+
+            return answer;
         }
 
         private String GetSequence(String pair)
@@ -2530,7 +2533,7 @@ namespace New_KTANE_Solver
 
             for (int i = 0; i < 6; i++)
             {
-                string str = "";
+                string str;
 
                 switch (cycle[i])
                 {
